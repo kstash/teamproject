@@ -8,6 +8,6 @@
   </head>
   
   <body>
-  회원가입
+   비번찾기
   </body>
  </html>
