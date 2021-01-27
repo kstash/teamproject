@@ -1,0 +1,35 @@
+#right_area{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 150px;
+	height: 100%;
+	writing-mode: vertical-rl;
+	font-family: Lora;
+	
+	/* 스크롤시에도 보이도록 */
+	top: 0px; 
+	position:sticky;
+}
+
+#main{
+	margin-bottom:150px;
+	display: inline;
+}
+
+#MenuSearch{
+	margin-bottom:80px;
+	display: inline;
+}
+
+#loginBox{
+	display: inline;
+}
+
+#buttons{
+	display: inline;
+}
+
+#buttons a{
+	margin: 10px;
+}
