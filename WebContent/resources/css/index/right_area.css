@@ -1,4 +1,3 @@
-
 #right_area{
 	display: flex;
 	flex-direction: column;
@@ -11,28 +10,23 @@
 	top: 0px; 
 	position:sticky;
 }
-
 #main{
 	margin-bottom:150px;
 	display: inline;
 }
-
 #MenuSearch{
 	margin-bottom:80px;
 	display: inline;
 	display: flex;
 	flex-direction: column;
 }
-
 #loginBox{
 	display: inline;
 }
-
 #buttons{
 	display: flex;
 	flex-direction: column;
 }
-
 #empty{
 	height:40px;
 }
