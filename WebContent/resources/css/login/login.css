@@ -1,0 +1,105 @@
+#wrapper{
+	margin: 30px auto;
+	width: 500px;
+	height: 600px;
+	background-color: #fff4e6;
+	border: 1px solid gray;
+	display: flex;
+	align-items: center;
+	justify-content:center;
+	flex-direction: column;
+}
+span{
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+	font-weight: bold;
+	font-family: serif;
+	letter-spacing: 2px;
+	color: #868e96;
+}
+#userid, #userpwd{
+	background-color: #fff4e6;
+}
+#login_option{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width:300px;
+	display:flex;
+	justify-content: space-between;
+}
+#chk_remember, #secret_login{
+	font-size: 0.9rem;
+}
+#login{
+	margin: 10px auto;
+	width: 300px;
+	height: 175px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+#login_find{
+	text-align: center;
+	font-size:0.9rem;
+	margin-top:10px;
+	margin-bottom:20px;
+}
+#login_find a{
+	text-decoration: none;
+	color:black;
+	font-size: 0.8rem;
+}
+
+#login_find a{
+	text-decoration: none;
+	texe-size: 0.7rem;
+}
+#login_sns{
+	padding-left: 30px;
+	padding-right: 30px;
+	display:flex;
+	justify-content: space-around;
+}
+#userid, #userpwd{
+	width: 300px;
+	height: 30px;
+	margin:3px;
+}
+#login_btns{
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#login_btn{
+	border:0;
+	outline:0;
+	background-color: #ffc078;
+	cursor: pointer;
+	width: 300px;
+	height: 40px;
+}
+
+#login_div{
+	background-color: #ffc078;
+	width: 300px;
+	height: 40px;
+	border: 1px solid gray;
+	align-items: center;
+	justify-content: center;
+	display:flex;
+	font-size: 0.9rem;
+}
+
+#signup_div{
+	background-color: #fff4e6;
+	width: 300px;
+	height: 40px;
+	border: 1px solid gray;
+	align-items: center;
+	justify-content: center;
+	display:flex;
+	font-size: 0.9rem;
+}

@@ -1,0 +1,72 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+#InnerCategory ul {
+	list-style-type: none;
+	display:inline-block;
+}
+
+.inner_menu {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 40px;
+    margin: 40px 0;
+   	width:100%;
+}
+#menu2{
+	float: right;
+	margin-right: 10px;
+	text-align: right;
+}
+
+/* 내부카테고리 */
+#InnerCategory ul li{
+	display:inline-block;
+	font-size: 0.7rem;
+
+}
+#InnerCategory ul li:hover{
+	text-decoration: underline; 
+	cursor: pointer;
+}
+.inner_menu li{
+	margin-right: 10px;
+	padding: 5px;
+}
+.inner_menu li a{
+	color: black;
+}
+
+#inner_stl{
+	display:inline-block;
+	font-size: 0.8rem;
+	font-weight: bold;
+}
+#inner_stl:hover{
+	text-decoration: none;
+}
+
+.inner_active{
+	font-weight: bold;
+	color: black;
+}
+
+#inner_brd{
+	display: inline-block;	
+}
+.inner_bread{
+	text-decoration: none;
+	color: gray;
+	font-size: 0.7rem;
+}
+
+.chkbox{
+	border: 1px solid #252525;
+    width: 9px;
+    height: 9px;
+    float: left;
+    margin-right: 5px;
+    margin-top: 1px;
+}
