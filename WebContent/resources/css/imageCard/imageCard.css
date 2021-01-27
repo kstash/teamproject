@@ -1,0 +1,61 @@
+@charset "UTF-8";
+#imageCard_img {
+	width : 300px;
+	height: auto;
+}
+
+#imageCard_color > div {
+	float: left;
+	width : 5px;
+	height: 5px;
+	padding: 5px;
+	margin: 1 1 1 1;
+}
+
+#imageCard_color > #div1 {
+	background-color: #a69c8a;
+}	
+
+#imageCard_color > #div2 {
+	background-color: #4f71a8;
+}
+
+#imageCard_color > #div3 {
+	background-color: #404040;
+}
+
+
+/* 이미지 카드 리스트 */
+#imageCardList {
+	display: inline-block;	
+}
+
+#imageCardList > ul {
+	list-style-type: none;
+	align-items: center;
+}
+		
+#imageCardList > ul > li {
+	float: left;
+	margin: 15px;
+}
+			
+/* 이미지 카드 개체별 */
+#imageCard > #imageCard_color {
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+	
+#imageCard > #imageCard_color > div {
+	margin-right: 2px;
+}
+	
+#imageCard > #imageCard_name {
+	margin: 1px 0px 0px 0px;
+}
+			
+#imageCard > #imageCard_price {
+	margin: 1px 0px 0px 0px;
+}
+			
