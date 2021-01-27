@@ -13,4 +13,11 @@ public class UpcategoryDBDao {
 
 	@Resource
 	private SqlSessionTemplate sst;
+
+	public String selectOneTest() {
+		String upcategoryKr = sst.selectOne("upcategory.selectOneTest");
+		return upcategoryKr;
+	}
+	
+
 }
