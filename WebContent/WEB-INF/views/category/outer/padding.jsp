@@ -36,7 +36,19 @@
 					<div id="content">
 						
 						<!-- breadcrumb -->
-						<c:import url="/categoryDetail/breadcrumb"/>
+						<script type="text/javascript">
+							$(function() {
+								$.ajax({
+									url : "../../categoryDetail/breadcrumb",
+									method : "get",
+									data : {upcategoryeng:"outer", lowcategoryeng:"padding"},
+									success : function(data) {
+										$("#breadcrumb").html(data);
+									}
+								});
+							});
+						</script>
+						<div id="breadcrumb"></div>
 						
 						<!-- 제품 리스트 스크립트 -->
 						<script type="text/javascript">

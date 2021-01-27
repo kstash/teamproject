@@ -38,8 +38,21 @@
 						<!-- 추천상품 top5 슬라이드 -->
 						<jsp:include page="/WEB-INF/views/products/slideshow.jsp" />
 						
+						
 						<!-- breadcrumb -->
-						<c:import url="/categoryDetail/breadcrumb"/>
+						<script type="text/javascript">
+							$(function() {
+								$.ajax({
+									url : "../categoryDetail/breadcrumb",
+									method : "get",
+									data : {upcategoryeng:"outer",lowcategoryeng : ""},
+									success : function(data) {
+										$("#breadcrumb").html(data);
+									}
+								});
+							});
+						</script>
+						<div id="breadcrumb"></div>
 						
 						<!-- 제품 리스트 스크립트 -->
 						<script type="text/javascript">
