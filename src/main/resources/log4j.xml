@@ -10,7 +10,7 @@
 		</layout>
 	</appender>
 
-	<logger name="com.mycompany">
+	<logger name="teamproject">
 		<level value="info" />
 	</logger>	
 	
