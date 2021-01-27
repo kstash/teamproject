@@ -23,7 +23,7 @@ public class loginController {
 		logger.info("로그인 성공");
 		
 		//로그인 시 메인 이동
-		return "category/outer/index2";
+		return "category/outer/index";
 	}
 	
 	@GetMapping("/logout")
@@ -31,13 +31,13 @@ public class loginController {
 		session.invalidate();
 		logger.info("로그아웃");
 		//로그아웃 시 메인 이동
-		return "category/outer/index2";
+		return "category/outer/index";
 	}
 	
 	@RequestMapping("/signup")
 	public String signup() {
 		logger.info("회원가입 페이지");
-		return "signUp/signup";
+		return "signup/signup";
 	}
 	
 	@RequestMapping("/findid")

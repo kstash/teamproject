@@ -8,6 +8,14 @@
   </head>
   
   <body>
-   	언어선택
+   <span>AGREEMENT</span>
+   <div id="wrapper">
+   	<div id="userpolicy">
+   	
+   	</div>
+   	<div id="privacypolicy">
+   	
+   	</div>
+   </div>
   </body>
  </html>

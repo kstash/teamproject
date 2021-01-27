@@ -8,6 +8,6 @@
   </head>
   
   <body>
-  회원가입
+   	이 기능 안쓰는디
   </body>
  </html>

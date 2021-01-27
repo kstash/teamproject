@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <!-- 최상단 메뉴 -->
+<div>
 <ul id="main_menu">
 		<li><a style="color:black;" href="">아우터</a>
 			<ul id="dropmenu1">
@@ -45,3 +46,4 @@
 		</li>
 	</ul>
 	<br><br><br><br>
+</div>

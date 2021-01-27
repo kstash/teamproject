@@ -13,11 +13,10 @@
 		<link rel="stylesheet" href="<%=application.getContextPath() %>/resources/css/index/header.css">
 		<link rel="stylesheet" href="<%=application.getContextPath() %>/resources/css/index/left_area.css">
 		<link rel="stylesheet" href="<%=application.getContextPath() %>/resources/css/index/right_area.css">
-		<link rel="stylesheet" href="<%=application.getContextPath() %>/resources/css/login/login.css">
+		<link rel="stylesheet" href="<%=application.getContextPath() %>/resources/css/signup/signup.css">
 		<link rel="stylesheet" href="<%=application.getContextPath() %>/resources/css/base_element/footermen.css">
 		<!-- 아이콘 사용 -->
 		<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-		
   </head>
   
   <body>
@@ -31,8 +30,8 @@
 				<!-- 좌측 메뉴 -->
 				<jsp:include page="/WEB-INF/views/include/left_area.jsp" />
 				
-				<!-- 로그인 -->
-				<jsp:include page="/WEB-INF/views/login/loginform.jsp" />
+				<!-- 회원가입 -->
+				<jsp:include page="/WEB-INF/views/signup/signupForm.jsp" />
 				
 				<!-- 우측 메뉴 -->
 				<jsp:include page="/WEB-INF/views/include/right_area.jsp" />
