@@ -13,8 +13,8 @@ public class UpcategoryDBService {
 
 	
 	public String getDatatest() {
-		String data = dbDao.selectOneTest();
-		return data;
+		String upcategoryKr = dbDao.selectOneTest();
+		return upcategoryKr;
 	}
 
 }

@@ -20,8 +20,8 @@ public class UpcategoryDBController {
 	
 	@RequestMapping("/dbtest")
 	public String dbtest(Model model) {
-		String data = dbService.getDatatest();
-		model.addAttribute("data",data);
+		String upcategoryKr = dbService.getDatatest();
+		model.addAttribute("upcategoryKr",upcategoryKr);
 		return "dbtest";
 	}
 }
