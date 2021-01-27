@@ -15,8 +15,8 @@ public class UpcategoryDBDao {
 	private SqlSessionTemplate sst;
 
 	public String selectOneTest() {
-		String data = sst.selectOne("upcategory.selectOneTest");
-		return data;
+		String upcategoryKr = sst.selectOne("upcategory.selectOneTest");
+		return upcategoryKr;
 	}
 	
 
