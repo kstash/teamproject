@@ -1,0 +1,38 @@
+
+#right_area{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	width: 150px;
+	height: 100%;
+	font-family: Lora;
+	/* 스크롤시에도 보이도록 */
+	top: 0px; 
+	position:sticky;
+}
+
+#main{
+	margin-bottom:150px;
+	display: inline;
+}
+
+#MenuSearch{
+	margin-bottom:80px;
+	display: inline;
+	display: flex;
+	flex-direction: column;
+}
+
+#loginBox{
+	display: inline;
+}
+
+#buttons{
+	display: flex;
+	flex-direction: column;
+}
+
+#empty{
+	height:40px;
+}
