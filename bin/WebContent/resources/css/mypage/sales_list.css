@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+#sales {
+	margin-top: 20px;
+	font-family: Lora;
+}
+
+#sales_page_desc {
+	text-align: center;
+	margin: 30px;
+}
+
+#sales_board {
+	
+}
+
+#sales_board_list {
+	margin-bottom: 20px;
+}
+
+#sales_board_list_ol {
+	list-style-type: none;
+}
+
+#sales_board_list_li {
+	width: 19%;	
+	list-style-type: none;
+	display: inline-block;
+}
+
+#sales_board_prod {
+	
+}
+
+#sales_board_prod > div {
+	margin-bottom: 5px;
+}
+#sales_board_prod > div > div {
+	margin-bottom: 5px;
+}
+
+#sales_board_prod_img_div {
+	width: 100%%;
+}
+
+#sales_board_prod_img {
+	max-width: 100%;
+	margin-bottom: 10px;
+}
+
+#sales_board_prod_detail {
+	display: inline-block;
+	
+}
+
+#sales_board_prod_price {
+	
+}
+
+#sales_board_prod_regstr_cnt {
+	
+}
+
+#sales_board_prod_selled_cnt {
+	
+}
+
+#sales_board_prod_regstr_period {
+	
+}
+
+#regstr_period_start {
+	
+}
+#regstr_period_end {
+	
+}
+
+#sales_board_prod_state {
+	
+}
+
+#sales_board_prod_edit_submit {
+	float: right;
+}
+
+
+
+
+
+#sales_prod_add {
+	float: right;
+}

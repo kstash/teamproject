@@ -8,6 +8,6 @@
   </head>
   
   <body>
-   	언어선택
+ 	장바구니
   </body>
  </html>

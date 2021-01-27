@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.wrap_content{
+	display:flex;
+	flex-direction: row;
+}
+
+*{
+	text-decoration: none;
+	color: black;
+}

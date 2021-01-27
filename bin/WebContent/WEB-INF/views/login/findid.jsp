@@ -8,6 +8,6 @@
   </head>
   
   <body>
-   메뉴 찾기
+   아이디찾기
   </body>
  </html>
