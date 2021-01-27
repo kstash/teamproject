@@ -17,7 +17,7 @@ public class ProductDBDao {
 	private SqlSessionTemplate sst;
 	
 	public int insertNewProduct(ProductDB product) {
-		int rows = sst.insert("product.product", product);
+		int rows = sst.insert("products.product", product);
 		return rows;
 	}
 }
