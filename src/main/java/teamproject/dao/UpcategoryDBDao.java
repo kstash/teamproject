@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class DBtestDao {
+public class UpcategoryDBDao {
 	
 	@Resource
 	private SqlSessionTemplate sst;

@@ -7,21 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import teamproject.service.DBtestService;
+import teamproject.service.UpcategoryDBService;
 
 @Controller
-public class DBtestController {
+public class UpcategoryDBController {
 	
 	@Resource
 	private DataSource dataSource;
 	
 	@Resource
-	private DBtestService dbService;
+	private UpcategoryDBService dbService;
 	
-	@RequestMapping("/test")
+	@RequestMapping("/dbtest")
 	public String dbtest(Model model) {
 		String data = dbService.getDatatest();
 		model.addAttribute("data",data);
-		return "test";
+		return "dbtest";
 	}
 }
