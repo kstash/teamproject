@@ -63,44 +63,16 @@
 				</thead>
 
 				<tbody>
-					<tr>
-						<th scope="row">아우터</th>
-						<td><a type="button" class="btn btn-primary btn-sm link"
-							data-toggle="modal" data-target="#exampleModal">코트</a></td>
-						<td><a type="button" class="btn btn-primary btn-sm"
-							data-toggle="modal" data-target="#exampleModal">패딩</a></td>
-						<td><a type="button" class="btn btn-primary btn-sm"
-							data-toggle="modal" data-target="#exampleModal">자켓</a></td>
-						<td><a type="button" class="btn btn-primary btn-sm"
-							data-toggle="modal" data-target="#exampleModal">퍼자켓</a></td>
-						<td><a type="button" class="btn btn-primary btn-sm"
-							data-toggle="modal" data-target="#exampleModal">가죽자켓</a></td>
-					</tr>
-
-					<tr>
-						<th scope="row">상위 카테고리2</th>
-						<td><a type="button" class="btn btn-primary btn-sm"
-							data-toggle="modal" data-target="#exampleModal"> 하위 카테고리1 </a></td>
-						<td><a type="button" class="btn btn-primary btn-sm"
-							data-toggle="modal" data-target="#exampleModal"> 하위 카테고리1 </a></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-
-					<tr>
-						<th scope="row">상위 카테고리3</th>
-						<td><a type="button" class="btn btn-primary btn-sm"
-							data-toggle="modal" data-target="#exampleModal"> 하위 카테고리1 </a></td>
-						<td><a type="button" class="btn btn-primary btn-sm"
-							data-toggle="modal" data-target="#exampleModal"> 하위 카테고리1 </a></td>
-						<td><a type="button" class="btn btn-primary btn-sm"
-							data-toggle="modal" data-target="#exampleModal"> 하위 카테고리1 </a></td>
-						<td><a type="button" class="btn btn-primary btn-sm"
-							data-toggle="modal" data-target="#exampleModal"> 하위 카테고리1 </a></td>
-						<td></td>
-					</tr>
+					<c:forEach var="upcategory" items="${upcategories}">
+						<tr>
+							<th>${upcategory}</th>
+							<c:forEach var="lowcategory" items="${lowcategories}">
+								<td><a type="button" class="btn btn-primary btn-sm link" data-toggle="modal" data-target="#exampleModal">${lowcategory}</a></td>
+							</c:forEach>
+						</tr>
+					</c:forEach>
 				</tbody>
+				
 			</table>
 
 			<!-- Modal -->
