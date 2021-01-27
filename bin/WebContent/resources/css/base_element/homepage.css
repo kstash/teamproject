@@ -1,0 +1,34 @@
+/* 홈페이지용 슬라이드 */
+
+.homeSlides > a > img {
+	 width: 100%;
+
+}
+
+.homeSlides {
+	margin: 0px auto;
+}
+
+
+.productSlide_detail_image {
+	margin-left: 250px;
+	margin-bottom: 50px;
+}
+.imageCard_home{
+	width: 300px;
+}
+.imageCard_home #imageCard_img:hover{
+	margin-top: 17.5%;
+	margin-bottom: 17.5%;
+}
+
+.hm_half_img{
+	width: 43.1%;
+	display: inline-block;
+}
+.hm_half_img a{
+	margin: 0px;
+}
+.hm_half_img img{
+	width: 100%;
+}

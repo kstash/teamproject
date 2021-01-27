@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+/* Fading 애니메이션 */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+.productSlideshow-container {
+	width: 90%;
+	height: 20%;
+	margin-top: 30px;
+}
+
+.productSlideshow-container > .productSlide {
+  	position: relative;
+	display: inline-block;
+}
+
+.productSlideshow-container > .productSlide > a > img {
+	display: inline-block;
+}
+
+.productSlide_name .productSlide_desc {
+	display:inline-block;
+}
+
+.productSlide {
+	display: inline-block;
+	height: 50%;
+}
+
+.productSlide_detail {
+	float: left;
+}
+
+.productSlide_detail > a > img {
+	 width: 100%;
+	 float: left;
+	 height: 100%;
+}
+
+#productSlide_detail_img {
+	width: 60%;
+}
+
+#productSlide_detail_info {
+	width: 30%; 
+	margin-top: 80px;
+	margin-left: 55px;
+}
+
+.productSlide_detail > button {
+	float: right;
+}
+
+.productSlide_colors {
+	margin-bottom: 10px;
+}
+
+.productSlide_colors > div {
+	float: left;
+	width : 5px;
+	height: 5px;
+	padding: 5px;
+	margin: 1 1 1 1;
+	margin-right: 2px;
+}
+
+
+.productSlide_colors > #div1 {
+	background-color: #a69c8a;
+}
+
+.productSlide_colors > #div2 {
+	background-color: #4f71a8;
+}
+
+.productSlide_colors > #div3 {
+	background-color: #404040;
+}
+.productSlide_name {
+	line-height: 20px;
+}
+
+.productSlide_price {
+	line-height: 20px;
+}
+
+.productSlide_desc {
+	line-height: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

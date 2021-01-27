@@ -19,16 +19,24 @@ public class IndexController {
 	public String cart() {
 		logger.info("장바구니 페이지");
 
-		return "leftArea/cart";
+		return "cart/cart";
 	}
 	
 	//오른쪽영역
-	@RequestMapping("/menusearch")
+	@RequestMapping("/rightmenu")
 	public String menusearch() {
-		logger.info("로그인 페이지");
+		logger.info("rightmenu 페이지");
 
-		return "rightArea/menusearch";
+		return "rightmenu/rightmenu";
 	}
+	
+	@RequestMapping("/rightsearch")
+	public String rightsearch() {
+		logger.info("rightsearch");
+
+		return "rightsearch/rightsearch";
+	}
+	
 	
 	@RequestMapping("/login")
 	public String login() {
@@ -46,9 +54,9 @@ public class IndexController {
 	
 	@RequestMapping("/language")
 	public String language() {
-		logger.info("마이페이지 페이지");
+		logger.info("랭귀지");
 
-		return "rightArea/language";
+		return "rightmenu/language";
 	}
 	
 }

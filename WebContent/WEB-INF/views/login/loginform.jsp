@@ -22,16 +22,15 @@
 			</div>
 			
 			<!-- 로그인 버튼 -->
-			<div id="login_btns">
 				<div id="login_div">
 					<button id="login_btn">로그인</button>
 				</div>
-			</div>
+			
 		</form>
 	</c:if>
 	
 	<!-- 회원가입 버튼 -->
-	<div id="login_div">
+	<div id="signup_div">
 		<a type="button" id="signup_btn" href="signup">회원가입</a>
 	</div>
 	
