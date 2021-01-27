@@ -16,8 +16,8 @@ public class ProductDBDao {
 	@Resource
 	private SqlSessionTemplate sst;
 	
-	public int insertNewProduct(ProductDB product) {
-		int rows = sst.insert("products.product", product);
+	public int insertProduct(ProductDB product) {
+		int rows = sst.insert("product.product", product);
 		return rows;
 	}
 }
