@@ -1,6 +1,7 @@
 package teamproject.dto;
 
 public class UserDB {
+
 	private String userid;
 	private String userpw;
 	private String username;

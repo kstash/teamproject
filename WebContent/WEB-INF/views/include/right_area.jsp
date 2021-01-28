@@ -13,7 +13,7 @@
 	<div id="MenuSearch">
 		<a href="rightmenu"><i class="fas fa-bars"></i></a> 
 		<!-- 모달 버튼 -->
-		<a data-toggle="modal" data-target="#exampleModal" role="button">
+		<a data-toggle="modal" data-target="#searchModal" role="button">
 			<i class="fas fa-search"></i>
 		</a>
 	</div>
