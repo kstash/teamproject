@@ -29,6 +29,8 @@ public class UserDBService {
 			logger.info("UserDBService.login()실행, wrongUserid");
 			return "wrongUserid";
 		} else if(dbUser.getUserpw().equals(userDB.getUserpw())) {
+			//아이디 기억하기
+			
 			logger.info("UserDBService.login()실행, success");
 			return "success";
 		} else {

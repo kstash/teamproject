@@ -4,8 +4,6 @@
 <!-- Login 및 버튼을 감싸는 wrapper -->
 <div id="wrapper">
 	<span>LOGIN</span><br>
-	
-	
 	<!-- Input 및 버튼을 감싸는 login -->
 	<form method="post" action="login" id="login">
 		<input type="text" class="form-control" id="userid" name="userid" placeholder="ID"/> 
@@ -14,12 +12,11 @@
 		<!-- 아이디 저장 및 보안접속 표시 -->
 		<div id="login_option">
 			<div id="chk_remember">
-				<input type="checkbox" id="rememberid" name="rememberid"/>
+				<input type="checkbox" id="rememberid" name="rememberid" ${checked}/>
 				<label for="rememberid" name="chk_remeber">아이디 저장</label>
 			</div>
 			<div id="secret_login">보안 접속</div>
 		</div>
-		
 		<!-- 로그인 버튼 -->
 			<div id="login_div">
 				<button id="login_btn">로그인</button>
