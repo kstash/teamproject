@@ -31,14 +31,18 @@
 				<!-- 좌측 메뉴 -->
 				<jsp:include page="/WEB-INF/views/include/left_area.jsp" />
 				
-				<!-- 로그인 -->
-				<jsp:include page="/WEB-INF/views/login/loginform.jsp" />
+				<!-- 로그인 / 푸터-->
+				<div id="lf">
+					<jsp:include page="/WEB-INF/views/login/loginform.jsp" />
+					<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+				</div>
 				
 				<!-- 우측 메뉴 -->
 				<jsp:include page="/WEB-INF/views/include/right_area.jsp" />
+				
 			</div>
 			
-			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+			
 		</div>   
   </body>
  </html>

@@ -8,8 +8,8 @@
 	
 	<!-- Input 및 버튼을 감싸는 login -->
 	<form method="post" action="login" id="login">
-		<input type="text" id="userid" name="userid" placeholder="ID"/> 
-		<input type="password" id="userpw" name="userpw" placeholder="PASSWORD"/>
+		<input type="text" class="form-control" id="userid" name="userid" placeholder="ID"/> 
+		<input type="password" class="form-control" id="userpw" name="userpw" placeholder="PASSWORD"/>
 		
 		<!-- 아이디 저장 및 보안접속 표시 -->
 		<div id="login_option">
