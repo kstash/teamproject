@@ -20,7 +20,7 @@
   </head>
   
   <body>
-		<div class="wrapper">
+
 			<div id="header">
 				<%-- 중앙 --%>
 				<jsp:include page="/WEB-INF/views/include/header.jsp" />
@@ -30,14 +30,16 @@
 				<!-- 좌측 메뉴 -->
 				<jsp:include page="/WEB-INF/views/include/left_area.jsp" />
 				
-				<!-- 회원가입 -->
-				<jsp:include page="/WEB-INF/views/signup/signupForm.jsp" />
-				
+				<!-- 중간에 감싸는 부분이 없으면 가운데 부분이 다 독립적으로 flex에 반영하여 가로로 정렬 됩니다 -->
+				<div>
+					<!-- 회원가입 -->
+					<jsp:include page="/WEB-INF/views/signup/signupForm.jsp" />
+					
+					<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+					</div>
 				<!-- 우측 메뉴 -->
 				<jsp:include page="/WEB-INF/views/include/right_area.jsp" />
 			</div>
-			
-			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
-		</div>   
+
   </body>
  </html>
