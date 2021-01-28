@@ -1,10 +1,22 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<div id="footerlist">
-	<a href=""><img id="footer_img1" alt="하단1"
-		src="<%=application.getContextPath()%>/resources/img/footermen/main_bt01.jpg" /></a> <a href=""><img
-		alt="하단2" src="<%=application.getContextPath()%>/resources/img/footermen/main_bt02.jpg" /></a> <a
-		href=""><img id="footer_img3" alt="하단3"
-		src="<%=application.getContextPath()%>/resources/img/footermen/main_bt03.jpg" /></a>
+<div id="footerlist" style="clear: both;">
+
+	<br/><br/><br/><br/><br/>
+	
+	<div class="d-flex bd-highlight">
+	  <div class="p-2 flex-fill bd-highlight">
+	  	<a href=""><img alt="하단1" src="<%=application.getContextPath()%>/resources/img/footermen/main_bt01.jpg" /></a>
+	  </div>
+	  <div class="p-2 flex-fill bd-highlight">
+		<a href=""><img alt="하단2" src="<%=application.getContextPath()%>/resources/img/footermen/main_bt02.jpg" /></a>  
+	  </div>
+	  <div class="p-2 flex-fill bd-highlight">
+		<a href=""><img alt="하단3" src="<%=application.getContextPath()%>/resources/img/footermen/main_bt03.jpg" /></a>  
+	  </div>
+	</div>
+	
+	 
+	<br/><br/><br/><br/><br/>
 
 
 	<table>

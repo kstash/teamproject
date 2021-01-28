@@ -12,20 +12,12 @@
 	text-align: center;
 }
 
-#footerlist > a  img{
-	width: 32%;
-	margin: 70px auto;
+#footerlist .d-flex a img{
+	width: 100%;
+	margin: 0px auto;
 }
-#footerlist > a{
+#footerlist .d-flex a{
 	margin: 0px;
-	}
-#footer_img1{
-	float: left;
-	
-}
-
-#footer_img3{
-	float: right;
 }
 
 

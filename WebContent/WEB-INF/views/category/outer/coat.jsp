@@ -43,50 +43,64 @@
 
 <body>
 
-	<div id="header">
-		<%-- 중앙 --%>
-		<jsp:include page="/WEB-INF/views/include/header.jsp" />
-	</div>
-
 	<div class="wrap_content">
 		<!-- 좌측 메뉴 -->
 		<jsp:include page="/WEB-INF/views/include/left_area.jsp" />
-
-		<!-- 페이지 내용 -->
-		<div id="content">
-
-
-			<!-- breadcrumb -->
+		<%-- 중앙 --%>
+		<div id="header">
 			<script type="text/javascript">
-				$(function() {
-					$.ajax({
-						url : "../../categoryDetail/breadcrumb",
-						method : "get",
-						data : {upcategoryeng : "outer",lowcategoryeng : "coat"},
-						success : function(data) {
-							$("#breadcrumb").html(data);
+						$(function() {
+							$.ajax({
+								url : "<%=application.getContextPath()%>/header",
+								method : "get",
+								success : function(data) {
+								$("#headerpart").html(data);
 						}
 					});
 				});
 			</script>
-			<div id="breadcrumb"></div>
+			<div id="headerpart"></div>
 
-			<!-- 제품 리스트 스크립트 -->
-			<script type="text/javascript">
-				$(function() {
-					$.ajax({
-						url : "../../products/productCardList",
-						method : "get",
-						success : function(data) {
-							$("#productCardList").html(data);
-						}
+			<!-- 페이지 내용 -->
+			<div id="content">
+
+				<!-- breadcrumb -->
+				<script type="text/javascript">
+					$(function() {
+						$.ajax({
+							url : "../../categoryDetail/breadcrumb",
+							method : "get",
+							data : {
+								upcategoryeng : "outer",
+								lowcategoryeng : "coat"
+							},
+							success : function(data) {
+								$("#breadcrumb").html(data);
+							}
+						});
 					});
-				});
-			</script>
-			<div id="productCardList"></div>
+				</script>
+				<div id="breadcrumb"></div>
 
+				<!-- 제품 리스트 스크립트 -->
+				<script type="text/javascript">
+					$(function() {
+						$.ajax({
+							url : "../../products/productCardList",
+							method : "get",
+							success : function(data) {
+								$("#productCardList").html(data);
+							}
+						});
+					});
+				</script>
+				<div id="productCardList"></div>
+
+
+			</div>
 			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 		</div>
+
 
 		<!-- 우측 메뉴 -->
 		<jsp:include page="/WEB-INF/views/include/right_area.jsp" />

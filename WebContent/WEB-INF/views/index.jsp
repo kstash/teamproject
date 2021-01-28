@@ -28,28 +28,36 @@
 	<script type="text/javascript" src="<%=application.getContextPath()%>/resources/js/base_element/homepage.js"></script>
 </head>
 <body>
-<div class="wrap">
 	<div class="wrap_content">
 			<!-- 좌측 메뉴 -->
 		<jsp:include page="/WEB-INF/views/include/left_area.jsp" />
 
 			<!-- 내용 -->
-		<div class="wrapper">
 			<div id="header">
 					<%-- 중앙 --%>
-				<jsp:include page="/WEB-INF/views/include/header.jsp" />
+				
+				<script type="text/javascript">
+						$(function() {
+							$.ajax({
+								url : "<%=application.getContextPath()%>/header",
+								method : "get",
+								success : function(data) {
+									$("#headerpart").html(data);
+								}
+							});
+						});
+					</script>
+					<div id="headerpart"></div>
+				
 
 					<!-- 페이지 내용 -->
 				<div id="content">
 						<!-- 추천상품 top5 슬라이드 -->
 					<jsp:include page="/WEB-INF/views/products/slideshow.jsp" />
 						
-					<!-- homepage item -->
-					<div id="homeproductList"></div>
-					
 					
 					<!-- 제품 리스트 스크립트 -->
-					<script type="text/javascript">
+					<!--  <script type="text/javascript">
 						$(function() {
 							$.ajax({
 								url : "productll/productCardList",
@@ -61,15 +69,16 @@
 						});
 					</script>
 					<div id="productCardList"></div>
+					-->
 
 					<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+
 				</div>
 			</div>
-		</div>
 
 			<!-- 우측 메뉴 -->
 		<jsp:include page="/WEB-INF/views/include/right_area.jsp" />
 	</div>
-</div>
+
 </body>
 </html>
