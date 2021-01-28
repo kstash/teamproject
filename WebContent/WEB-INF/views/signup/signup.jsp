@@ -22,25 +22,35 @@
   </head>
   
   <body>
+	<div class="wrap_content">
+		<!-- 좌측 메뉴 -->
+		<jsp:include page="/WEB-INF/views/include/left_area.jsp" />
+
 		<div id="header">
 			<%-- 중앙 --%>
-			<jsp:include page="/WEB-INF/views/include/header.jsp" />
-		</div>
-		
-		<div class="wrap_content">
-			<!-- 좌측 메뉴 -->
-			<jsp:include page="/WEB-INF/views/include/left_area.jsp" />
-			
-			<!-- 중간에 감싸는 부분이 없으면 가운데 부분이 다 독립적으로 flex에 반영하여 가로로 정렬 됩니다 -->
-			<div>
-				<!-- 회원가입 -->
+
+			<script type="text/javascript">
+						$(function() {
+							$.ajax({
+								url : "<%=application.getContextPath()%>/header",
+						method : "get",
+						success : function(data) {
+							$("#headerpart").html(data);
+						}
+					});
+				});
+			</script>
+			<div id="headerpart"></div>
+			<!-- 회원가입  / 푸터-->
+			<div id="lf">
 				<jsp:include page="/WEB-INF/views/signup/signupForm.jsp" />
-				
 				<jsp:include page="/WEB-INF/views/include/footer.jsp" />
-				</div>
-			<!-- 우측 메뉴 -->
-			<jsp:include page="/WEB-INF/views/include/right_area.jsp" />
+			</div>
 		</div>
+		<!-- 우측 메뉴 -->
+		<jsp:include page="/WEB-INF/views/include/right_area.jsp" />
+
+	</div>
 
   </body>
  </html>
