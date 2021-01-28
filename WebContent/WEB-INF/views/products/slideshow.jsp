@@ -4,7 +4,7 @@
 <div class="productSlideshow-container">
 	<div class="productSlide fade">
 		<div class="productSlide_detail" id="productSlide_detail_img">
-			<a href="#"><img src="<%=application.getContextPath()%>/resources/img/product/top/slides/01.jpg"></a>
+			<a href="#"><img src="<%=application.getContextPath()%>/resources/img/product/outer/slides/01.jpg"></a>
 		</div>
 
 		<div class="productSlide_detail" id="productSlide_detail_info">
@@ -31,7 +31,7 @@
 	<div class="productSlide fade">
 		<div class="productSlide_detail" id="productSlide_detail_img">
 			<a href="#"><img
-				src="<%=application.getContextPath()%>/resources/img/product/top/slides/02.jpg"></a>
+				src="<%=application.getContextPath()%>/resources/img/product/outer/slides/02.jpg"></a>
 		</div>
 
 		<div class="productSlide_detail" id="productSlide_detail_info">
@@ -57,7 +57,7 @@
 	<div class="productSlide fade">
 		<div class="productSlide_detail" id="productSlide_detail_img">
 			<a href="#"><img
-				src="<%=application.getContextPath()%>/resources/img/product/top/slides/03.jpg"></a>
+				src="<%=application.getContextPath()%>/resources/img/product/outer/slides/03.jpg"></a>
 		</div>
 
 		<div class="productSlide_detail" id="productSlide_detail_info">
@@ -82,7 +82,7 @@
 	<div class="productSlide fade">
 		<div class="productSlide_detail" id="productSlide_detail_img">
 			<a href="#"><img
-				src="<%=application.getContextPath()%>/resources/img/product/top/slides/04.jpg"></a>
+				src="<%=application.getContextPath()%>/resources/img/product/outer/slides/04.jpg"></a>
 		</div>
 
 		<div class="productSlide_detail" id="productSlide_detail_info">
