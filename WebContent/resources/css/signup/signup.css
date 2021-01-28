@@ -3,18 +3,28 @@
 	width: 500px;
 	height: 600px;
 	background-color: #fff4e6;
-	border: 1px solid gray;
 	display: flex;
 	align-items: center;
 	justify-content:center;
 	flex-direction: column;
 }
 span{
-	margin: 20px;
 	display: flex;
 	justify-content: center;
 	font-weight: bold;
 	font-family: serif;
 	letter-spacing: 2px;
 	color: #868e96;
+}
+#signupForm{
+	font-size:0.8rem;
+	display: flex;
+	flex-direction: column;
+	width:300px;
+	color: #868e96;
+}
+
+#btns{
+	display: flex;
+	justify-content: center;
 }
