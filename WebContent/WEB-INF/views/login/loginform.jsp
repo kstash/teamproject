@@ -37,9 +37,6 @@
 		<a id="findpwd" href='findpwd'
 			style="text-decoration: none; color:black; font-size: 0.8rem;"
 			>비밀번호 찾기</a><br>
-		<a id="guestorder" href='guestorder'
-			style="text-decoration: none; color:black; font-size: 0.8rem;"
-			>비회원 주문 조회</a>
 	</div>
 	
 	
