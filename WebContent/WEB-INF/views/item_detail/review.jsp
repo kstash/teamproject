@@ -56,16 +56,49 @@
 		<div id="review_imgdiv">
 			<div id="review_imgreview">
 				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
+					<li>
+						<c:if test="${orderCodeList[0] != null }">
+							<img src="battach?ordercode=${orderCodeList[0]}" width="100%" height="100%">
+						</c:if>
+					</li>
+					<li>
+						<c:if test="${orderCodeList[1] != null }">
+							<img src="battach?ordercode=${orderCodeList[1]}" width="100%" height="100%" >
+						</c:if>
+					</li>
+					<li>
+						<c:if test="${orderCodeList[2] != null }">
+							<img src="battach?ordercode=${orderCodeList[1]}" width="100%" height="100%" >
+						</c:if>
+					</li>
+					<li>
+						<c:if test="${orderCodeList[3] != null }">
+							<img src="battach?ordercode=${orderCodeList[1]}" width="100%" height="100%" >
+						</c:if>
+					</li>
 				</ul>
 				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
+					<li>
+						<c:if test="${orderCodeList[4] != null }">
+							<img src="battach?ordercode=${orderCodeList[0]}" width="100%" height="100%">
+						</c:if>
+					</li>
+					<li>
+						<c:if test="${orderCodeList[5] != null }">
+							<img src="battach?ordercode=${orderCodeList[0]}" width="100%" height="100%">
+						</c:if>
+					</li>
+					<li>
+						<c:if test="${orderCodeList[6] != null }">
+							<img src="battach?ordercode=${orderCodeList[0]}" width="100%" height="100%">
+						</c:if>
+					</li>
+					<li>
+						<c:if test="${orderCodeList[7] != null }">
+							<img src="battach?ordercode=${orderCodeList[0]}" width="100%" height="100%">
+						</c:if>
+					</li>
+					
 				</ul>
 			</div>
 			이 상품의 포토리뷰 모아보기
