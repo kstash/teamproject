@@ -6,7 +6,7 @@ public class UserDB {
 	private String username;
 	private String useraddr;
 	private String useremail;
-	private long userphone;
+	private String userphone;
 	public String getUserid() {
 		return userid;
 	}
@@ -37,10 +37,10 @@ public class UserDB {
 	public void setUseremail(String useremail) {
 		this.useremail = useremail;
 	}
-	public long getUserphone() {
+	public String getUserphone() {
 		return userphone;
 	}
-	public void setUserphone(long userphone) {
+	public void setUserphone(String userphone) {
 		this.userphone = userphone;
 	}
 	

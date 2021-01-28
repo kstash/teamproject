@@ -7,4 +7,12 @@
 		values 
 		(#{userid}, #{userpw}, #{username}, #{useraddr}, #{useremail}, #{userphone}, 'active', 'user')
 	</insert>
+	
+	<select id="loginSelect" parameterType="string" resultType="user">
+		select 
+			userid, userpw, username, useraddr, 
+			useremail, userphone, userstatus, userauth
+		from users
+		where userid=#{userid}
+	</select>
 </mapper>

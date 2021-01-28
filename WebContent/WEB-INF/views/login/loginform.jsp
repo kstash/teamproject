@@ -7,26 +7,24 @@
 	
 	
 	<!-- Input 및 버튼을 감싸는 login -->
-	<c:if test="${loginStatus == null}">
-		<form method="post" action="login" id="login">
-			<input type="text" id="userid" name="userid" placeholder="ID"/> 
-			<input type="password" id="userpwd" name="userpwd" placeholder="PASSWORD"/>
-			
-			<!-- 아이디 저장 및 보안접속 표시 -->
-			<div id="login_option">
-				<div id="chk_remember">
-					<input type="checkbox" id="rememberid" name="rememberid"/>
-					<label for="rememberid" name="chk_remeber">아이디 저장</label>
-				</div>
-				<div id="secret_login">보안 접속</div>
+	<form method="post" action="login" id="login">
+		<input type="text" id="userid" name="userid" placeholder="ID"/> 
+		<input type="password" id="userpw" name="userpw" placeholder="PASSWORD"/>
+		
+		<!-- 아이디 저장 및 보안접속 표시 -->
+		<div id="login_option">
+			<div id="chk_remember">
+				<input type="checkbox" id="rememberid" name="rememberid"/>
+				<label for="rememberid" name="chk_remeber">아이디 저장</label>
 			</div>
-			
-			<!-- 로그인 버튼 -->
-				<div id="login_div">
-					<button id="login_btn">로그인</button>
-				</div>
-		</form>
-	</c:if>
+			<div id="secret_login">보안 접속</div>
+		</div>
+		
+		<!-- 로그인 버튼 -->
+			<div id="login_div">
+				<button id="login_btn">로그인</button>
+			</div>
+	</form>
 	
 	<!-- 회원가입 버튼 -->
 	<div id="signup_div">
