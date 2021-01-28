@@ -50,7 +50,6 @@
 	display: inline-block;
 }
 #review_header #review_score > #review_scorebox{
-	height:75%;
 	background-color: #ccc;
 	color:white;
 	font-size: 3.5rem;
@@ -85,7 +84,7 @@
 
 
 #review_header #review_summary #review_imgdiv{
-	padding: 10px;
+	padding: 30px 10px 10px 10px;
 	color: gray;
 	font-size: 0.75rem;
 	text-align: center;
@@ -96,6 +95,7 @@
 }
 #review_header #review_imgreview >ul{
 	list-style-type: none;
+	padding: 0px;
 }
 #review_header #review_imgreview >ul li{
 	width: 50px;
@@ -131,22 +131,9 @@
 #review_header .review_sizesort > div{
 	float: right;
 	height: 25px;
-	line-height: 25px;
 	width: 130px;
-	border: 1px solid #ccc;
 	display:inline-block;
 	margin: 10px;
-	text-align: center;
-	color: gray;
-	
-}
-#review_header .review_sizesort .review_sort_down{
-	display:inline-block;
-	float: right;
-	border-left: 1px solid #ccc;
-	color: #ccc;
-	width: 35px;
-	height: 100%;
 	text-align: center;
 }
 #review_header .review_point_stars{
