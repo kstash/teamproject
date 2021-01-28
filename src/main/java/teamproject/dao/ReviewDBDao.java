@@ -19,4 +19,9 @@ public class ReviewDBDao {
 		List<ReviewDB> reviewList = sst.selectList("review.selectByPd", productCode);
 		return reviewList;
 	}
+
+	public ReviewDB getReviewByO(String orderCode) {
+		ReviewDB reviewOne = sst.selectOne("review.selectByO", orderCode);
+		return reviewOne;
+	}
 }

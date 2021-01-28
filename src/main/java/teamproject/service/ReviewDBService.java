@@ -19,4 +19,9 @@ public class ReviewDBService {
 		return reviewList;
 	}
 
+	public ReviewDB getReviewByO(String ordercode) {
+		ReviewDB reviewOne = reviewdbDao.getReviewByO(ordercode);
+		return reviewOne;
+	}
+
 }

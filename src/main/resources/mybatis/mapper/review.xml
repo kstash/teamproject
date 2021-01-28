@@ -6,4 +6,10 @@
 		from review
 		where productCode = #{productCode}
 	</select>
+	
+	<select id="selectByO" resultType="review">
+		select *
+		from review
+		where orderCode = #{orderCode}
+	</select>
 </mapper>
