@@ -50,7 +50,6 @@
 	display: inline-block;
 }
 #review_header #review_score > #review_scorebox{
-	height:75%;
 	background-color: #ccc;
 	color:white;
 	font-size: 3.5rem;
