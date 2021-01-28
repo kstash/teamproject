@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lowcategory">
-	<select id="selectAll">
-		
+	<select id="selectAll" resultType="lowcategory">
+		select *
+		from lowcategory
 	</select>
 	
 	<select id="countAll" resultType="int">
 		select count(*) from lowcategory
 	</select>
 	
-	<select id="selectLowsByUp" parameterType="upcategory" resultType="lowcategory">
-		select 
+	<select id="countByUpCategory" parameterType="upcategory" resultType="int">
+	
 	</select>
+		
 	<select id="selectlistEngByEng" resultType="lowcategory">
 		select lowcategoryKr,  lowcategoryEng, upcategoryEng
 		from lowcategory

@@ -7,11 +7,10 @@ import org.springframework.stereotype.Service;
 
 import teamproject.dao.UpcategoryDBDao;
 import teamproject.dto.LowcategoryDB;
+import teamproject.dto.UpcategoryDB;
 
 @Service
 public class UpcategoryDBService {
-
-	
 	
 	@Autowired
 	private UpcategoryDBDao upcategorydbDao;
@@ -21,11 +20,10 @@ public class UpcategoryDBService {
 		String upcategoryKr = upcategorydbDao.getUpcategoryKrByEng(upcategoryEng);
 		return upcategoryKr;
 	}
-
-
+	
 	public List<UpcategoryDB> getUpCategories() {
-		// TODO Auto-generated method stub
-		return null;
+		List<UpcategoryDB> upcategories = upcategorydbDao.getUpcategories();
+		return upcategories;
 	}
 
 }

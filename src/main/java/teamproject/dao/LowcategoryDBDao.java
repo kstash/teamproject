@@ -17,21 +17,14 @@ public class LowcategoryDBDao {
 	@Resource
 	private SqlSessionTemplate sst;
 
-	public List<LowcategoryDB> selectAll() {
-		List<LowcategoryDB> lowcategories = sst.selectList("lowactegory.selectAll");
+	public List<LowcategoryDB> getLowCategories() {
+		List<LowcategoryDB> lowcategories = sst.selectList("lowcategory.selectAll");
 		return lowcategories;
 	}
-
+	
 	//upEng->lowlistDTO
-	public List<LowcategoryDB> getgetLowcategorylistEngByUpEng(String upcategoryeng) {
+	public List<LowcategoryDB> getLowcategorylistEngByUpEng(String upcategoryeng) {
 		List<LowcategoryDB> lowcategorylist =sst.selectList("lowcategory.selectlistEngByEng", upcategoryeng);
 		return lowcategorylist;
 	}
-	
-	public List<LowcategoryDB> selectLowCategories() {
-		List<LowcategoryDB> lowcategories = sst.selectList("lowcategory.selectLowsByUp");
-		return lowcategories;
-	}
-	
-
 }
