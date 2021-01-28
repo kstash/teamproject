@@ -3,7 +3,10 @@ package teamproject.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -120,4 +123,10 @@ public class AdminsController {
 		
 		return "redirect:/admins/adminspage";
 	}
+	
+	@GetMapping("/getProducts")
+	public void getProducts() {
+		
+	}
+	
 }

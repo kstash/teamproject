@@ -1,7 +1,5 @@
 package teamproject.service;
 
-public class UserDBService {
-
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;

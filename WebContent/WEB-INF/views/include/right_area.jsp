@@ -22,7 +22,7 @@
 		<div id="loginBox">
 			<!-- 로그인 안됐을 때 -->
 			<c:if test="${sessionUserid == null}">
-				<a href="login" style="color:black; writing-mode: vertical-rl;">Log in</a> 
+				<a href="<%=application.getContextPath()%>/login" style="color:black; writing-mode: vertical-rl;">Log in</a> 
 			</c:if>
 			<!-- 로그인 됐을 때 -->
 			<c:if test="${sessionUserid != null}">

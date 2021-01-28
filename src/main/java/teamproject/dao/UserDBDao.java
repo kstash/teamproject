@@ -1,6 +1,5 @@
 package teamproject.dao;
 
-public class UserDBDao {
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;

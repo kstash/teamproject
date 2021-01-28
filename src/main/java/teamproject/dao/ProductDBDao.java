@@ -20,4 +20,6 @@ public class ProductDBDao {
 		int rows = sst.insert("product.product", product);
 		return rows;
 	}
+	
+	
 }
