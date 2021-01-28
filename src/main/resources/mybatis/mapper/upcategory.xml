@@ -16,4 +16,11 @@
 	</select>
 	
 	
+	<select id="selectKrByEng" parameterType="string" resultType="string">
+		select upcategoryKr
+		from upcategory
+		where upcategoryeng = #{upcategoryEng}
+	</select>
+
+
 </mapper>

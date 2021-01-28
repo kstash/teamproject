@@ -24,8 +24,8 @@
 	href="<%=application.getContextPath()%>/resources/css/index/left_area.css">
 <link rel="stylesheet"
 	href="<%=application.getContextPath()%>/resources/css/index/right_area.css">
-<!--  -->	
-	
+<!--  -->
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script
@@ -34,7 +34,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	
+
 <!-- 아이콘 사용 -->
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
@@ -55,8 +55,21 @@
 		<!-- 페이지 내용 -->
 		<div id="content">
 
+
 			<!-- breadcrumb -->
-			<c:import url="/categoryDetail/breadcrumb" />
+			<script type="text/javascript">
+				$(function() {
+					$.ajax({
+						url : "../../categoryDetail/breadcrumb",
+						method : "get",
+						data : {upcategoryeng : "outer",lowcategoryeng : "coat"},
+						success : function(data) {
+							$("#breadcrumb").html(data);
+						}
+					});
+				});
+			</script>
+			<div id="breadcrumb"></div>
 
 			<!-- 제품 리스트 스크립트 -->
 			<script type="text/javascript">

@@ -1,9 +1,9 @@
 package teamproject.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.annotation.Resource;
+import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,43 +12,51 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import teamproject.dto.MenuData;
+import teamproject.dto.LowcategoryDB;
+import teamproject.service.LowcategoryDBService;
+import teamproject.service.UpcategoryDBService;
 
 @Controller
 @RequestMapping("/categoryDetail")
 public class BreadcrumbController {
 	private static final Logger logger = LoggerFactory.getLogger(BreadcrumbController.class);
 	
+	@Resource
+	private DataSource dataSource;
+	
+	@Resource
+	private UpcategoryDBService upcategorydbService;
+	
+	@Resource
+	private LowcategoryDBService lowcategorydbService;
+	
 	//breadcrumb.jsp실행
 	@GetMapping("/breadcrumb")
-	public String breadcrumb(Model model, HttpServletRequest request) {
+	public String breadcrumb(Model model, String upcategoryeng, String lowcategoryeng) {
 		
-		String target = request.getRequestURI();
-		logger.warn(target);
-		String upper = target.substring(36, target.lastIndexOf("/"));
-		logger.warn(upper);
-		String now = target.substring(target.lastIndexOf("/")+1, target.length()-4);
-		logger.warn(now);
-		//하위메뉴 전달
-		String[] menuarr = MenuData.upperList(upper);
-		String[] menuarrk = MenuData.upperListk(upper);
-		String upperk = MenuData.upperK(upper);
-		String nowk = MenuData.nowK(upper, now);
+		//upEng->upKr
+		String upcategoryKr = upcategorydbService.getUpcategoryKrByEng(upcategoryeng);
+		//upEng->lowlistDTO
+		List<LowcategoryDB> lowcategorylist = lowcategorydbService.getLowcategorylistEngByUpEng(upcategoryeng);
 		
-		List<MenuData> menuList = new ArrayList<>(); 
+		model.addAttribute("upcategoryeng",upcategoryeng);
+		model.addAttribute("upcategoryKr",upcategoryKr);
+		model.addAttribute("lowcategorylist",lowcategorylist);
 		
-		for(int i=0 ; i<menuarr.length ; i++) {
-			MenuData menu = new MenuData();
-			menu.setLinkpart(menuarr[i]);
-			menu.setKorean(menuarrk[i]);
-			menuList.add(menu); 
-		} 
-		model.addAttribute("menuList", menuList);
+		if(lowcategoryeng.equals("")) {
+			//lowEng = null ~> upKr -> lowKr
+			model.addAttribute("lowcategoryKr",upcategoryKr);
+		}else {
+			//lowEng -> lowKR
+			for(LowcategoryDB item : lowcategorylist) {
+				if(item.getLowcategoryEng().equals(lowcategoryeng)) {
+					model.addAttribute("lowcategoryKr",item.getLowcategoryKr());
+				}
+			}
+		}
 		
-		//현재 위치
-		model.addAttribute("upper", upper);
-		model.addAttribute("upperk", upperk);
-		model.addAttribute("nowk", nowk);
+		
+		
 		return "categoryDetail/breadcrumb";
 	}
 

@@ -12,4 +12,10 @@
 	<select id="selectLowsByUp" parameterType="upcategory" resultType="lowcategory">
 		select 
 	</select>
+	<select id="selectlistEngByEng" resultType="lowcategory">
+		select lowcategoryKr,  lowcategoryEng, upcategoryEng
+		from lowcategory
+		where upcategoryEng = #{upcategoryEng}
+	</select>
+
 </mapper>

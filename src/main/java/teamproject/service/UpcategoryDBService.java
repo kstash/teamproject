@@ -6,17 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import teamproject.dao.UpcategoryDBDao;
-import teamproject.dto.UpcategoryDB;
+import teamproject.dto.LowcategoryDB;
 
 @Service
 public class UpcategoryDBService {
 
+	
+	
 	@Autowired
-	private UpcategoryDBDao dbDao;
+	private UpcategoryDBDao upcategorydbDao;
 
 	
-	public String getDatatest() {
-		String upcategoryKr = dbDao.selectOneTest();
+	public String getUpcategoryKrByEng(String upcategoryEng) {
+		String upcategoryKr = upcategorydbDao.getUpcategoryKrByEng(upcategoryEng);
 		return upcategoryKr;
 	}
 

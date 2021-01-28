@@ -13,16 +13,19 @@ import teamproject.dto.LowcategoryDB;
 
 @Repository
 public class LowcategoryDBDao {
-	private static final Logger logger = LoggerFactory.getLogger(LowcategoryDBDao.class);
 	
 	@Resource
 	private SqlSessionTemplate sst;
 
 	public List<LowcategoryDB> selectAll() {
-		
 		List<LowcategoryDB> lowcategories = sst.selectList("lowactegory.selectAll");
-		
 		return lowcategories;
+	}
+
+	//upEng->lowlistDTO
+	public List<LowcategoryDB> getgetLowcategorylistEngByUpEng(String upcategoryeng) {
+		List<LowcategoryDB> lowcategorylist =sst.selectList("lowcategory.selectlistEngByEng", upcategoryeng);
+		return lowcategorylist;
 	}
 	
 	public List<LowcategoryDB> selectLowCategories() {
@@ -30,5 +33,5 @@ public class LowcategoryDBDao {
 		return lowcategories;
 	}
 	
-	
+
 }
