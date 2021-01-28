@@ -48,9 +48,9 @@
 	
 	<!-- sns로 로그인하기 -->
 	<div id="login_sns">
-		<input type="image" id="login_btn_fb" name="login_btn_fb" src="" width="50px" height="50px"/>
-		<input type="image" id="login_btn_ig" name="login_btn_ig" src="" width="50px" height="50px"/>
-		<input type="image" id="login_btn_gg" name="login_btn_gg" src="" width="50px" height="50px"/>
-		<input type="image" id="login_btn_nv" name="login_btn_nv" src="" width="50px" height="50px"/>			
+		<input type="image" id="login_btn_fb" name="login_btn_fb" src="<%=application.getContextPath()%>/resources/img/login/fb.png" width="35px" height="35px"/>
+		<input type="image" id="login_btn_kt" name="login_btn_kt" src="<%=application.getContextPath()%>/resources/img/login/kt.png" width="35px" height="35px"/>
+		<input type="image" id="login_btn_ap" name="login_btn_ap" src="<%=application.getContextPath()%>/resources/img/login/ap.png" width="35px" height="35px"/>
+		<input type="image" id="login_btn_nv" name="login_btn_nv" src="<%=application.getContextPath()%>/resources/img/login/nv.png" width="35px" height="35px"/>			
 	</div>
 </div>
