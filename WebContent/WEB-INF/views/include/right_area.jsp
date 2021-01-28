@@ -8,7 +8,7 @@
 	<div id="empty"></div>
 	<div id="main">
 		<!-- 메인 홈페이지로 링크 -->
-		<a href="index" style="color:black;writing-mode: vertical-rl;"> www.stylenanda.com </a>
+		<a href="<%=application.getContextPath()%>/" style="color:black;writing-mode: vertical-rl;"> www.stylenanda.com </a>
 	</div>
 	<div id="MenuSearch">
 		<a href="rightmenu"><i class="fas fa-bars"></i></a> 
@@ -22,7 +22,7 @@
 		<div id="loginBox">
 			<!-- 로그인 안됐을 때 -->
 			<c:if test="${sessionUserid == null}">
-				<a href="login" style="color:black; writing-mode: vertical-rl;">Log in</a> 
+				<a href="<%=application.getContextPath()%>/login" style="color:black; writing-mode: vertical-rl;">Log in</a> 
 			</c:if>
 			<!-- 로그인 됐을 때 -->
 			<c:if test="${sessionUserid != null}">
@@ -30,8 +30,8 @@
 			</c:if>
 		</div>
 		<div id="empty"></div>
-		<a href="mypage" style="color:black; writing-mode: vertical-rl;">My page</a> 
+		<a href="<%=application.getContextPath()%>/mypage" style="color:black; writing-mode: vertical-rl;">My page</a> 
 		<div id="empty"></div>
-		<a href="language" style="color:black; writing-mode: vertical-rl;">Language <i class="fas fa-globe"></i></a>
+		<a href="<%=application.getContextPath()%>/language" style="color:black; writing-mode: vertical-rl;">Language <i class="fas fa-globe"></i></a>
 	</div>	
 </div>
