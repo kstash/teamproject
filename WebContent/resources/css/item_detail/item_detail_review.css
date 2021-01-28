@@ -84,7 +84,7 @@
 
 
 #review_header #review_summary #review_imgdiv{
-	padding: 10px;
+	padding: 30px 10px 10px 10px;
 	color: gray;
 	font-size: 0.75rem;
 	text-align: center;
@@ -95,6 +95,7 @@
 }
 #review_header #review_imgreview >ul{
 	list-style-type: none;
+	padding: 0px;
 }
 #review_header #review_imgreview >ul li{
 	width: 50px;
