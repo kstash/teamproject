@@ -15,9 +15,9 @@ public class UserDBDao {
 			LoggerFactory.getLogger(UserDBDao.class);
 
 	@Resource
-	private static SqlSessionTemplate sst;
+	private SqlSessionTemplate sst;
 	
-	public static int insert(UserDB userDB) {
+	public int insert(UserDB userDB) {
 		int rows = sst.insert("user.insert",userDB);
 		return rows;
 	}

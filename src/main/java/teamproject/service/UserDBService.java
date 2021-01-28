@@ -18,7 +18,7 @@ public class UserDBService {
 	private UserDBDao userDao;
 	
 	public void signup(UserDB userDB) {
-		UserDBDao.insert(userDB);
+		userDao.insert(userDB);
 	}
 
 }
