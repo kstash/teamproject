@@ -1,19 +1,26 @@
 package teamproject.controller;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import teamproject.dto.ReviewDB;
+import teamproject.dto.RevimageDB;
 import teamproject.service.ReviewDBService;
+import teamproject.service.RevimageDBService;
 
 @Controller
 @RequestMapping("/item")
@@ -26,11 +33,15 @@ public class ReviewController {
 	@Resource
 	private ReviewDBService reviewdbService;
 	
+	@Resource
+	private RevimageDBService revimagedbService;
+	
 	//item_detail 실행
 	@RequestMapping("/")
 	public String detailItem() {
 		return "/item_detail/index";
 	}
+	
 	//review 실행
 	@GetMapping("/review")
 	public String review(Model model, long productcode) {
@@ -90,7 +101,34 @@ public class ReviewController {
 		}
 		
 		return "/item_detail/review";
+	}
+	
+	
+	//review image 불러오기
+	@GetMapping("/battach")
+	public void battach(String ordercode,  HttpServletResponse response) throws Exception {
+		RevimageDB revimageOne = revimagedbService.getRevimageByO(ordercode);
 		
+		String imagePath = revimageOne.getRevimagePath();
+		String oName = revimageOne.getRevimageOname();
+
+		String filePath = "C:/git/teamproject/WebContent/resources/img/review/users"+imagePath+oName;
 		
+		response.setContentType(revimageOne.getRevimageType());
+
+		oName = new String(oName.getBytes("UTF-8"), "ISO-8859-1");
+		
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + oName + ".jpg\"  ");
+		
+		OutputStream os = response.getOutputStream();
+		
+		InputStream is = new FileInputStream(filePath);
+		byte[] data = new byte[1024];
+
+		FileCopyUtils.copy(is, os);
+		is.close();
+
+		os.flush();
+		os.close();
 	}
 }

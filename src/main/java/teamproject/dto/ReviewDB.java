@@ -8,6 +8,14 @@ public class ReviewDB {
 	private String userId;
 	private String orderCode;
 	private long productCode;
+	private int reviewIsimage;
+	
+	public int getReviewIsimage() {
+		return reviewIsimage;
+	}
+	public void setReviewIsimage(int reviewIsimage) {
+		this.reviewIsimage = reviewIsimage;
+	}
 	public int getReviewPoint() {
 		return reviewPoint;
 	}

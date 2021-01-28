@@ -131,6 +131,10 @@
 		</div>
 		<br/>
 			${review.reviewContents}
+		<c:if test="${review.reviewIsimage != null && review.reviewIsimage != 0 }">
+			<br/>
+			<img class="rounded" src="battach?ordercode=${review.orderCode}" width="200px"/>
+		</c:if>
 	</div>
 	</c:forEach>
 	
