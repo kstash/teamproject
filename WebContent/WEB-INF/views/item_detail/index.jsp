@@ -40,7 +40,7 @@
 					<script type="text/javascript">
 						$(function() {
 							$.ajax({
-								url : "reviewstar5=6&star5=1&star4=3&star3=2&star2=0&star1=2",
+								url : "review?star5=6&star5=1&star4=3&star3=2&star2=0&star1=2",
 								method : "get",
 								success : function(data) {
 									$("#reviewpage").html(data);
