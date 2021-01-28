@@ -2,8 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.ArrayList" %>
 
-<%@ page import="teamproject.dto.ReviewData" %>
-
 <!-- 상품별 리뷰 -->
 <div id="review_header">
 	<b>REVIEW</b>
@@ -25,27 +23,27 @@
 					<ul>
 						<li>5 star
 							<div class="review_redbar" style="flex: ${star5}"></div>
-							<div class="review_graybar" style="flex: ${stars - star5}"></div>
+							<div class="review_graybar" style="flex: ${starelse5}"></div>
 							<div class="review_score">(${star5})</div>
 						</li>
 						<li>4 star
 							<div class="review_redbar" style="flex: ${star4}"></div>
-							<div class="review_graybar" style="flex: ${stars - star4}"></div>
+							<div class="review_graybar" style="flex: ${starelse4}"></div>
 							<div class="review_score">(${star4})</div>
 						</li>
 						<li>3 star
 							<div class="review_redbar" style="flex: ${star3}"></div>
-							<div class="review_graybar" style="flex: ${stars - star3}"></div>
+							<div class="review_graybar" style="flex: ${starelse3}"></div>
 							<div class="review_score">(${star3})</div>
 						</li>
 						<li>2 star
 							<div class="review_redbar" style="flex: ${star2}"></div>
-							<div class="review_graybar" style="flex: ${stars - star2}"></div> 
+							<div class="review_graybar" style="flex: ${starelse2}"></div> 
 							<div class="review_score">(${star2})</div>
 						</li>
 						<li>1 star
 							<div class="review_redbar" style="flex: ${star1}"></div>
-							<div class="review_graybar" style="flex: ${stars - star1}"></div>
+							<div class="review_graybar" style="flex: ${starelse1}"></div>
 							<div class="review_score">(${star1})</div>
 						</li>
 					</ul>
@@ -77,7 +75,7 @@
 	
 	<!-- 리뷰 정렬기준 -->
 	<div id="review_sort">
-		<p id="review_action"><b>최신순 </b> 리뷰(21)</p>
+		<p id="review_action"><b>최신순 </b> 리뷰(${stars})</p>
 		<p>|</p>
 		<a href="">추천순</a>
 		<p>|</p>
@@ -120,20 +118,19 @@
 		</div>
 	</div>
 
-	<c:forEach var="cas" items="${casList}">
+	<c:forEach var="review" items="${reviewList}">
 	<div class="review_case">	
 		<div class="review_point_stars">
-			<% ReviewData cas = (ReviewData) pageContext.getAttribute("cas"); %>
-			<% for(int i=0; i<cas.getReviewScore() ; i++){ %>
-				<span class="review_point_star" style="background-image:url('<%=application.getContextPath()%>/resources/img/item_detail/item_detail_review/point_star.png');"></span>
-			<% } %>		
+			<c:forEach begin="1" end="${review.reviewPoint}">
+				<span class="review_point_star" style="background-image:url('<%=application.getContextPath()%>/resources/img/review/point_star.png');"></span>
+			</c:forEach>
 			<div class="review_writer">
 			<br/>작성자<br/>
-			<b>${cas.reviewWriter}</b>
+			<b>${review.userId}</b>
 			</div>
 		</div>
 		<br/>
-			${cas.reviewText}
+			${review.reviewContents}
 	</div>
 	</c:forEach>
 	

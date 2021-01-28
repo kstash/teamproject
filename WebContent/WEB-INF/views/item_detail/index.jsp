@@ -5,7 +5,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>www.stylenanda.com</title>
+<title>www.stylenanda.com/review</title>
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -40,8 +40,9 @@
 					<script type="text/javascript">
 						$(function() {
 							$.ajax({
-								url : "review?star5=6&star5=1&star4=3&star3=2&star2=0&star1=2",
+								url : "review",
 								method : "get",
+								data: {productcode:"20210127203720"},
 								success : function(data) {
 									$("#reviewpage").html(data);
 								}
