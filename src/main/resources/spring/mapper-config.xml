@@ -4,7 +4,7 @@
 
 <configuration>
 	<typeAliases>
-		<!-- <typeAlias alias="test" type="teamproject.dto.test"/>  -->
+		<typeAlias alias="lowcategory" type="teamproject.dto.LowcategoryDB"/>
 		<typeAlias alias="product" type="teamproject.dto.ProductDB"/>
 		<typeAlias alias="user" type="teamproject.dto.UserDB"/>
 	</typeAliases>
