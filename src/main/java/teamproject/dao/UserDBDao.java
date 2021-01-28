@@ -22,4 +22,10 @@ public class UserDBDao {
 		return rows;
 	}
 
+	public UserDB loginSelect(String userid) {
+		logger.info("UserDao.loginSelect() 실행");
+		UserDB userDB = sst.selectOne("user.loginSelect",userid);
+		return userDB;
+	}
+
 }

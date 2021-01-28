@@ -21,11 +21,11 @@
 	<div id="buttons">
 		<div id="loginBox">
 			<!-- 로그인 안됐을 때 -->
-			<c:if test="${loginStatus == null}">
+			<c:if test="${sessionUserid == null}">
 				<a href="login" style="color:black; writing-mode: vertical-rl;">Log in</a> 
 			</c:if>
 			<!-- 로그인 됐을 때 -->
-			<c:if test="${loginStatus != null}">
+			<c:if test="${sessionUserid != null}">
 				<a href="logout" style="color:black; writing-mode: vertical-rl;">Log out</a> 
 			</c:if>
 		</div>
