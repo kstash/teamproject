@@ -29,6 +29,13 @@ public class IndexController {
 		logger.info("homepage");
 		return "index";
 	}
+	//로그인 성공 시 alert창에서 이동하는 메소드
+	@RequestMapping("/index")
+	public String toindex() {
+		logger.info("homepage");
+		return "redirect:/";
+	}
+	
 	//왼쪽영역
 	@RequestMapping("/cart")
 	public String cart() {

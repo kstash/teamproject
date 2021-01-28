@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -26,24 +25,28 @@ public class loginController {
 	private UserDBService userDBService;
 	
 	@PostMapping("/login")
-	public String login(UserDB userDB, HttpSession session, 
-			HttpServletResponse response){
+	public void login(UserDB userDB, HttpSession session, 
+			HttpServletResponse response) throws Exception{
 		logger.info(userDB.getUserid());
 		
 		//서비스 호출
 		//success, wrongUserid, wrongUserpw
-		
 		String result = userDBService.login(userDB);
-		logger.info("result값 저장");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
 		
 		if(result.equals("success")) {
 			session.setAttribute("sessionUserid", userDB.getUserid());
-			logger.info((String) session.getAttribute("sessionUserid"));
-			//로그인 시 메인 이동
 			logger.info("로그인 성공");
-			return "redirect:/";
+			pw.println("<script>alert('환영합니다.'); "
+					+ "location.href='index';</script>");
+			pw.flush();
 		} else {
-			return "redirect:/login";
+			logger.info("로그인 실패");
+			pw.println("<script>alert('로그인 정보를 확인해주세요.'); "
+					+ "location.href='login';</script>");
+			pw.flush();
+			
 		}
 			
 	}
