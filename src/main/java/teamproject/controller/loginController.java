@@ -34,7 +34,7 @@ public class loginController {
 		return "category/outer/index";
 	}
 	
-	@RequestMapping("/signup")
+	@RequestMapping("/signup") //메소드 이름 변경
 	public String signup() {
 		logger.info("회원가입 페이지");
 		return "signup/signup";

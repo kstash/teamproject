@@ -25,7 +25,6 @@
 				<div id="login_div">
 					<button id="login_btn">로그인</button>
 				</div>
-			
 		</form>
 	</c:if>
 	
