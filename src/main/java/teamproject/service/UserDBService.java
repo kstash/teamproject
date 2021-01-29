@@ -1,6 +1,8 @@
 package teamproject.service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,12 +25,13 @@ public class UserDBService {
 
 	public String login(UserDB userDB) {
 		UserDB dbUser = userDao.loginSelect(userDB.getUserid());
-		logger.info(userDB.getUserpw());
 		logger.info("UserDBService.login()실행");
 		if(dbUser == null) {
 			logger.info("UserDBService.login()실행, wrongUserid");
 			return "wrongUserid";
 		} else if(dbUser.getUserpw().equals(userDB.getUserpw())) {
+			//아이디 기억하기
+			
 			logger.info("UserDBService.login()실행, success");
 			return "success";
 		} else {

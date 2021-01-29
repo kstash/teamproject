@@ -20,6 +20,11 @@ public class ProductDBDao {
 		int rows = sst.insert("product.product", product);
 		return rows;
 	}
-	
+
+	/*
+	 * public ProductDB searchProduct(int productCode) {
+	 * logger.info("ProductDBDao 실행"); ProductDB product =
+	 * sst.selectOne("product.searchProduct",productCode); return product; }
+	 */
 	
 }

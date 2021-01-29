@@ -9,6 +9,7 @@
 	flex-direction: column;
 }
 span{
+	font-size:1.5rem;
 	margin: 20px;
 	display: flex;
 	justify-content: center;
@@ -19,6 +20,11 @@ span{
 }
 #userid, #userpw{
 	background-color: #fff4e6;
+}
+
+#userid,#userpw::placeholder{
+	font-size:0.8rem;
+	
 }
 #login_option{
 	margin-top: 3px;
@@ -60,6 +66,11 @@ span{
 	display:flex;
 	justify-content: space-around;
 }
+
+#login_btn_fb, #login_btn_kt, #login_btn_ap, #login_btn_nv{
+	margin:5px;
+}
+
 #userid, #userpwd{
 	width: 300px;
 	height: 30px;
