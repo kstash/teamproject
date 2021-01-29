@@ -82,7 +82,6 @@ public class IndexController {
 	}
 	@RequestMapping("/header")
 	public String headermenu(Model model) {
-		logger.info("문제가 뭐야");
 		List<UpcategoryDB> upcategories =  upcategoryService.getUpCategories();
 		List<LowcategoryDB> lowcategories =  lowcategoryService.getLowCategories();
 		model.addAttribute("upcategories", upcategories);
