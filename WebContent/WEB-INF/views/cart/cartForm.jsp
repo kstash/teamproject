@@ -21,13 +21,16 @@
 		  </thead>
 		  <tbody>
 		  	<c:forEach  var="cartlist" items="${cartlist}">
-		  		<tr>
-		  			<td>${cartlist.productname}</td>
-		  			<td>${cartlist.cartsize}</td>
-		  			<td>${cartlist.cartcolor}</td>
-		  			<td>${cartlist.cartcount}</td>
-		  			<td>${cartlist.productprice}</td>
-		  		</tr>
+		  		<c:if test="${sessionUserid == cartlist.userid}">
+			  		<tr>
+			  			<td>${cartlist.productname}</td>
+			  			<td>${cartlist.cartsize}</td>
+			  			<td>${cartlist.cartcolor}</td>
+			  			<td>${cartlist.cartcount}</td>
+			  			<td>${cartlist.productprice}</td>
+			  			
+			  		</tr>
+		  		</c:if>
 		  	</c:forEach>
 		  </tbody>
 	</table>

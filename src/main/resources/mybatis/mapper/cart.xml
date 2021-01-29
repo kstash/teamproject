@@ -3,7 +3,7 @@
 <mapper namespace="cart">
 	<select id="cartSelect"
 			resultType="cart">
-		select productname, cartsize, cartcolor, cartcount, productprice
+		select productname, cartsize, cartcolor, cartcount, productprice, userid
 		from cart c, product p
 		where c.productcode = p.productcode
 	</select>
