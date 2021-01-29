@@ -66,51 +66,52 @@
 			<div id="headerpart"></div>
 
 			<br /> <br /> <br /> <br />
-			<!-- orderlist -->
-			<table class="table">
-				<thead class="table-dark">
-					<tr>
-						<th scope="col" class="text-white">ProductCode</th>
-						<th scope="col" class="text-white">OrderColor</th>
-						<th scope="col" class="text-white">OrderSize</th>
-						<th scope="col" class="text-white">OrderCount</th>
-						<th scope="col" class="text-white">OrderFreeshipping</th>
-						<th scope="col" class="text-white">OrderStatus</th>
-						<th scope="col" class="text-white">리뷰</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="order" items="${orderlist}">
-						<tr>
-							<td>${order.productCode}나중에그림넣기</td>
-							<td><span
-								style="display:inline-block; height:20px; width:50px; border:1px solid black; background-color: ${order.orderColor};"></span>
-							</td>
-							<td>${order.orderSize}</td>
-							<td>${order.orderCount}</td>
-							<td>${order.orderFreeshipping}</td>
-							<td>${order.orderStatus}</td>
-							<td id="${order.orderCode}"></td>
-						</tr>
-						<script>
-								$(function() {
-									$.ajax({
-										url : "reviewcheck",
-										method : "get",
-										data : {
-											ordercode : "${order.orderCode}",
-											productcode : "${order.productCode}"
-										},
-										success : function(data) {
-											$("#${order.orderCode}").html(data);
-										}
-									});
-								});
-						</script>
-					</c:forEach>
-
-				</tbody>
-			</table>
+			<div class="card text-white bg-dark mb-3">
+				<div class="card-body text-white">
+					<h5 class="card-title  text-white">상품리뷰</h5>	
+				</div>
+			</div>
+			<!-- review write form -->
+			<form enctype="multipart/form-data" name="reviewwriteform" action="reviewwrite" method="post">
+				<input type="hidden" name="orderCode" value="${ordercode}"/>
+				<input type="hidden" name="productCode" value="${productcode}"/>
+				<div class="form-group">
+					<label>상품 별점</label><br />
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio"
+							name="reviewPoint" id="inlineRadio1" value="1">
+						<label class="form-check-label" for="inlineRadio1">1</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio"
+							name="reviewPoint" id="inlineRadio2" value="2">
+						<label class="form-check-label" for="inlineRadio2">2</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio"
+							name="reviewPoint" id="inlineRadio3" value="3">
+						<label class="form-check-label" for="inlineRadio3">3</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio"
+							name="reviewPoint" id="inlineRadio4" value="4">
+						<label class="form-check-label" for="inlineRadio3">4</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio"
+							name="reviewPoint" id="inlineRadio5" value="5">
+						<label class="form-check-label" for="inlineRadio3">5</label>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="reviewContents">리뷰내용</label>
+					<textarea class="form-control" id="reviewContents" name="reviewContents"
+						rows="5" cols="50"></textarea>
+				</div>
+				<button class="btn btn-primary">저장</button>
+				<a href="orderlist" class="btn btn-danger">취소</a>
+			</form>
 
 
 			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
