@@ -8,6 +8,9 @@
 	justify-content:center;
 	flex-direction: column;
 }
+#empty{
+	height:30px;
+}
 #emptyCart{
 	font-weight: bold;
 	font-family: serif;

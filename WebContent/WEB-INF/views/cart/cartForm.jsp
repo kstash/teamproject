@@ -4,14 +4,14 @@
 <div id="wrapper">
 	<span id="cartTitle"> C A R T </span>
 	<c:if test="${sessionUserid == null}">
-		<span id="emptyCart">장바구니가 비었습니다</span>
+		<div id="empty"></div>
+		<span id="emptyCart">장바구니가 비었습니다.</span>
 		<a id="cartLogin"class="btn" href="login">로그인하기</a>
 	</c:if>
 	<c:if test="${sessionUserid != null}">
 	<table id="cartTable" class="table table-hover">
 		<thead>
 		    <tr>
-		      <th>번호</th>
 		      <th>상품</th>
 		      <th>사이즈</th>
 		      <th>색상</th>
@@ -19,6 +19,17 @@
 		      <th>가격</th>
 		    </tr>
 		  </thead>
+		  <tbody>
+		  	<c:forEach  var="cartlist" items="${cartlist}">
+		  		<tr>
+		  			<td>${cartlist.productname}</td>
+		  			<td>${cartlist.cartsize}</td>
+		  			<td>${cartlist.cartcolor}</td>
+		  			<td>${cartlist.cartcount}</td>
+		  			<td>${cartlist.productprice}</td>
+		  		</tr>
+		  	</c:forEach>
+		  </tbody>
 	</table>
 	
 	<div id="btns">
