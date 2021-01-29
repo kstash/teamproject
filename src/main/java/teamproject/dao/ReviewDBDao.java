@@ -24,4 +24,14 @@ public class ReviewDBDao {
 		ReviewDB reviewOne = sst.selectOne("review.selectByO", orderCode);
 		return reviewOne;
 	}
+
+	public List<ReviewDB> getReviewlistByUid(String userId) {
+		List<ReviewDB> reviewlist = sst.selectList("review.selectByUid", userId);
+		return reviewlist;
+	}
+
+	public int insert(ReviewDB review) {
+		int rows = sst.insert("review.insert", review);
+		return rows;
+	}
 }
