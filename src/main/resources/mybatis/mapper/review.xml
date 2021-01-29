@@ -12,4 +12,17 @@
 		from review
 		where orderCode = #{orderCode}
 	</select>
+	
+	<select id="selectByUid" resultType="review">
+		select *
+		from review
+		where userId = #{userId}
+	</select>
+	
+	<insert id="insert" parameterType="review">
+		insert into review
+		(reviewpoint, reviewcontents, userid, ordercode, productcode, reviewisimage)
+		values
+		(#{reviewPoint}, #{reviewContents}, #{userId}, #{orderCode}, #{productCode}, #{reviewIsimage})
+	</insert>
 </mapper>

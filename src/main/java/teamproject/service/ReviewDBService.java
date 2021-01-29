@@ -24,4 +24,13 @@ public class ReviewDBService {
 		return reviewOne;
 	}
 
+	public List<ReviewDB> getReviewlistByUid(String userId) {
+		List<ReviewDB> reviewlist = reviewdbDao.getReviewlistByUid(userId);
+		return reviewlist;
+	}
+
+	public void saveReview(ReviewDB review) {
+		reviewdbDao.insert(review);
+	}
+
 }
