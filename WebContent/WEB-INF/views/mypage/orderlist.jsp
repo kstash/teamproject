@@ -66,6 +66,12 @@
 			<div id="headerpart"></div>
 
 			<br /> <br /> <br /> <br />
+			<div class="card text-white bg-dark mb-3">
+				<div class="card-body text-white">
+					<h5 class="card-title  text-white">주문 리스트</h5>	
+				</div>
+			</div>
+			
 			<!-- orderlist -->
 			<table class="table">
 				<thead class="table-dark">

@@ -28,36 +28,39 @@
 </head>
 <body>
 	<div class="wrap_content">
-			<!-- 좌측 메뉴 -->
+		<!-- 좌측 메뉴 -->
 		<jsp:include page="/WEB-INF/views/include/left_area.jsp" />
 
-			<!-- 내용 -->
-			<div id="header">
-					<%-- 중앙 --%>
-				
-				<script type="text/javascript">
+		<!-- 내용 -->
+		<div id="header">
+			<%-- 중앙 --%>
+			<script type="text/javascript">
 						$(function() {
 							$.ajax({
 								url : "<%=application.getContextPath()%>/header",
-								method : "get",
-								success : function(data) {
-									$("#headerpart").html(data);
-								}
-							});
-						});
-					</script>
-					<div id="headerpart"></div>
-				
+						method : "get",
+						success : function(data) {
+							$("#headerpart").html(data);
+						}
+					});
+				});
+			</script>
+			<div id="headerpart"></div>
 
-					<!-- 페이지 내용 -->
-				<h1>Reviewlist</h1>
-				
-				<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+			<br /> <br /> <br /> <br />
+			<div class="card text-white bg-dark mb-3">
+				<div class="card-body text-white">
+					<h5 class="card-title  text-white">개인별 리뷰</h5>	
+				</div>
 			</div>
+			<!-- reviewlist -->
 
-			<!-- 우측 메뉴 -->
+
+
+			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+		</div>
+		<!-- 우측 메뉴 -->
 		<jsp:include page="/WEB-INF/views/include/right_area.jsp" />
-	</div>
 
 </body>
 </html>

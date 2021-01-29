@@ -39,6 +39,7 @@ public class MypageController {
 		return "mypage/orderlist";
 	}
 	
+	//리스트가 작성되어있는지 찾아보는 메소드
 	@GetMapping("/reviewcheck")
 	public String reviewcheck(Model model, String ordercode, long productcode) {
 		logger.info("실행");
@@ -48,11 +49,7 @@ public class MypageController {
 		model.addAttribute("productcode", productcode);
 		return "mypage/reviewcheck";
 	}
-	@GetMapping("/reviewlist")
-	public String reviewlist() {
-		logger.info("reviewlist 실행");
-		return "mypage/reviewlist";
-	}
+	//리뷰 작성
 	@GetMapping("/reviewwrite")
 	public String reviewWrite(String ordercode, long productcode, Model model) {
 		model.addAttribute("ordercode", ordercode);
@@ -66,5 +63,11 @@ public class MypageController {
 		review.setReviewIsimage(0);
 		reviewdbService.saveReview(review);
 		return "redirect:/mypage/reviewlist";
+	}
+	//리뷰리스트 page
+	@GetMapping("/reviewlist")
+	public String reviewlist() {
+		logger.info("reviewlist 실행");
+		return "mypage/reviewlist";
 	}
 }
