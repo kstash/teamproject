@@ -4,6 +4,7 @@
 
 <!-- 모달 (본 태그 위치 조정 시 아래로 숨음) -->
 <jsp:include page="/WEB-INF/views/rightsearch/rightsearch.jsp"/>
+<jsp:include page="/WEB-INF/views/mypage/mypage.jsp"/>
 <div id="right_area">
 	<div id="empty"></div>
 	<div id="main">
@@ -30,8 +31,17 @@
 			</c:if>
 		</div>
 		<div id="empty"></div>
-		<a href="<%=application.getContextPath()%>/mypage" style="color:black; writing-mode: vertical-rl;">My page</a> 
+		<!-- 로그인 안됐을 때 -->
+		<c:if test="${sessionUserid == null}">
+			<a href="<%=application.getContextPath()%>/login" style="color:black; writing-mode: vertical-rl;">My page</a> 
+		</c:if>
+		<!-- 로그인 됐을 때 -->
+		<c:if test="${sessionUserid != null}">
+			<a data-toggle="modal" href="#mypageModal" style="color:black; writing-mode: vertical-rl;">My page</a> 
+		</c:if>
 		<div id="empty"></div>
 		<a href="<%=application.getContextPath()%>/language" style="color:black; writing-mode: vertical-rl;">Language <i class="fas fa-globe"></i></a>
 	</div>	
 </div>
+
+
