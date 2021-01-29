@@ -3,7 +3,6 @@ package teamproject.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,14 +68,10 @@ public class IndexController {
 	}
 	
 	@RequestMapping("/mypage")
-	public String mypage(HttpSession session) {
-		if(session.getAttribute("sessionUserid") != null) {
-			logger.info("마이페이지로");
-			return "mypage/mypage";
-		}else {
-			logger.info("로그인 안됨");
-			return "redirect:/login";
-		}
+	public String mypage() {
+		logger.info("마이페이지 페이지");
+
+		return "mypage/mypage";
 	}
 	
 	@RequestMapping("/language")
