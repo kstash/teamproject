@@ -65,8 +65,22 @@
 				$('#notsame').attr('display','none');
 			} else{
 				$('#notsame').html('비밀번호가 일치하지 않습니다.');
-				//$('#signupSubmit').attr('display','none');
+				//$('#signupSubmit').attr('disabled');
 			}
 		});
 	} 
+	
+	$("#signupSubmit").click(function signupSubmit(){
+		alert('환영합니다. 사랑과 관심으로 모시겠습니다.');
+	});
+	
+	/* $("#signupForm").onload(){function(){
+		var userpw = $('#userpw').val();
+		var userpwchk = $('#userpwchk').val();
+		
+		if(userpw != userpwchk){
+			$('#signupSubmit').attr('disabled');
+		}
+		}
+	} */
 </script>

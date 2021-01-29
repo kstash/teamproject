@@ -9,6 +9,7 @@
 	flex-direction: column;
 }
 span{
+	font-size:1.5rem;
 	margin: 20px;
 	display: flex;
 	justify-content: center;
@@ -19,6 +20,11 @@ span{
 }
 #userid, #userpw{
 	background-color: #fff4e6;
+}
+
+#userid,#userpw::placeholder{
+	font-size:0.8rem;
+	
 }
 #login_option{
 	margin-top: 3px;
