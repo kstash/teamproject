@@ -12,5 +12,7 @@
 		<typeAlias alias="user" type="teamproject.dto.UserDB"/>
 		<typeAlias alias="review" type="teamproject.dto.ReviewDB"/>
 		<typeAlias alias="revimage" type="teamproject.dto.RevimageDB"/>
+		
+		<typeAlias alias="cart" type="teamproject.dto.CartDB"/>
 	</typeAliases>
 </configuration>

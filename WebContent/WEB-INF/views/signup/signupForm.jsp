@@ -54,8 +54,6 @@
 	var userpw = $('#userpw').val();
 	var userpwchk = $('#userpwchk').val();
 	function chkPw(){
-		
-	
 		$('#userpw').keyup(function(){
 			$('notsame').html('');
 		});
@@ -77,6 +75,9 @@
 	
 	$(window).on('load', function (){
 		alert('환영합니다. 사랑과 관심으로 모시겠습니다.');
+		
+		var userpw = $('#userpw').val();
+		var userpwchk = $('#userpwchk').val();
 		
 			if(userpw != userpwchk){
 				$('#signupSubmit').attr('color','white');

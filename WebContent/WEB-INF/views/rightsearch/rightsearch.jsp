@@ -14,12 +14,20 @@
       <!-- 검색창 -->
       <div class="modal-body">
       	<form name="rightsearch" action="rightsearch" method="get">
-        	<input type="text" id="inputsearch" name="inputsearch" value="검색어를 입력하세요."/>
-        	<!-- go 클릭 시 페이지 이동 -->
-        	<a class="btn" href="rightsearchDetail">go</a><br>
+        	<input type="text" id="searchKeyword" name="searchKeyword" placeholder="검색어를 입력하세요."/>
         </form>
       </div>
-      
+      <!-- 버튼 -->
+      <div class="modal-footer">
+        <button type="button" id="modalSearchBtn" class="btn btn-primary">Go</button>
+      </div>  
     </div>
   </div>
 </div>
+
+<script>
+	$('#modalSearchBtn').on('click',function(){
+		
+	});
+	
+</script>

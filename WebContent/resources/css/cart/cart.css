@@ -1,0 +1,42 @@
+#wrapper{
+	margin: 50px auto;
+	width: 700px;
+	height: 100px;
+	background-color: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content:center;
+	flex-direction: column;
+}
+#emptyCart{
+	font-weight: bold;
+	font-family: serif;
+	margin:30px;
+}
+#cartTitle{
+	margin:10px;
+	display: flex;
+	justify-content: center;
+	font-size:1.2rem;
+	font-weight: bold;
+	font-family: serif;
+	letter-spacing: 2px;
+	color: #495057;
+}
+#btns{
+	display: block;
+}
+#cartLogin{
+	background-color:#ffe8cc;
+	font-size:0.9rem;
+}
+
+#cartBuy{
+	background-color:#ffe8cc;
+	font-size:0.9rem;
+}
+
+#cartCancel {
+	background-color:#f8f9fa;
+	font-size:0.9rem;
+}
