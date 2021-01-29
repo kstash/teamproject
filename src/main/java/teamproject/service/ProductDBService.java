@@ -20,12 +20,18 @@ public class ProductDBService {
 	@Resource
 	private ProductDBDao productDao;
 	
-	public void newProduct(ProductDB product) {
+	public void insertProduct(ProductDB product) {
 		productDao.insertProduct(product);
 	}
 
-	public List<ProductDB> getUpCategories() {
+	public ProductDB getSelfByPk(long productCode) {
+		ProductDB self = productDao.getSelfByPk(productCode);
+		return self;
+	}
+	
+	public String getUpCategoryByLowCategory(ProductDB product) {
+		String productWithUpCategoryFilled = productDao.getUpCategoryByLowCategory(product);
 		
-		return null;
+		return productWithUpCategoryFilled;
 	}
 }

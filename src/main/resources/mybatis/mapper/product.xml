@@ -11,10 +11,14 @@
 		from product
 		where productCode=#{productCode}
 	</select>
+	
+	<select id="getSelfByPk" parameterType="long" resultType="product">
+		select 
+	</select>
 
 	<insert id="insertProduct" parameterType="product">
-		insert into product (productCode, productName, productDesc, productPrice, productImagePath, lowcategoryEng)
-		values (#{productCode}, #{productName}, #{productDesc}, #{productPrice}, #{productImagePath}, #{lowcategoryEng})
+		insert into product (productCode, productName, productDesc, productPrice, lowcategoryEng)
+		values (#{productCode}, #{productName}, #{productDesc}, #{productPrice}, #{lowcategoryEng})
 	</insert>
 	
 	<update id="updateProduct" parameterType="product">
