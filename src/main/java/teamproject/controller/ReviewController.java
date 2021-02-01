@@ -149,4 +149,12 @@ public class ReviewController {
 		os.flush();
 		os.close();
 	}
+	
+	@RequestMapping("/reviewall")
+	public String reviewAll(Model model) {
+		logger.info("reviewall");
+		List<ReviewDB> reviewList = reviewdbService.getReviewAll();
+		model.addAttribute("reviewList",reviewList);
+		return "review/reviewall";
+	}
 }

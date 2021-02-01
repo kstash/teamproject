@@ -1,14 +1,20 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="footerlist" style="clear: both;">
 
 	<br/><br/><br/><br/><br/>
 	
 	<div class="d-flex bd-highlight">
 	  <div class="p-2 flex-fill bd-highlight">
-	  	<a href=""><img alt="하단1" src="<%=application.getContextPath()%>/resources/img/footermen/main_bt01.jpg" /></a>
+	  	<a href="<%=application.getContextPath()%>/item/reviewall"><img alt="하단1" src="<%=application.getContextPath()%>/resources/img/footermen/main_bt01.jpg" /></a>
 	  </div>
 	  <div class="p-2 flex-fill bd-highlight">
-		<a href=""><img alt="하단2" src="<%=application.getContextPath()%>/resources/img/footermen/main_bt02.jpg" /></a>  
+	  	<c:if test="${sessionUserid == null}">
+			<a href="<%=application.getContextPath()%>/signup"><img alt="하단2" src="<%=application.getContextPath()%>/resources/img/footermen/main_bt02.jpg" /></a>  
+		</c:if>
+		<c:if test="${sessionUserid != null}">
+			<a href="<%=application.getContextPath()%>/"><img alt="하단2" src="<%=application.getContextPath()%>/resources/img/footermen/main_bt02.jpg" /></a>
+		</c:if>
 	  </div>
 	  <div class="p-2 flex-fill bd-highlight">
 		<a href=""><img alt="하단3" src="<%=application.getContextPath()%>/resources/img/footermen/main_bt03.jpg" /></a>  
