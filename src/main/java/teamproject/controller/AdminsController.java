@@ -39,54 +39,51 @@ import teamproject.service.UpcategoryDBService;
 @Controller
 @RequestMapping("/admins")
 public class AdminsController {
-/* 해당 AdminsController는 관리자용 페이지에서 사용될 수 있는 것들을 
- * 종합적으로 컨트롤 하는 곳 입니다.
- * 1. 카테고리(상위, 하위) 설정.
- * 2. 특정 (최소)하위 카테고리에 종속된 product 정보를 추가, 수정, 제거
- * 3.  
- */
+	/*
+	 * 해당 AdminsController는 관리자용 페이지에서 사용될 수 있는 것들을 종합적으로 컨트롤 하는 곳 입니다. 1. 카테고리(상위,
+	 * 하위) 설정. 2. 특정 (최소)하위 카테고리에 종속된 product 정보를 추가, 수정, 제거 3.
+	 */
 	private static final Logger logger = LoggerFactory.getLogger(AdminsController.class);
-	
+
 	@Resource
 	private ProductDBService productService;
-	
+
 	@Resource
 	private UpcategoryDBService upcategoryService;
-	
+
 	@Resource
 	private LowcategoryDBService lowcategoryService;
-	
+
 	@Resource
 	private ProdimageDBService prodimageService;
-	
-	//adminspage--관리 페이지
+
+	// adminspage--관리 페이지
 	@RequestMapping("/adminspage")
 	public String adminspage(Model model) {
-		
-		//관리자 권한 체크 필수
-		
-		//관리자용 페이지 불러오기
-		
-		List<UpcategoryDB> upcategories =  upcategoryService.getUpCategories();
-		List<LowcategoryDB> lowcategories =  lowcategoryService.getLowCategories();
-		
+
+		// 관리자 권한 체크 필수
+
+		// 관리자용 페이지 불러오기
+
+		List<UpcategoryDB> upcategories = upcategoryService.getUpCategories();
+		List<LowcategoryDB> lowcategories = lowcategoryService.getLowCategories();
+
 		model.addAttribute("upcategories", upcategories);
 		model.addAttribute("lowcategories", lowcategories);
-		
-		
+
 		return "admins/adminspage";
 	}
-	
+
 	@GetMapping("/choseUpCategory")
-	public void	choseUpCategory(String chosenUpCategory, HttpServletResponse response, Model model) throws Exception {
+	public void choseUpCategory(String chosenUpCategory, HttpServletResponse response, Model model) throws Exception {
 		logger.info("choseupcategory");
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter pw = response.getWriter();
 		JSONArray root = new JSONArray();
-		List<LowcategoryDB> retrievedlowcategories =  lowcategoryService.getLowcategorylistEngByUpEng(chosenUpCategory);
+		List<LowcategoryDB> retrievedlowcategories = lowcategoryService.getLowcategorylistEngByUpEng(chosenUpCategory);
 		model.addAttribute("retrievedlowcategories", retrievedlowcategories);
-		
-		for(int i = 0; i < retrievedlowcategories.size(); i++) {
+
+		for (int i = 0; i < retrievedlowcategories.size(); i++) {
 			JSONObject lowcategory = new JSONObject();
 			lowcategory.put("lowcategoryKr", retrievedlowcategories.get(i));
 			root.put(lowcategory);
@@ -96,150 +93,149 @@ public class AdminsController {
 		pw.flush();
 		pw.close();
 	}
-		
+
 	@PostMapping("/choseLowCategory")
 	public void choseLowCategory(String chosenLowCategory, Model model) {
-		
+
 	}
-	
+
 	@PostMapping("/requestImageFiles")
-	public String requestImageFiles(MultipartHttpServletRequest request, String upcategoryEng) throws IllegalStateException, IOException {
-		
-		
-		//상세 페이지 이미지들
+	public String requestImageFiles(MultipartHttpServletRequest request, String upcategoryEng)
+			throws IllegalStateException, IOException {
+
+		// 상세 페이지 이미지들
 		List<MultipartFile> imageFiles = request.getFiles("detailImages");
 		String src = request.getParameter("");
 		String path = "C:/git/teamproject/WebContent/resources/img/product/";
-		
-		for(MultipartFile mf : imageFiles) {
+
+		for (MultipartFile mf : imageFiles) {
 			String originalName = mf.getOriginalFilename();
 			String savedFile = path + System.currentTimeMillis() + originalName;
-			
+
 			mf.transferTo(new File(savedFile));
 		}
-		
-		return "redirect:/admins/adminspage";
-	}
-	
-	//카테고리에 등록된 제품 테이블
-	/*
-	@GetMapping("/categoryInfoModal")
-	public String categoryInfoModal(Model model) {
-		model.addAttribute("")
-		return "admins/categoryInfoModal";
-	}
-	*/
-	
-	//새로운 제품 등록
-	@PostMapping("/postProduct")
-	public void postProduct(ProductDB product, HttpServletRequest request, Model model) throws Exception {
-		
-		MultipartHttpServletRequest multipartrequest = (MultipartHttpServletRequest) request;
-		long currentTime = System.currentTimeMillis();
-		
-		String path = "C:/git/teamproject/WebContent/resources/img/product/";
-		String madeFolderPath = path + currentTime + "/";
-		String originalName;
-		String fileType;
-		String savedFile;
-		
-		String lowcategoryEng = "outer";
-		
-		product.setProductCode(currentTime);
-		product.setLowcategoryEng(lowcategoryEng);
-		
-		productService.insertProduct(product);
-		
-		/*
-		상세 페이지 상세 이미지들
-		prodimage가 insert되기전에 product를 먼저 생성해야함
-		product/ 에 currentTime(숫자) 폴더명 만들고 거기 아래에 파일 저장
-		eg)
-		제품폴더 : 
-			product/1611831882231/
-		
-		제품 상세 이미지 파일 : 
-			product/1611831882231/1611831882231_0_originalName.jpg
-			product/1611831882231/1611831882231_1_originalName.jpg
-			product/1611831882231/1611831882231_2_originalName.jpg
-			product/1611831882231/1611831882231_3_originalName.jpg
-			product/1611831882231/1611831882231_4_originalName.jpg
-			product/1611831882231/1611831882231_5_originalName.jpg
-		제품 상세 이미지 파일 : 
-			product/1611831882231/list.jpg
-		제품 상세 이미지 파일 : 
-			product/1611831882231/main.jpg
-		*/
-		
-		MultipartFile productMainImageFile = multipartrequest.getFile("productMainImageFile");
-		ProdimageDB prodMainImage = new ProdimageDB();
-		originalName = productMainImageFile.getOriginalFilename();
-		int beginIndexMainImageName = originalName.indexOf("."); 
-		int endIndexMainImageName = originalName.length();
-		String contentTypeStrMainImage = originalName.substring(beginIndexMainImageName, endIndexMainImageName); //기댓값 : ".jpg"
-		
-		prodMainImage.setProdImageoname("list" + contentTypeStrMainImage); //기댓값 : list.jpg
-		prodMainImage.setProdImagepath(madeFolderPath);
-		prodMainImage.setProdImagetype(productMainImageFile.getContentType());
-		prodMainImage.setProductCode(currentTime);
-		
-		productMainImageFile.transferTo(new File(madeFolderPath+"list"+contentTypeStrMainImage));
-		prodimageService.insertProdImage(prodMainImage);
 
-		
-		
-		MultipartFile productListImageFile = multipartrequest.getFile("productListImageFile");
-		ProdimageDB prodListImage = new ProdimageDB();
-		originalName = productListImageFile.getOriginalFilename();
-		int beginIndexListImageName = originalName.indexOf("."); 
-		int endIndexListImageName = originalName.length();
-		String contentTypeStrListImage = originalName.substring(beginIndexListImageName, endIndexListImageName); //기댓값 : ".jpg"
-		
-		prodListImage.setProdImageoname("main" + contentTypeStrListImage); //기댓값 : main.jpg
-		prodListImage.setProdImagepath(madeFolderPath+"/");
-		prodListImage.setProdImagetype(productListImageFile.getContentType());
-		prodListImage.setProductCode(currentTime);
-		
-		productListImageFile.transferTo(new File(madeFolderPath+"main"+contentTypeStrListImage));
-		prodimageService.insertProdImage(prodListImage);
-		
-		
-		
-		List<MultipartFile> detailImages = multipartrequest.getFiles("detailImages");
-		if(!detailImages.isEmpty()) {
-			int iterationCode = 0;
-			for(MultipartFile mf : detailImages) {
-				ProdimageDB prodimageDetail = new ProdimageDB();
-				
-				originalName = mf.getOriginalFilename();
-				savedFile = madeFolderPath + (currentTime + "_" + iterationCode + "_" + originalName);
-				iterationCode++;
-				fileType = mf.getContentType();
-				
-				mf.transferTo(new File(savedFile));
-				
-				prodimageDetail.setProdImageoname(originalName);
-				prodimageDetail.setProdImagepath(madeFolderPath);
-				prodimageDetail.setProdImagetype(fileType);
-				prodimageDetail.setProductCode(currentTime);
-				
-				prodimageService.insertProdImage(prodimageDetail);
-			}
-		}
+		return "redirect:/admins/adminspage";
 	}
-	
-	@PostMapping("/postProdimg")
-	public String postProdimg() {
+
+	// 카테고리에 등록된 제품 테이블
+	/*
+	 * @GetMapping("/categoryInfoModal") public String categoryInfoModal(Model
+	 * model) { model.addAttribute("") return "admins/categoryInfoModal"; }
+	 */
+
+	// 새로운 제품 등록
+	@PostMapping("/postProduct")
+	public String postProduct(String lowcategoryEng, String productName, String productDesc, String productFabric, int productPrice, MultipartFile prodImageattachList,
+			MultipartFile prodImageattachMain, List<MultipartFile> prodImageattachDetail, ProdimageDB prodImage, ProductDB product, Model model) throws Exception, IOException {
+		logger.info("postProduct 실행");
+		String upcategoryeng = lowcategoryService.getUpEngByLowEng(lowcategoryEng);
+		model.addAttribute("upcateogryeng", upcategoryeng);
+		logger.info("upcategoryEng: " + upcategoryeng);
 		
+		String defaultSavePath = "C:/git/teamproject/WebContent/resources/img/product/";
+		
+		long productCode = System.currentTimeMillis();
+		
+		// 제품정보
+		logger.info("lowcategoryEng: " + lowcategoryEng);
+		logger.info("name: " + productName);
+		logger.info("desc: " + productDesc);
+		logger.info("fabric: " + productFabric);
+		logger.info("price: " + productPrice);
+		
+		product.setProductCode(productCode);
+		product.setProductName(productName);
+		product.setProductDesc(productDesc);
+		product.setProductFabric(productFabric);
+		product.setProductPrice(productPrice);
+		product.setLowcategoryEng(lowcategoryEng);
+
+		productService.insertProduct(product);
+		String fullSavePath = defaultSavePath + upcategoryeng + "/" + lowcategoryEng + "/" + productCode + "/";
+
+		// 제품리스트이미지
+		logger.info("prodImageattachList: " + prodImageattachList.getName());
+		logger.info("prodImageattachList: " + prodImageattachList.getContentType());
+		logger.info("prodImageattachList: " + prodImageattachList.getOriginalFilename());
+		
+		String strFileType = prodImageattachList.getOriginalFilename().substring(prodImageattachList.getOriginalFilename().indexOf('.'));
+		prodImageattachList.transferTo(new File(fullSavePath+"list"+strFileType));
+		
+		prodImage.setProductCode(productCode);
+		prodImage.setProdImagetype(prodImageattachList.getContentType());
+		prodImage.setProdImageoname("list"+"_"+prodImageattachList.getOriginalFilename());
+		prodImage.setProdImagepath(fullSavePath);
+		
+		prodimageService.insertProdImage(prodImage);
+		
+		
+		// 제품메인이미지
+		logger.info("prodImageattachMain: " + prodImageattachMain.getName());
+		logger.info("prodImageattachMain: " + prodImageattachMain.getContentType());
+		logger.info("prodImageattachMain: " + "main"+prodImageattachMain.getOriginalFilename());
+		
+		strFileType = prodImageattachMain.getOriginalFilename().substring(prodImageattachMain.getOriginalFilename().indexOf('.'));
+		prodImageattachMain.transferTo(new File(fullSavePath+"main"+strFileType));
+		
+		prodImage.setProductCode(productCode);
+		prodImage.setProdImagetype(prodImageattachMain.getContentType());
+		prodImage.setProdImageoname("main"+"_"+prodImageattachMain.getOriginalFilename());
+		prodImage.setProdImagepath(fullSavePath);
+		
+		prodimageService.insertProdImage(prodImage);
+		
+		
+		// 제품상세이미지들
+		int i = 1;
+		for (MultipartFile detailImage : prodImageattachDetail) {
+			logger.info("prodImageattachDetail: " + detailImage.getName());
+			logger.info("prodImageattachDetail: " + detailImage.getContentType());
+			logger.info("prodImageattachDetail: " + detailImage.getOriginalFilename());
+			prodImage.setProductCode(productCode);
+			prodImage.setProdImagetype(detailImage.getContentType());
+			prodImage.setProdImageoname(i+"_"+detailImage.getOriginalFilename());
+			i++;
+			prodImage.setProdImagepath(fullSavePath);
+			
+			strFileType = detailImage.getOriginalFilename().substring(detailImage.getOriginalFilename().indexOf('.'));
+			detailImage.transferTo(new File(fullSavePath + detailImage.getOriginalFilename()));
+			prodimageService.insertProdImage(prodImage);
+		}
 		
 		return "redirect:/admins/adminspage";
 	}
+
+	@GetMapping("getLowcategories")
+	public void getLowcategories(Model model, HttpServletRequest request) {
+		String upcategoryeng = request.getAttribute("#FormControlSelectUpCategory").toString();
+		List<LowcategoryDB> confirmedLowcategories = lowcategoryService.getLowcategorylistAllByUpEng(upcategoryeng);
+		model.addAttribute("confirmedLowcategories",confirmedLowcategories);
+	}
 	
+	@GetMapping("lowcategorySelect")
+	public String lowcategorySelect(String upcategoryeng, Model model) {
+		logger.info("실행");
+		List<LowcategoryDB> confirmedLowcategories = lowcategoryService.getLowcategorylistAllByUpEng(upcategoryeng);
+		model.addAttribute("confirmedLowcategories",confirmedLowcategories);
+		logger.info("upcategoryEng: " + upcategoryeng);
+		logger.info(confirmedLowcategories.size()+"");
+		logger.info("confirmedLowcategories: " + confirmedLowcategories);
+		return "admins/lowcategorySelect";
+	}
 	
-	
+	@GetMapping("postProductForm")
+	public String postProductForm(String lowcategoryeng, Model model) {
+		logger.info("lowcategoryeng: " + lowcategoryeng);
+				
+		model.addAttribute("lowcategoryeng", lowcategoryeng);
+		
+		return "admins/postProductForm";
+	}
+
 	@GetMapping("/getProducts")
 	public void getProducts() {
-		
+
 	}
-	
+
 }

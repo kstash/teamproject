@@ -65,12 +65,12 @@
 							<tr>
 								<th>${upcategory.upcategoryKr}</th>
 								<c:forEach var="lowcategory" items="${lowcategories}">
-									<c:if test="${lowcategory.upcategoryEng == upcategory.upcategoryEng}">
-										<td>
-											<a type="button" href="choselowcategory" class="btn btn-primary btn-sm link" data-toggle="modal" data-target="#categoryInfoModal">
-												${lowcategory.lowcategoryKr}
-											</a>
-										</td>
+									<c:if
+										test="${lowcategory.upcategoryEng == upcategory.upcategoryEng}">
+										<td><a type="button" href="choselowcategory"
+											class="btn btn-primary btn-sm link" data-toggle="modal"
+											data-target="#categoryInfoModal">
+												${lowcategory.lowcategoryKr} </a></td>
 									</c:if>
 								</c:forEach>
 							</tr>
@@ -92,72 +92,47 @@
 					<hr>
 					<div class="form-group mr-3 col">
 						<label for="FormControlSelectUpCategory">상위 카테고리</label>
-						<select class="form-control" id="FormControlSelectUpCategory" onchange=this.value>
+						<script type="text/javascript">
+							function f1(value){
+								$.ajax({
+									url: "lowcategorySelect",
+									data: {upcategoryeng: value},
+									method: "get",
+									success: function(data) {
+										console.log(data);
+										$("#lowcategory_select").html(data);
+									}
+								});
+							}
+						</script>
+						
+						<select class="form-control" id="FormControlSelectUpCategory" onchange="javascript:f1(this.value)">
 							<c:forEach var="upcategorySelect" items="${upcategories}">
 								<option id="upcategorySelectOption" value="${upcategorySelect.upcategoryEng}">
 									${upcategorySelect.upcategoryKr}
 								</option>
 							</c:forEach>
 						</select>
+						
+						<script type="text/javascript">
+							function f2(value) {
+								$.ajax({
+									url: "postProductForm",
+									data: {lowcategoryeng: value},
+									method: "get",
+									success: function(data) {
+										console.log(data);
+										console.log(data.categoryinfo);
+										$("#postProduct_form").html(data);
+									}
+								})
+							}
+						</script>
+						<div id="lowcategory_select"></div>
 					</div>
-					<form class="col" method="post" action="postProduct" id="postingNewProductForm" name="postingNewProductForm">
-						<div class="row">
-							<div class="form-group mr-3 col">
-								<label for="FormControlSelectLowCategory">하위 카테고리</label>
-								<select class="form-control" id="FormControlSelectLowCategory" onchange=this.value>
-									<c:forEach var="lowcategorySelect" items="${lowcategories}">
-										<option id="lowcategorySelectOption" value="${lowcategorySelect.lowcategoryEng}">
-											${lowcategorySelect.lowcategoryKr}
-										</option>
-									</c:forEach>
-								</select>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group mr-3 col" style="width: 300px;">
-								<label for="productName" class="mb-0">제품명</label>
-								<div class="input-group" id="productName">
-									<input type="text" id="productNameInput"
-										name="productNameInput" class="form-control">
-								</div>
-							</div>
-							<div class="form-group mr-3 col" style="width: 300px;">
-								<label for="productPrice" class="mb-0">제품가</label>
-								<div class="input-group" id="productPrice">
-									<input type="number" id="productPriceInput" name="productPriceInput" class="form-control text-right">
-									<div class="input-group-append" style="padding: 0;">
-										<span class="input-group-text">원</span>
-									</div>
-								</div>
-							</div>
-							<div class="form-group mr-3 col">
-								<label for="productDescInput" class="mb-0">제품 상세 설명</label>
-								<textarea class="form-control" id="productDescInput" name="productDescInput" rows="6" cols="200"></textarea>
-							</div>
-						</div>
-							
-					</form>
+					<div id="postProduct_form"></div>
 				</div>
 				<br> <br>
-				<div class="mt-3 mr-3 mb-3 ml-3 col">
-					<form class="row" method="post" action="postProdimg" id="postingNewProdimgForm" name="postingNewProdimgForm" enctype="multipart-form-data">
-						<label for="productListImageForm">리스트 이미지</label>
-						<input type="file" name="productListImageFile" />
-						
-						<label for="productMainImageForm">메인 이미지</label>
-						<input type="file" name="productMainImageFile" />
-						
-						<label for="productDetailImagesForm">상세 페이지 내부 이미지들</label>
-						<input multiple="multiple" type="file" name="detailImages" />
-					</form>
-				</div>
-				<a class="btn btn-primary btn-sm" onClick="javascript:submitAll()">등록</a>
-				<script type="text/javascript">
-					function submitAll() {
-						document.postingNewProductForm.submit();//postProduct
-						document.postingNewProdimgForm.submit();//postProdImg
-					}
-				</script>
 			</div>
 
 			<jsp:include page="/WEB-INF/views/include/footer.jsp" />

@@ -1,5 +1,7 @@
 package teamproject.dao;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -14,7 +16,7 @@ public class ProdimageDBDao {
 	private SqlSessionTemplate sst;
 	
 	public int insertProdImage(ProdimageDB prodimage) {
-		int rows = sst.selectOne("prodimage.insert", prodimage);
+		int rows = sst.insert("prodimage.insert", prodimage);
 		return rows;
 	}
 }

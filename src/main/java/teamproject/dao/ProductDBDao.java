@@ -31,6 +31,10 @@ public class ProductDBDao {
 		String upcategory = sst.selectOne("lowcategory.selectlistEngByEng", product);
 		return upcategory;
 	}
+
+	public void setProductInfo(ProductDB product) {
+		
+	}
 	
 
 }

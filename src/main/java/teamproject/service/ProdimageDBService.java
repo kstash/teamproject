@@ -1,5 +1,7 @@
 package teamproject.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -16,5 +18,4 @@ public class ProdimageDBService {
 	public void insertProdImage(ProdimageDB prodimage) {
 		prodimageDao.insertProdImage(prodimage);
 	}
-
 }

@@ -20,4 +20,12 @@
 		(#{prodImagetype}, #{prodImageoname}, #{prodImagepath}, #{productCode})
 	</insert>
 
+	<insert id="insertList" parameterType="java.util.List">
+		INSERT INTO prodimage
+		(prodImagetype, prodImageoname, prodImagepath, productCode)
+		VALUES
+			<foreach item="item" index="index" collection="list">
+				(#{prodimage.prodImagetype}, #{prodimage.prodImageoname}, #{prodimage.prodImagepath}, #{prodimage.productCode})
+			</foreach>
+	</insert>
 </mapper>

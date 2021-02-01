@@ -23,6 +23,10 @@ public class ProductDBService {
 	public void insertProduct(ProductDB product) {
 		productDao.insertProduct(product);
 	}
+	
+	public void setupProductInfo(ProductDB product) {
+		productDao.setProductInfo(product);
+	}
 
 	public ProductDB getSelfByPk(long productCode) {
 		ProductDB self = productDao.getSelfByPk(productCode);

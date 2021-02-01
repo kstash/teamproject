@@ -4,6 +4,7 @@ public class ProductDB {
 	private long productCode;
 	private String productName;
 	private String productDesc;
+	private String productFabric;
 	private int productPrice;
 	private String lowcategoryEng;
 	
@@ -26,6 +27,12 @@ public class ProductDB {
 	public void setProductDesc(String productDesc) {
 		this.productDesc = productDesc;
 	}
+	public String getProductFabric() {
+		return productFabric;
+	}
+	public void setProductFabric(String productFabric) {
+		this.productFabric = productFabric;
+	}
 	public int getProductPrice() {
 		return productPrice;
 	}
@@ -38,6 +45,4 @@ public class ProductDB {
 	public void setLowcategoryEng(String lowcategoryEng) {
 		this.lowcategoryEng = lowcategoryEng;
 	}
-	
-	
 }

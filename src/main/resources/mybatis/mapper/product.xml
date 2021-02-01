@@ -17,8 +17,8 @@
 	</select>
 
 	<insert id="insertProduct" parameterType="product">
-		insert into product (productCode, productName, productDesc, productPrice, lowcategoryEng)
-		values (#{productCode}, #{productName}, #{productDesc}, #{productPrice}, #{lowcategoryEng})
+		insert into product (productCode, productName, productDesc, productFabric, productPrice, lowcategoryEng)
+		values (#{productCode}, #{productName}, #{productDesc}, #{productFabric}, #{productPrice}, #{lowcategoryEng})
 	</insert>
 	
 	<update id="updateProduct" parameterType="product">

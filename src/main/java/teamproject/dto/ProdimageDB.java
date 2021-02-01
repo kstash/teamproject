@@ -1,10 +1,13 @@
 package teamproject.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProdimageDB {
 	private String prodImagetype;
 	private String prodImageoname;
 	private String prodImagepath;
 	private long productCode;
+	private MultipartFile prodImageattach;
 	
 	public String getProdImagetype() {
 		return prodImagetype;
@@ -29,5 +32,11 @@ public class ProdimageDB {
 	}
 	public void setProductCode(long productCode) {
 		this.productCode = productCode;
+	}
+	public MultipartFile getProdimageattach() {
+		return this.prodImageattach;
+	}
+	public void setProdimageattach(MultipartFile prodimageFile) {
+		this.prodImageattach = prodimageFile;
 	}
 }
