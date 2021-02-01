@@ -34,4 +34,19 @@ public class ReviewDBDao {
 		int rows = sst.insert("review.insert", review);
 		return rows;
 	}
+
+	public List<ReviewDB> getReviewAll() {
+		List<ReviewDB> reviewList = sst.selectList("review.selectAll");
+		return reviewList;
+	}
+
+	public int updateReview(ReviewDB review) {
+		int rows = sst.update("review.update", review);
+		return rows;
+	}
+
+	public int deleteReviewByO(String orderCode) {
+		int rows = sst.delete("review.deleteByO", orderCode);
+		return rows;
+	}
 }

@@ -27,7 +27,7 @@
 			</c:if>
 			<!-- 로그인 됐을 때 -->
 			<c:if test="${sessionUserid != null}">
-				<a href="logout" style="color:black; writing-mode: vertical-rl;">Log out</a> 
+				<a href="<%=application.getContextPath()%>/logout" style="color:black; writing-mode: vertical-rl;">Log out</a> 
 			</c:if>
 		</div>
 		<div id="empty"></div>

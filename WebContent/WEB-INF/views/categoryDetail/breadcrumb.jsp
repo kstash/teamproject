@@ -11,7 +11,7 @@
 		<c:forEach var="lowcategory" items="${lowcategorylist}">
 			<li><a
 				<c:if test="${lowcategory.lowcategoryKr == lowcategoryKr }"> class="inner_active" </c:if>
-				href="<%=application.getContextPath()%>/category/${lowcategory.upcategoryEng}/${lowcategory.lowcategoryEng}">
+				href="<%=application.getContextPath()%>/category/?upcategoryeng=${lowcategory.upcategoryEng}&lowcategoryeng=${lowcategory.lowcategoryEng}">
 					${lowcategory.lowcategoryKr}</a></li>
 		</c:forEach>
 	</ul>
@@ -25,7 +25,7 @@
 		<c:if test="${upcategoryKr != lowcategoryKr}">	
 			>
 		<a class="inner_bread"
-				href="<%=application.getContextPath()%>/category/${upcategoryeng}">${upcategoryKr}</a>
+				href="<%=application.getContextPath()%>/category/?upcategoryeng=${upcategoryeng}">${upcategoryKr}</a>
 		</c:if>
 		> <a class="inner_bread inner_active" href="">${lowcategoryKr}</a>
 	</div>

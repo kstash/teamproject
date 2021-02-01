@@ -28,8 +28,6 @@
 <link rel="stylesheet"
 	href="<%=application.getContextPath()%>/resources/css/base_element/footermen.css">
 <link rel="stylesheet"
-	href="<%=application.getContextPath()%>/resources/css/base_element/homepage.css">
-<link rel="stylesheet"
 	href="<%=application.getContextPath()%>/resources/css/productSlideshow/slideshow.css">
 <link rel="stylesheet"
 	href="<%=application.getContextPath()%>/resources/css/index/index.css">
@@ -37,10 +35,9 @@
 	href="<%=application.getContextPath()%>/resources/css/index/header.css">
 <link rel="stylesheet"
 	href="<%=application.getContextPath()%>/resources/css/index/left_area.css">
-<link rel="stylesheet"
-	href="<%=application.getContextPath()%>/resources/css/index/right_area.css">
-<link rel="stylesheet"
-	href="<%=application.getContextPath()%>/resources/css/base_element/homepage.css">
+<link rel="stylesheet"	href="<%=application.getContextPath()%>/resources/css/index/right_area.css">
+<link rel="stylesheet"	href="<%=application.getContextPath()%>/resources/css/item_detail/item_detail_review.css">
+
 <!-- 아이콘 사용 -->
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
@@ -65,58 +62,32 @@
 			</script>
 			<div id="headerpart"></div>
 
-			<br /> <br /> <br /> <br />
-			<div class="card text-white bg-dark mb-3">
-				<div class="card-body text-white">
-					<h5 class="card-title  text-white">주문 리스트</h5>	
-				</div>
-			</div>
-			
-			<!-- orderlist -->
-			<table class="table">
-				<thead class="table-dark">
-					<tr>
-						<th scope="col" class="text-white">ProductCode</th>
-						<th scope="col" class="text-white">OrderColor</th>
-						<th scope="col" class="text-white">OrderSize</th>
-						<th scope="col" class="text-white">OrderCount</th>
-						<th scope="col" class="text-white">OrderFreeshipping</th>
-						<th scope="col" class="text-white">OrderStatus</th>
-						<th scope="col" class="text-white">리뷰</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="order" items="${orderlist}">
-						<tr>
-							<td>${order.productCode}나중에그림넣기</td>
-							<td><span
-								style="display:inline-block; height:20px; width:50px; border:1px solid black; background-color: ${order.orderColor};"></span>
-							</td>
-							<td>${order.orderSize}</td>
-							<td>${order.orderCount}</td>
-							<td>${order.orderFreeshipping}</td>
-							<td>${order.orderStatus}</td>
-							<td id="${order.orderCode}"></td>
-						</tr>
-						<script>
-								$(function() {
-									$.ajax({
-										url : "reviewcheck",
-										method : "get",
-										data : {
-											ordercode : "${order.orderCode}",
-											productcode : "${order.productCode}"
-										},
-										success : function(data) {
-											$("#${order.orderCode}").html(data);
-										}
-									});
-								});
-						</script>
-					</c:forEach>
+			<br /> <br /> <br /> <img id="reviewAll_header"
+				class="rounded mx-auto d-block" style="width: 40%;" alt="리뷰헤더"
+				src="<%=application.getContextPath()%>/resources/img/review/main_review_de.jpg">
 
-				</tbody>
-			</table>
+			<div class="mt-2">
+				<c:forEach var="review" items="${reviewList}">
+					<div class="p-3" style="width:25%; display: inline-block;">
+						<div class="card" style="height: 20rem;">
+							<div class="card-body">
+								<h5 class="card-title">${review.productCode}</h5>
+								<h6 class="card-subtitle mb-2 text-muted">${review.userId}</h6>
+								<div class="review_point_stars mb-1">
+									<c:forEach begin="1" end="${review.reviewPoint}">
+										<span class="review_point_star" style="background-image:url('<%=application.getContextPath()%>/resources/img/review/point_star.png');"></span>
+									</c:forEach>
+								</div>
+								<c:if test="${review.reviewIsimage == 0}">
+									<p class="card-text">${review.reviewContents}</p>
+								</c:if>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+
+
 
 
 			<jsp:include page="/WEB-INF/views/include/footer.jsp" />

@@ -39,6 +39,7 @@ public class MypageController {
 		return "mypage/orderlist";
 	}
 	
+	//리스트가 작성되어있는지 찾아보는 메소드
 	@GetMapping("/reviewcheck")
 	public String reviewcheck(Model model, String ordercode, long productcode) {
 		logger.info("실행");
@@ -48,23 +49,37 @@ public class MypageController {
 		model.addAttribute("productcode", productcode);
 		return "mypage/reviewcheck";
 	}
-	@GetMapping("/reviewlist")
-	public String reviewlist() {
-		logger.info("reviewlist 실행");
-		return "mypage/reviewlist";
-	}
-	@GetMapping("/reviewwrite")
-	public String reviewWrite(String ordercode, long productcode, Model model) {
-		model.addAttribute("ordercode", ordercode);
-		model.addAttribute("productcode", productcode);
-		return "mypage/reviewwrite";
-	}
+	//리뷰 작성
+
 	@PostMapping("/reviewwrite")
 	public String reviewWriteForm(HttpSession session, ReviewDB review) {
 		String userId = (String)session.getAttribute("sessionUserid");
 		review.setUserId(userId);
 		review.setReviewIsimage(0);
 		reviewdbService.saveReview(review);
+		return "redirect:/mypage/reviewlist";
+	}
+	//리뷰리스트 page
+	@GetMapping("/reviewlist")
+	public String reviewlist(HttpSession session, Model model) {
+		logger.info("실행");
+		String userId = (String)session.getAttribute("sessionUserid");
+		List<ReviewDB> reviewList = reviewdbService.getReviewlistByUid(userId);
+		model.addAttribute("reviewList",reviewList);
+		return "mypage/reviewlist";
+	}
+	
+	@PostMapping("/reviewupdate")
+	public String reviewreadForm(HttpSession session, ReviewDB review) {
+		logger.info("실행");
+		String userId = (String)session.getAttribute("sessionUserid");
+		review.setUserId(userId);
+		reviewdbService.updateReview(review);
+		return "redirect:/mypage/reviewlist";
+	}
+	@RequestMapping("/reviewdelete")
+	public String reviewDelete(String ordercode) {
+		reviewdbService.deleteReviewByO(ordercode);
 		return "redirect:/mypage/reviewlist";
 	}
 }
