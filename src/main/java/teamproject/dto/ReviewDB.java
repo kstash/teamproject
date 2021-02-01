@@ -2,7 +2,6 @@ package teamproject.dto;
 
 public class ReviewDB {
 	private int reviewPoint;
-	private String reviewImagePath;
 	private String reviewContents;
 	private int reviewLikes;
 	private String userId;
@@ -21,12 +20,6 @@ public class ReviewDB {
 	}
 	public void setReviewPoint(int reviewPoint) {
 		this.reviewPoint = reviewPoint;
-	}
-	public String getReviewImagePath() {
-		return reviewImagePath;
-	}
-	public void setReviewImagePath(String reviewImagePath) {
-		this.reviewImagePath = reviewImagePath;
 	}
 	public String getReviewContents() {
 		return reviewContents;

@@ -48,6 +48,7 @@ public class ReviewController {
 		//review 전체 가져오기
 		List<ReviewDB> reviewList = reviewdbService.getReviewListByPd(productcode);
 		
+		//review가 없을때
 		if(reviewList.isEmpty()) {
 			model.addAttribute("stars", 0);
 			model.addAttribute("star5", 0);
@@ -61,7 +62,10 @@ public class ReviewController {
 			model.addAttribute("star1", 0);
 			model.addAttribute("starelse1", 1);
 			model.addAttribute("fivescore", 0.0);
-		}else {
+		}
+		
+		//review가 있을때
+		else {
 			model.addAttribute("reviewList", reviewList);
 	
 			int stars = reviewList.size();
@@ -98,6 +102,20 @@ public class ReviewController {
 			//fivescore (star4+star5)/star전체
 			double fivescore = Math.round(50*(star[4]+star[3])/stars)/10.0;
 			model.addAttribute("fivescore", fivescore);
+			
+			int imgCount = 0;
+			String[] orderCodeList = new String[8];
+			for(ReviewDB review : reviewList) {
+				if(review.getReviewIsimage() > 0) {
+					orderCodeList[imgCount] = review.getOrderCode();
+					imgCount++;
+				}
+				if(imgCount >= 7) {
+					break;
+				}
+			}
+			model.addAttribute("orderCodeList", orderCodeList);
+			
 		}
 		
 		return "/item_detail/review";
@@ -130,5 +148,13 @@ public class ReviewController {
 
 		os.flush();
 		os.close();
+	}
+	
+	@RequestMapping("/reviewall")
+	public String reviewAll(Model model) {
+		logger.info("reviewall");
+		List<ReviewDB> reviewList = reviewdbService.getReviewAll();
+		model.addAttribute("reviewList",reviewList);
+		return "review/reviewall";
 	}
 }

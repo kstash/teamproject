@@ -15,6 +15,12 @@
 	<select id="getSelfByPk" parameterType="long" resultType="product">
 		select 
 	</select>
+	<!--
+	<select id="searchProduct" parameterType="int" resultType="product">
+		select productCode, productName, productDesc, productPrice, lowcategoryEng
+		from product
+		where productCode=#{productCode}
+	</select> -->
 
 	<insert id="insertProduct" parameterType="product">
 		insert into product (productCode, productName, productDesc, productFabric, productPrice, lowcategoryEng)

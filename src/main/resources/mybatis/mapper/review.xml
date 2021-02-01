@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="review">
+	<select id="selectAll" resultType="review">
+		select *
+		from review
+	</select>
+
 	<select id="selectByPd" resultType="review">
 		select *
 		from review
-		where productCode = #{productCode}
+		where
+		productCode = #{productCode}
 	</select>
-	
+
 	<select id="selectByO" resultType="review">
 		select *
 		from review
-		where orderCode = #{orderCode}
+		where
+		orderCode = #{orderCode}
 	</select>
+
+	<select id="selectByUid" resultType="review">
+		select *
+		from review
+		where
+		userId = #{userId}
+	</select>
+
+	<insert id="insert" parameterType="review">
+		insert into review
+		(reviewpoint, reviewcontents, userid, ordercode, productcode,
+		reviewisimage)
+		values
+		(#{reviewPoint}, #{reviewContents}, #{userId},
+		#{orderCode}, #{productCode}, #{reviewIsimage})
+	</insert>
+	
+	<update id="update"  parameterType="review">
+		update review
+		set reviewPoint=#{reviewPoint}, reviewContents=#{reviewContents}, reviewIsimage=#{reviewIsimage}
+		where orderCode=#{orderCode}
+	</update>
+	
+	<delete id="deleteByO">
+		delete review
+		where orderCode=#{orderCode}
+	</delete>
 </mapper>

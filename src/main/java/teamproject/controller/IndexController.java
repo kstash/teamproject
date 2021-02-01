@@ -1,19 +1,41 @@
 package teamproject.controller;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import teamproject.dto.LowcategoryDB;
+import teamproject.dto.UpcategoryDB;
+import teamproject.service.LowcategoryDBService;
+import teamproject.service.UpcategoryDBService;
 
 @Controller
 public class IndexController {
 	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
+	
+	@Resource
+	private UpcategoryDBService upcategoryService;
+	@Resource
+	private LowcategoryDBService lowcategoryService;
 	
 	@RequestMapping("/")
 	public String index() {
 		logger.info("homepage");
 		return "index";
 	}
+	//로그인 성공 시 alert창에서 이동하는 메소드
+	@RequestMapping("/index")
+	public String toindex() {
+		logger.info("homepage");
+		return "redirect:/";
+	}
+	
 	//왼쪽영역
 	@RequestMapping("/cart")
 	public String cart() {
@@ -57,6 +79,15 @@ public class IndexController {
 		logger.info("랭귀지");
 
 		return "rightmenu/language";
+	}
+	@RequestMapping("/header")
+	public String headermenu(Model model) {
+		List<UpcategoryDB> upcategories =  upcategoryService.getUpCategories();
+		List<LowcategoryDB> lowcategories =  lowcategoryService.getLowCategories();
+		model.addAttribute("upcategories", upcategories);
+		model.addAttribute("lowcategories", lowcategories);
+		
+		return "include/header";
 	}
 	
 }

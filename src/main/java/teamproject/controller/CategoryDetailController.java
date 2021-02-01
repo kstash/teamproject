@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -75,5 +77,14 @@ public class CategoryDetailController {
 		String end= target.substring(target.lastIndexOf("/")+1);
 		logger.info("탑-"+ end + "실행");
 		return "category/top/"+ end;
+	}
+	
+	//call parameter category page
+	@GetMapping("/")
+	public String callcategorypage(Model model, String upcategoryeng, String lowcategoryeng) {
+		logger.info("모델");
+		model.addAttribute("upcategoryeng", upcategoryeng);
+		model.addAttribute("lowcategoryeng", lowcategoryeng);
+		return "categoryDetail/index";
 	}
 }

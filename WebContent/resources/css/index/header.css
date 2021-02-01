@@ -1,3 +1,4 @@
+
 div{
 	padding-top:10px;
 }
@@ -10,8 +11,6 @@ div{
 	font-size: 0.8rem;
 
 	margin:0 auto;
-
-	z-index:10;
 }
 #main_menu ul,#main_menu li{
 	list-style-type: none;
@@ -49,3 +48,7 @@ div{
 	font-size:0.7rem;
 	width:130px;
 }
+#headerpart{
+	position: relative; z-index: 10;
+}
+

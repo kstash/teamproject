@@ -38,4 +38,10 @@ public class ProductDBService {
 		
 		return productWithUpCategoryFilled;
 	}
+	
+	/*public void search(ProductDB product) {
+		ProductDB productSearched = 
+				productDao.searchProduct(product.getProductCode());
+		logger.info("rightsearchService 실행");
+	}*/
 }

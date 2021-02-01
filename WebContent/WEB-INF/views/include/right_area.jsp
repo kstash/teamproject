@@ -4,11 +4,12 @@
 
 <!-- 모달 (본 태그 위치 조정 시 아래로 숨음) -->
 <jsp:include page="/WEB-INF/views/rightsearch/rightsearch.jsp"/>
+<jsp:include page="/WEB-INF/views/mypage/mypage.jsp"/>
 <div id="right_area">
 	<div id="empty"></div>
 	<div id="main">
 		<!-- 메인 홈페이지로 링크 -->
-		<a href="index" style="color:black;writing-mode: vertical-rl;"> www.stylenanda.com </a>
+		<a href="<%=application.getContextPath()%>/" style="color:black;writing-mode: vertical-rl;"> www.stylenanda.com </a>
 	</div>
 	<div id="MenuSearch">
 		<a href="rightmenu"><i class="fas fa-bars"></i></a> 
@@ -26,12 +27,21 @@
 			</c:if>
 			<!-- 로그인 됐을 때 -->
 			<c:if test="${sessionUserid != null}">
-				<a href="logout" style="color:black; writing-mode: vertical-rl;">Log out</a> 
+				<a href="<%=application.getContextPath()%>/logout" style="color:black; writing-mode: vertical-rl;">Log out</a> 
 			</c:if>
 		</div>
 		<div id="empty"></div>
-		<a href="mypage" style="color:black; writing-mode: vertical-rl;">My page</a> 
+		<!-- 로그인 안됐을 때 -->
+		<c:if test="${sessionUserid == null}">
+			<a href="<%=application.getContextPath()%>/login" style="color:black; writing-mode: vertical-rl;">My page</a> 
+		</c:if>
+		<!-- 로그인 됐을 때 -->
+		<c:if test="${sessionUserid != null}">
+			<a data-toggle="modal" href="#mypageModal" style="color:black; writing-mode: vertical-rl;">My page</a> 
+		</c:if>
 		<div id="empty"></div>
-		<a href="language" style="color:black; writing-mode: vertical-rl;">Language <i class="fas fa-globe"></i></a>
+		<a href="<%=application.getContextPath()%>/language" style="color:black; writing-mode: vertical-rl;">Language <i class="fas fa-globe"></i></a>
 	</div>	
 </div>
+
+
