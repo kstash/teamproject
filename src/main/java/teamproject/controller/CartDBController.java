@@ -31,8 +31,8 @@ public class CartDBController {
 	}
 	
 	@GetMapping("/deleteCart")
-	public String deleteCart(Integer cartcode){ //Integer : null처리가 가능하여 sql사용 시 유리
-		cartService.deleteCart(cartcode);
+	public String deleteCart(int cartcode){ //Integer : null처리가 가능하여 sql사용 시 유리
+		cartService.deleteFromCart(cartcode);
 		logger.info("Contoroller.deleteCart()");
 		
 		/*if(cartcode != null) {

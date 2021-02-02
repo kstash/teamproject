@@ -32,7 +32,7 @@
 			  			<td id="count">${cartlist.cartcount}</td>
 			  			<td id="price">${cartlist.productprice}</td>
 			  			<td id="deleteRow">
-			  				<a id="deleteBtn" class="btn btn-sm" href="deleteCart?${cartlist.cartcode}">삭제</a>
+			  				<a id="deleteBtn" class="btn btn-sm" href="deleteCart?cartcode=${cartlist.cartcode}">삭제</a>
 			  			</td>
 
 			  		</tr>
