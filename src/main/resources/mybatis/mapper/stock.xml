@@ -12,9 +12,25 @@
 		where productCode = #{productCode} and stockColor = #{stockColor}
 	</select>
 	
+	<insert id="insertByPd">
+		insert into stock (stockColor, stockName, stockSizeS, stockSizeM, stockSizeL, stockSizeXL, productCode)
+		values ('#ffffff', '', 0, 0, 0, 0, #{productCode})
+	</insert>
+	
 	<update id="release" parameterType="stock">
 		update stock
 		set stockSizeS = stockSizeS - #{stockSizeS}, stockSizeM = stockSizeM - #{stockSizeM},  stockSizeL = stockSizeL - #{stockSizeL}, stockSizeXL = stockSizeXL - #{stockSizeXL}
 		where stockColor = #{stockColor} and productCode = #{productCode}
 	</update>
+	
+	<update id="update" parameterType="stock">
+		update stock
+		set stockColor = #{stockColor}, stockName = #{stockName}, stockSizeS = #{stockSizeS}, stockSizeM = #{stockSizeM},  stockSizeL = #{stockSizeL}, stockSizeXL = #{stockSizeXL}
+		where stockColor = #{stockBeforeColor} and productCode = #{productCode}
+	</update>
+	
+	<delete id="delete" parameterType="stock">
+		delete from stock
+		where stockColor = #{stockColor} and productCode = #{productCode}
+	</delete>
 </mapper>
