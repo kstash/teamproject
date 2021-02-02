@@ -6,4 +6,15 @@
 		from revimage
 		where orderCode = #{orderCode}
 	</select>
+	
+	<insert id="insert" parameterType="revimage">
+		insert into revimage
+		(REVIMAGEPATH, REVIMAGEONAME, REVIMAGETYPE, ORDERCODE)
+		values(#{revimagePath}, #{revimageOname}, #{revimageType}, #{orderCode})
+	</insert>
+	
+	<delete id="deleteByO">
+		delete revimage
+		where orderCode=#{orderCode}
+	</delete>
 </mapper>

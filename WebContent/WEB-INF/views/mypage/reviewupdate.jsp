@@ -19,7 +19,6 @@
 				<form enctype="multipart/form-data" name="reviewupdateform" action="reviewupdate" method="post">
 					<input type="hidden" name="orderCode" value="${param.ordercode}" />
 					<input type="hidden" name="reviewLikes" value="${param.reviewlikes}" />
-					<input type="hidden" name="reviewIsimage" value="${param.reviewisimage}" />
 					<div class="form-group">
 						<label>상품 별점</label><br />
 						<c:forEach var="i" begin="1" end="5">
@@ -40,6 +39,13 @@
 						<label for="reviewContents">리뷰내용</label>
 						<textarea class="form-control" id="reviewContents" name="reviewContents" rows="5" cols="50">${param.reviewcontents}</textarea>
 					</div>
+					
+					<c:if test="${param.reviewisimage == 0}">
+					<div class="form-group">
+						<label for="rphoto">첨부파일</label>
+						<input type="file" id="rphoto" name="rphoto"/>
+					</div>
+					</c:if>
 					<button class="btn btn-primary">저장</button>
 					<a class="btn btn-danger" href="reviewdelete?ordercode=${param.ordercode}">삭제</a>
 				</form>

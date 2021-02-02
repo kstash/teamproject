@@ -17,4 +17,12 @@ public class RevimageDBService {
 		return reviewOne;
 	}
 
+	public void addrevimage(RevimageDB img) {
+		revimagedbDao.insert(img);
+	}
+
+	public void deleteRevimageByO(String ordercode) {
+		revimagedbDao.deleteReviewByO(ordercode);
+	}
+
 }
