@@ -31,13 +31,13 @@ public class CartDBController {
 	}
 	
 	@GetMapping("/deleteCart")
-	public String deleteCart(int cartcode){ //Integer : null처리가 가능하여 sql사용 시 유리
+	public String deleteCart(int cartcode){
 		cartService.deleteFromCart(cartcode);
 		logger.info("Contoroller.deleteCart()");
 		return "redirect:/cart";
 	}
 	
-	@GetMapping("cartBuy")
+	@GetMapping("/cartBuy")
 	public String cartBuy(List<CartDB> carts) {
 		logger.info("Contoroller.cartBuy()");
 		cartService.orderFromCarts(carts);

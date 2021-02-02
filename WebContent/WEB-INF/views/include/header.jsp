@@ -9,7 +9,7 @@
 			<ul id="dropmenu1">
 				<c:forEach var="lowcategory" items="${lowcategories}">
 					<c:if test="${lowcategory.upcategoryEng == upcategory.upcategoryEng}" >
-						<li style="width:60px"><a href="<%=application.getContextPath()%>/category/?upcategoryeng=${upcategory.upcategoryEng}&lowcategoryeng=${lowcategory.lowcategoryEng}">${lowcategory.lowcategoryKr}</a></li><br/>
+						<li style="margin:0px; width:60px"><a href="<%=application.getContextPath()%>/category/?upcategoryeng=${upcategory.upcategoryEng}&lowcategoryeng=${lowcategory.lowcategoryEng}">${lowcategory.lowcategoryKr}</a></li><br/>
 					</c:if>
 				</c:forEach>
 			</ul>

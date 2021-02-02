@@ -107,15 +107,14 @@ $("#selectAllBtn").on('click', function() {
 		cartRow.push(tr.text());
 		
 		// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
+		var cartcode = td.eq(1).text();
 		var pcount = td.eq(5).text();
 		var pprice = td.eq(6).text();
-		
-		
+
 		console.log(pprice);
 		console.log(pcount);
 		
 		prices.push(pprice * pcount);
-
 		var sum = 0;
 		for(var i=0; i<price.length; i++){
 			sum = sum + parseInt(prices[i]);
