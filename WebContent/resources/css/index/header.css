@@ -12,7 +12,12 @@ div{
 
 	margin:0 auto;
 }
-#main_menu ul,#main_menu li{
+#main_menu ul{
+	list-style-type: none;
+	margin:0px;
+	padding:0px;
+}
+#main_menu li{
 	list-style-type: none;
 	margin:0px;
 	padding:0px;
@@ -29,26 +34,33 @@ div{
 }
 
 #main_menu li a{
-	display:block;
+	/* display:block; */
 	color:black;
+	margin-left:10px;
 }
 
 #dropmenu1{
 	opacity: 0;
 	visibility:hidden;
 	width:70px;
+	margin-left:10px;
 }
+
 #main_menu li:hover #dropmenu1{
 	opacity: 1;
 	visibility:visible;
+	margin:0px;
+	padding:0px;
+	background-color: #FFE8CC;
 }
 
 #dropmenu1 li{
-	background-color: #FFE8CC;
 	font-size:0.7rem;
 	width:130px;
+	padding:0px;
+	margin:0px;
 }
+
 #headerpart{
 	position: relative; z-index: 10;
 }
-

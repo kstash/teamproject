@@ -42,7 +42,7 @@
 			  			<td id="tdcartChk">
 			  				<input class="form-check-input" type="checkbox" id="cartChk" name="cartChk"></input>
 			  				</td>
-			  			<td>${cartlist.cartcode}</td>
+			  			<td id="cartcode">${cartlist.cartcode}</td>
 			  			<td id="product">${cartlist.productname}</td>
 			  			<td>${cartlist.cartsize}</td>
 			  			<td>${cartlist.cartcolor}</td>
@@ -51,7 +51,6 @@
 			  			<td id="deleteRow">
 			  				<a id="deleteBtn" class="btn btn-sm" href="deleteCart?cartcode=${cartlist.cartcode}">삭제</a>
 			  			</td>
-
 			  		</tr>
 		  		</c:if>
 		  	</c:forEach>
@@ -73,7 +72,7 @@
 	<!-- cart 테이블 정보 order 테이블로 넘기기 -->
 	<!-- orderFromCarts 어떻게 써야함? -->
 	<div id="btns">
-			<button id="cartBuy" class="btn" href="cartBuy">구매하기</button>
+			<button id="cartBuy" class="btn" href="">구매하기</button>
 			<a id="cartCancel"class="btn" href="index">취소</a>
 	</div>
 	</c:if>
@@ -107,15 +106,15 @@ $("#selectAllBtn").on('click', function() {
 		cartRow.push(tr.text());
 		
 		// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
+		var cartcode = td.eq(1).text(); //카트 코드 가져오기
 		var pcount = td.eq(5).text();
 		var pprice = td.eq(6).text();
 		
-		
+		console.log(cartcode);
 		console.log(pprice);
 		console.log(pcount);
 		
 		prices.push(pprice * pcount);
-
 		var sum = 0;
 		for(var i=0; i<price.length; i++){
 			sum = sum + parseInt(prices[i]);

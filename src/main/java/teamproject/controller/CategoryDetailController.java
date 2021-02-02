@@ -23,7 +23,6 @@ public class CategoryDetailController {
 	
 	@RequestMapping("/outer/*")
 	public String outerCardigan(HttpServletRequest request) {
-		
 		String target= request.getRequestURI();
 		String end= target.substring(target.lastIndexOf("/")+1);
 		logger.info("아우터-" + end + "실행");
