@@ -72,7 +72,7 @@
 	<!-- cart 테이블 정보 order 테이블로 넘기기 -->
 	<!-- orderFromCarts 어떻게 써야함? -->
 	<div id="btns">
-			<button id="cartBuy" class="btn" href="">구매하기</button>
+			<button id="cartBuy" class="btn">구매하기</button>
 			<a id="cartCancel"class="btn" href="index">취소</a>
 	</div>
 	</c:if>
@@ -133,6 +133,35 @@ $("#selectAllBtn").on('click', function() {
 		}
 
 	});
+});
+
+//구매하기 버튼 클릭 시 Controller에 값 전달
+//cartDB의 list 저장해야 함
+//받아온 cartlist를 활용할 것 
+$("#cartBuy").on('click',function() {
+	var cartToOrder = new Array();
+	
+	//체크된 리스트 저장
+	$('input[name="cartChk"]:checked').each(function(i){
+		cartToOrder.push($(this).val());
+	});
+	
+	var objParams = {
+		//체크된 행 정보
+		"list": cartToOrder
+	};
+	
+	$ajax({
+		url:"/cart/cartBuy",
+		dataType:"json",
+		data: objParams,
+		traditional: true,
+		method:"get",
+		success:function(){
+			
+		}
+	});
+	
 });
 
 //상품 클릭 시 상세정보 보여주기

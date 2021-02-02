@@ -35,7 +35,12 @@ public class loginController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter pw = response.getWriter();
 		
-		if(result.equals("success")) {
+		if(result.equals("admin")) {
+			logger.info("admin 로그인 성공");
+			pw.println("<script>alert('admin입니다.'); "
+					+ "location.href='admins/adminspage';</script>");
+			pw.flush();
+		}else if(result.equals("success")) {
 			session.setAttribute("sessionUserid", userDB.getUserid());
 			logger.info("로그인 성공");
 			pw.println("<script>alert('환영합니다.'); "
