@@ -238,5 +238,13 @@ public class AdminsController {
 	public void getProducts() {
 
 	}
+	@GetMapping("/stock")
+	public String adminstock(long productcode, Model model) {
+		logger.info("실행");
+		//parameter 테스트를 위한 model
+		model.addAttribute("productCode", productcode);
+		//이후에 제작할 재고관리 페이지
+		return "admins/stock";
+	}
 
 }
