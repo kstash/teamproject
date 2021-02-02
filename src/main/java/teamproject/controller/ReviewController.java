@@ -17,10 +17,14 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import teamproject.dto.ProductDB;
 import teamproject.dto.ReviewDB;
 import teamproject.dto.RevimageDB;
+import teamproject.dto.StockDB;
+import teamproject.service.ProductDBService;
 import teamproject.service.ReviewDBService;
 import teamproject.service.RevimageDBService;
+import teamproject.service.StockDBService;
 
 @Controller
 @RequestMapping("/item")
@@ -36,11 +40,37 @@ public class ReviewController {
 	@Resource
 	private RevimageDBService revimagedbService;
 	
-	//item_detail 실행
+	@Resource
+	private ProductDBService productdbService;
+	
+	@Resource
+	private StockDBService stockdbService;
+	
+	//item_detail/index 실행
 	@RequestMapping("/")
 	public String detailItem() {
 		return "/item_detail/index";
 	}
+	
+	//item_detail 실행
+	@RequestMapping("/detail")
+	public String detailpage(long productcode, Model model) {
+		ProductDB product = productdbService.getProductByPd(productcode);
+		List<StockDB> stocklist = stockdbService.getStocklistByPd(productcode); 
+		model.addAttribute("product", product);
+		model.addAttribute("stocklist", stocklist);
+		return "/item_detail/detail";
+	}
+	@RequestMapping("/sizecategory")
+	public String sizecategory(String stockcolor, long productcode , Model model) {
+		StockDB stockKey = new StockDB();
+		stockKey.setStockColor(stockcolor);
+		stockKey.setProductCode(productcode);
+		StockDB stocksearch = stockdbService.getstockByK(stockKey);
+		model.addAttribute("stock", stocksearch);
+		return "/item_detail/sizecategory";
+	}
+	
 	
 	//review 실행
 	@GetMapping("/review")

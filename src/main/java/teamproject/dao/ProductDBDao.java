@@ -37,6 +37,11 @@ public class ProductDBDao {
 	}
 	
 
+	public ProductDB getProductByPd(long productCode) {
+		ProductDB product = sst.selectOne("product.selectByPk", productCode);
+		return product;
+	}
+
 	/*
 	 * public ProductDB searchProduct(int productCode) {
 	 * logger.info("ProductDBDao 실행"); ProductDB product =

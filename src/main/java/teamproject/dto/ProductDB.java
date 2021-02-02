@@ -44,5 +44,5 @@ public class ProductDB {
 	}
 	public void setLowcategoryEng(String lowcategoryEng) {
 		this.lowcategoryEng = lowcategoryEng;
-	}
+	}	
 }

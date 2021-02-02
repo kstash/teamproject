@@ -38,6 +38,11 @@ public class ProductDBService {
 		
 		return productWithUpCategoryFilled;
 	}
+
+	public ProductDB getProductByPd(long productcode) {
+		ProductDB product = productDao.getProductByPd(productcode);
+		return product;
+	}
 	
 	/*public void search(ProductDB product) {
 		ProductDB productSearched = 

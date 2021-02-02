@@ -6,15 +6,22 @@
 		from product
 	</select>
 
-	<select id="selectByPk" parameterType="int" resultType="product">
-		select productCode, productName, productDesc, productPrice, productImagePath, lowcategoryEng
+	<select id="selectByPk" parameterType="_long" resultType="product">
+		select *
 		from product
 		where productCode=#{productCode}
 	</select>
 	
 	<select id="getSelfByPk" parameterType="long" resultType="product">
-		select 
+		
 	</select>
+	
+	<select id="selectPriceByPk" parameterType="_long" resultType="int">
+		select productPrice
+		from product
+		where productCode = #{productCode}
+	</select>
+	
 	<!--
 	<select id="searchProduct" parameterType="int" resultType="product">
 		select productCode, productName, productDesc, productPrice, lowcategoryEng

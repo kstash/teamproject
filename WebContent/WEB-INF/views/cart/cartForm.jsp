@@ -28,7 +28,6 @@
 			  			<td>${cartlist.cartcolor}</td>
 			  			<td>${cartlist.cartcount}</td>
 			  			<td>${cartlist.productprice}</td>
-			  			
 			  		</tr>
 		  		</c:if>
 		  	</c:forEach>

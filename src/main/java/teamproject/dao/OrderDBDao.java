@@ -24,6 +24,12 @@ public class OrderDBDao {
 		List<OrderDB> orderlist = sst.selectList("order.selectListByUid", userId);
 		return orderlist;
 	}
+
+
+	public int insert(OrderDB order) {
+		int rows = sst.insert("order.insert", order);
+		return rows;
+	}
 	
 	
 	

@@ -7,4 +7,10 @@
 		where
 		userId = #{userId}
 	</select>
+	
+	<insert id="insert" parameterType="order">
+		insert into orders 
+		(orderStatus, orderCode, orderColor, orderSize, orderCount, orderFreeshipping, orderDate, userId, productCode)
+		values(#{orderStatus}, #{orderCode}, #{orderColor}, #{orderSize}, #{orderCount}, #{orderFreeshipping}, sysdate, #{userId}, #{productCode})
+	</insert>
 </mapper>
