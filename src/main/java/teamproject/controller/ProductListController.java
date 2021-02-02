@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import teamproject.dto.ProdimageDB;
 import teamproject.dto.ProductDB;
 import teamproject.dto.ProductInfoList;
+import teamproject.dto.StockDB;
 import teamproject.service.ProdimageDBService;
 import teamproject.service.ProductDBService;
+import teamproject.service.StockDBService;
 @Controller
 @RequestMapping("/products")
 public class ProductListController {
@@ -31,6 +33,9 @@ public class ProductListController {
 	@Resource
 	private ProductDBService productService;
 	
+	@Resource
+	private StockDBService stockService;
+	
 	@SuppressWarnings("null")
 	@GetMapping("/productCardList")
 	public void productList(Model model, String upcategoryeng, String lowcategoryeng) {
@@ -38,16 +43,6 @@ public class ProductListController {
 		
 		model.addAttribute("upcategoryeng", upcategoryeng);
 		model.addAttribute("lowcategoryeng", lowcategoryeng);
-
-		String productImageDirPath = "C:/git/teamproject/WebContent/resources/img/product/";
-		String productsPath = productImageDirPath+upcategoryeng+"/"+lowcategoryeng+"/";
-		File prodImgDirPath = new File(productImageDirPath);
-		
-		File prodImgDirPath_up[] = new File(productImageDirPath+upcategoryeng+"/").listFiles();
-		
-		File prodImgDirPath_up_low[] = new File(productsPath).listFiles();
-		String prodimagePath = upcategoryeng+"/"+lowcategoryeng+"/";
-		logger.info("검색 경로: " + prodimagePath);
 		
 		//list.jpg만
 		List<ProductInfoList> productinfoList = new ArrayList<ProductInfoList>();
@@ -56,14 +51,12 @@ public class ProductListController {
 		
 		for(ProductDB product : productList) {
 			long productCode = product.getProductCode();
-
+			
 			//해당 제품의 이미지들 불러오기
-			List<ProdimageDB> prodimageList = new ArrayList<ProdimageDB>();
-			prodimageList = prodimageService.selectByCode(productCode);
+			List<ProdimageDB> prodimageList = prodimageService.selectByCode(productCode);
+			List<StockDB> stockList = stockService.getStocklistByPd(productCode);
 			
 			for(ProdimageDB prodimage : prodimageList) {
-				product.getProductName();//제품명
-				product.getProductPrice();//제품가격
 				String filename = prodimage.getProdImageoname();
 				
 				//해당 제품의 이미지들중 리스트용 이미지 사용하기 위해서 저장해두기 (리스트 페이지에서 뿌려주는거라)
@@ -71,6 +64,7 @@ public class ProductListController {
 					ProductInfoList productInfo = new ProductInfoList();
 					productInfo.setProdimgdb(prodimage);
 					productInfo.setProductdb(product);
+					productInfo.setStockdb(stockList);
 					productinfoList.add(productInfo);
 				}
 			}

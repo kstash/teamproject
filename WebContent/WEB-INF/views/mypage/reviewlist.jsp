@@ -86,7 +86,7 @@
 						<jsp:param value="${review.reviewIsimage}" name="reviewisimage" />
 					</jsp:include>
 					<div class="p-3" style="width: 25%; display: inline-block;">
-						<div class="card" style="height: 20rem;">
+						<div class="card" style="height: 25rem;">
 							<div class="card-body">
 								<h5 class="card-title">${review.productCode}</h5>
 								<h6 class="card-subtitle mb-2 text-muted">${review.userId}</h6>
@@ -100,7 +100,7 @@
 									<p class="card-text">${review.reviewContents}</p>
 								</c:if>
 								<c:if test="${review.reviewIsimage != 0}">
-									<p class="card-text">이미지 출력예정</p>
+									<img class="rounded" src="<%=application.getContextPath()%>/item/battach?ordercode=${review.orderCode}" style="position: absolute; right: 20%;" width="60%" height="50%"/>
 								</c:if>
 							</div>
 							<div class="card-footer bg-transparent text-end">
