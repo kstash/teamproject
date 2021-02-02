@@ -28,6 +28,11 @@ public class ProductDBService {
 		
 		return null;
 	}
+
+	public ProductDB getProductByPd(long productcode) {
+		ProductDB product = productDao.getProductByPd(productcode);
+		return product;
+	}
 	
 	/*public void search(ProductDB product) {
 		ProductDB productSearched = 

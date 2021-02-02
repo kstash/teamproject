@@ -1,17 +1,17 @@
 package teamproject.dto;
 
 public class ProductDB {
-	private int productCode;
+	private long productCode;
 	private String productName;
 	private String productDesc;
 	private int productPrice;
-	private String productImagePath;
 	private String lowcategoryEng;
+	private String productFabric;
 	
-	public int getProductCode() {
+	public long getProductCode() {
 		return productCode;
 	}
-	public void setProductCode(int productCode) {
+	public void setProductCode(long productCode) {
 		this.productCode = productCode;
 	}
 	public String getProductName() {
@@ -32,17 +32,17 @@ public class ProductDB {
 	public void setProductPrice(int productPrice) {
 		this.productPrice = productPrice;
 	}
-	public String getProductImagePath() {
-		return productImagePath;
-	}
-	public void setProductImagePath(String productImagePath) {
-		this.productImagePath = productImagePath;
-	}
 	public String getLowcategoryEng() {
 		return lowcategoryEng;
 	}
 	public void setLowcategoryEng(String lowcategoryEng) {
 		this.lowcategoryEng = lowcategoryEng;
+	}
+	public String getProductFabric() {
+		return productFabric;
+	}
+	public void setProductFabric(String productFabric) {
+		this.productFabric = productFabric;
 	}
 	
 	

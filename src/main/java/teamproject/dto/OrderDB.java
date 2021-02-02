@@ -12,6 +12,7 @@ public class OrderDB {
 	private Date orderDate;
 	private String userId;
 	private long productCode;
+	
 	public String getOrderStatus() {
 		return orderStatus;
 	}

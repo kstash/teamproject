@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <div id="wrapper">
@@ -10,80 +12,87 @@
 			<!-- 최상단 상품 사진 -->
 			<div id="info_photo">
 				<img
-					src="<%=application.getContextPath()%>/resources/img/item_detail/img/img.jpg" />
+					src="<%=application.getContextPath()%>/resources/img/product/outer/slides/01.jpg" />
 			</div>
 			<!-- 최상단 상품 설명 및 버튼 -->
 			<div id="info_text">
-				<Strong id="item_title">도티드배색카우 하프퍼자켓</strong>
-				<p id="item_text">한 올 한 올 퍼의 질감이 살아 있는 하프 자켓입니다. 질감 표현부터 도톰한
-					두께감까지, 시즌성이 짙은 제품이에요. 개성적인 카우 배색 패턴이 더해져 더욱 강렬한 인상을 그리고, 힙까지 슬쩍 덮어
-					내려오는 기장이라 커버감 면에서도 만족스럽습니다. 난다메이드의 하이 퀄리티로 소개드려요!</p>
+				<Strong id="item_title">${product.productName}</strong>
+				<p id="item_text">${product.productDesc}</p>
 				<!-- 상품 옵션 선택 테이블 -->
 				<table id="item_etc">
 					<tr>
 						<th>price</th>
-						<td>179,000</td>
+						<td><fmt:formatNumber value="${product.productPrice}"
+								pattern="#,###" />원</td>
 					</tr>
 					<tr>
 						<th>point</th>
-						<td>1,700원(1%)</td>
+						<td><fmt:formatNumber
+								value="${product.productPrice/100-((product.productPrice/100)%100)}"
+								pattern="#,###" />원(1%)</td>
 					</tr>
 					<tr>
 						<th>color</th>
-						<td>
-							<ul>
-								<li><button>Yellow</button></li>
-								<li><button>Gray</button></li>
-							</ul>
-						</td>
+						<td><c:forEach var="stock" items="${stocklist}">
+								<span
+									style="display:inline-block; height:20px; width:20px; border:1px solid black; background-color: ${stock.stockColor};"></span>
+							</c:forEach></td>
 					</tr>
 					<tr>
-						<th>size</th>
-						<td>
-							<ul>
-								<li><button>S</button></li>
-								<li><button>M</button></li>
-								<li><button>L</button></li>
-							</ul>
-						</td>
+						<th>fabric</th>
+						<td>${product.productFabric}</td>
 					</tr>
 				</table>
-				<!-- 상품 인포 버튼 -->
-				<div id="iteminfo_btn">
-					<ul>
-						<li>
-							<button id='product'>Product Info</button>
-							<p id='product_text'>
-								Color / 베이지<br> Size / FREE<br> Fabric /
-								아크릴85%+폴리에스테르15%,(안감)폴리에스테르100%
-							</p>
-						</li>
-						<li>
-							<button id='size'>Size Info</button>
-							<p id='size_text' style="display: none;">
-								어깨넓이 46cm / 네크라인넓이 14cm / 네크라인깊이 18cm / 팔길이 61.5cm<br> 소매
-								17cm / 암홀 26cm / 가슴둘레 112cm / 전체길이 76cm<br> <br>
-								상세사이즈의 치수는 측정방법과 위치에 따라 오차가 발생될 수 있습니다.
-							</p>
-						</li>
-					</ul>
-				</div>
+
+
 				<hr>
-				<!-- 합계 -->
-				<div id="item_result">
-					<strong>Total</strong> <span>(quantity)</span> <span
-						id="totalprice">179,000</span> <span>원</span> <span
-						id="totalquantity">1</span> <span>(개)</span>
-				</div>
-				<!-- 장바구니, 관심상품, 구매하기 -->
-				<div id="detail_info_btn">
-					<button type="button" id="cart_btn"
-						onclick="location.href='<%=application.getContextPath()%>/'">장바구니</button>
-					<button type="button" id="wish_btn"
-						onclick="location.href='<%=application.getContextPath()%>/'">관심상품</button>
-					<button type="button" id="buy_btn"
-						onclick="location.href='<%=application.getContextPath()%>/'">구매하기</button>
-				</div>
+				<form name="ordering" id="ordering">
+					<input  type="hidden" name="productCode" value="${product.productCode}">
+					<!-- 컬러 -->
+					<div class="form-group d-inline"
+						style="float: right; padding-top: 0px; font-size: 1.2rem;">
+						<label for="orderColor">color :</label> <select
+							class="form-select p-1" id="orderColor" name="orderColor"
+							onchange="categoryChange(this.value)" style="width: 200px">
+							<option selected>색상선택</option>
+							<c:forEach var="stock" items="${stocklist}">
+								<option value="${stock.stockColor}"
+									style="background-color:${stock.stockColor};">${stock.stockName}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<br style="clear: both;" />
+					<!-- 사이즈 -->
+					<script>
+						function categoryChange(value) {
+							console.log("실행인가");
+							$.ajax({
+								url : "sizecategory",
+								method : "get",
+								data : {
+									stockcolor : value,
+									productcode : "${product.productCode}"
+								},
+								success : function(data) {
+									console.log("실행이다");
+									$("#selectedsize").html(data);
+								}
+							})
+						}
+					</script>
+					<div class="form-group d-inline" style="float: right; padding-top: 0px; font-size: 1.2rem;" id="selectedsize"></div>
+					<br style="clear: both;" />
+					<!-- 상품개수 -->
+					<div class="form-group" style="float:right; padding-top:0px; font-size:1.2rem;">
+						<label for="orderCount">구매 개수 :</label> 
+						<input class="d-inline p-1" style="text-align: center; width: 200px;" id="orderCount" name="orderCount" type="number">
+					</div>
+					<div id="detail_info_btn">
+						<button type="submit" formmethod="post" formaction="<%=application.getContextPath()%>/order/cart">장바구니</button>
+						<button type="button" >관심상품</button>
+						<button type="submit" formmethod="post" formaction="<%=application.getContextPath()%>/order/">구매하기</button>
+					</div>
+				</form>
 			</div>
 		</div>
 		<hr>
@@ -91,10 +100,8 @@
 			<!-- 상품 상세 설명 -->
 			<div id="detail_content">
 				<p>상품상세설명이다.</p>
-				<img
-					src="<%=application.getContextPath()%>/resources/img/item_detail/img/img.jpg"><br>
-				<img
-					src="<%=application.getContextPath()%>/resources/img/item_detail/img/img.jpg"><br>
+				<img src="<%=application.getContextPath()%>/resources/img/product/outer/products/01.jpg"><br />
+				<img src="<%=application.getContextPath()%>/resources/img/product/outer/products/02.jpg"><br />
 				<button id="policy">이용약관</button>
 			</div>
 			<!-- 하단 안내 사항 -->

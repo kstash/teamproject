@@ -57,38 +57,7 @@
 
 			<br /> <br /> <br /> <br />
 			
-			<script type="text/javascript">
-				$(function() {
-					$.ajax({
-						url : "detail",
-						method : "get",
-						data : {
-							productcode : "1612144422556"
-						},
-						success : function(data) {
-							$("#itemDetail").html(data);
-						}
-					});
-				});
-			</script>
-			<div id="itemDetail"></div>
-
-			<!-- 리뷰 부분 -->
-			<script type="text/javascript">
-				$(function() {
-					$.ajax({
-						url : "review",
-						method : "get",
-						data : {
-							productcode : "1612144422556"
-						},
-						success : function(data) {
-							$("#reviewpage").html(data);
-						}
-					});
-				});
-			</script>
-			<div id="reviewpage"></div>
+			
 
 			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 		</div>
