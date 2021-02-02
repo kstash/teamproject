@@ -34,6 +34,15 @@ public class StockDBDao {
 		sst.update("stock.release", stock);
 	}
 
+	public void delete(StockDB stock) {
+		sst.delete("stock.delete", stock);
+	}
 
+	public void update(StockDB stock) {
+		sst.delete("stock.update", stock);
+	}
 
+	public void insertByPd(long productCode) {
+		sst.insert("stock.insertByPd", productCode);
+	}
 }

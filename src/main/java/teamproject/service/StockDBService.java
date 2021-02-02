@@ -27,6 +27,19 @@ public class StockDBService {
 		StockDB stocksearch = stockdbDao.getstockByK(stockKey);
 		return stocksearch;
 	}
+
+	public void updateStock(StockDB stock) {
+		stockdbDao.update(stock);
+	}
+
+	public void deleteStock(StockDB stock) {
+		stockdbDao.delete(stock);
+	}
+
+	public void addStockByPd(long productCode) {
+		stockdbDao.insertByPd(productCode);
+		
+	}
 	
 	
 }

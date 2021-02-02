@@ -3,6 +3,7 @@ package teamproject.controller;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -17,10 +18,13 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import teamproject.dto.ProdimageDB;
 import teamproject.dto.ProductDB;
+import teamproject.dto.ProductInfoList;
 import teamproject.dto.ReviewDB;
 import teamproject.dto.RevimageDB;
 import teamproject.dto.StockDB;
+import teamproject.service.ProdimageDBService;
 import teamproject.service.ProductDBService;
 import teamproject.service.ReviewDBService;
 import teamproject.service.RevimageDBService;
@@ -44,6 +48,9 @@ public class ReviewController {
 	private ProductDBService productdbService;
 	
 	@Resource
+	private ProdimageDBService prodimagedbService;
+	
+	@Resource
 	private StockDBService stockdbService;
 	
 	//item_detail/index 실행
@@ -61,6 +68,22 @@ public class ReviewController {
 		List<StockDB> stocklist = stockdbService.getStocklistByPd(productcode); 
 		model.addAttribute("product", product);
 		model.addAttribute("stocklist", stocklist);
+		//image table 리스트가져와
+		List<ProdimageDB> prodimageList = prodimagedbService.selectByCode(productcode);
+		//보낼 테이블 리스트 만들어
+		List<ProdimageDB> nomalimageList = new ArrayList<ProdimageDB>(); 
+		for(ProdimageDB prodimage : prodimageList) {
+			String filename = prodimage.getProdImageoname();
+			if(filename.contains("main")) {
+				model.addAttribute("mainimage", prodimage);
+			}else if(filename.contains("list")) {
+				model.addAttribute("listimage", prodimage);
+			}else {
+				nomalimageList.add(prodimage);
+			}
+		}
+		model.addAttribute("nomalImageList",nomalimageList);
+		
 		return "/item_detail/detail";
 	}
 	@RequestMapping("/sizecategory")

@@ -11,8 +11,7 @@
 		<div id="detail_info">
 			<!-- 최상단 상품 사진 -->
 			<div id="info_photo">
-				<img
-					src="<%=application.getContextPath()%>/resources/img/product/outer/slides/01.jpg" />
+				<img src="<%=application.getContextPath()%>/resources/img/product/${mainimage.prodImagepath}${mainimage.productCode}/${mainimage.prodImageoname}"/>
 			</div>
 			<!-- 최상단 상품 설명 및 버튼 -->
 			<div id="info_text">
@@ -65,7 +64,6 @@
 					<!-- 사이즈 -->
 					<script>
 						function categoryChange(value) {
-							console.log("실행인가");
 							$.ajax({
 								url : "sizecategory",
 								method : "get",
@@ -74,7 +72,6 @@
 									productcode : "${product.productCode}"
 								},
 								success : function(data) {
-									console.log("실행이다");
 									$("#selectedsize").html(data);
 								}
 							})
@@ -93,15 +90,24 @@
 						<button type="submit" formmethod="post" formaction="<%=application.getContextPath()%>/order/">구매하기</button>
 					</div>
 				</form>
+				<c:if test="${sessionUserid == 'admin'}">
+					<br/>
+						<a class="btn btn-outline-secondary" href="<%=application.getContextPath()%>/admins/stock?productcode=${product.productCode}">
+						재고 관리 페이지
+						</a>
+					<br/>
+				</c:if>
 			</div>
 		</div>
 		<hr>
 		<div id="cotent_btn">
 			<!-- 상품 상세 설명 -->
 			<div id="detail_content">
-				<p>상품상세설명이다.</p>
-				<img src="<%=application.getContextPath()%>/resources/img/product/outer/products/01.jpg"><br />
-				<img src="<%=application.getContextPath()%>/resources/img/product/outer/products/02.jpg"><br />
+				<p>${product.productDesc}</p>
+				<img src="<%=application.getContextPath()%>/resources/img/product/${listimage.prodImagepath}${listimage.productCode}/${listimage.prodImageoname}"/>
+				<c:forEach var="nomalimage" items="${nomalImageList}">
+					<img src="<%=application.getContextPath()%>/resources/img/product/${nomalimage.prodImagepath}${nomalimage.productCode}/${nomalimage.prodImageoname}"/>
+				</c:forEach>
 				<button id="policy">이용약관</button>
 			</div>
 			<!-- 하단 안내 사항 -->
@@ -126,7 +132,6 @@
 						<p>품질보증안내다</p>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>

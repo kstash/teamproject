@@ -8,6 +8,7 @@ public class StockDB {
 	private int stockSizeXL;
 	private long productCode;
 	private String stockName;
+	private String stockBeforeColor;
 	
 	public String getStockColor() {
 		return stockColor;
@@ -50,6 +51,12 @@ public class StockDB {
 	}
 	public void setStockName(String stockName) {
 		this.stockName = stockName;
+	}
+	public String getStockBeforeColor() {
+		return stockBeforeColor;
+	}
+	public void setStockBeforeColor(String stockBeforeColor) {
+		this.stockBeforeColor = stockBeforeColor;
 	}
 	
 	
