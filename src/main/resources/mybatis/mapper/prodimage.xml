@@ -28,4 +28,10 @@
 				(#{prodimage.prodImagetype}, #{prodimage.prodImageoname}, #{prodimage.prodImagepath}, #{prodimage.productCode})
 			</foreach>
 	</insert>
+	
+	<select id="selectByPath" parameterType="string" resultType="prodimage">
+		select *
+		from prodimage
+		where prodImagePath=#{prodImagePath}
+	</select>
 </mapper>

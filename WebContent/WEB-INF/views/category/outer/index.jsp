@@ -43,8 +43,7 @@
 						});
 					</script>
 					<div id="headerpart"></div>
-				
-
+					
 					<!-- 페이지 내용 -->
 					<div id="content">
 						<!-- 추천상품 top5 슬라이드 -->
@@ -72,6 +71,7 @@
 								$.ajax({
 									url : "../products/productCardList",
 									method : "get",
+									data: {upcategoryeng:"outer"},
 									success : function(data) {
 										$("#productCardList").html(data);
 									}
@@ -79,7 +79,10 @@
 							});
 						</script>
 						<div id="productCardList"></div>
-
+						
+						
+						
+						
 						<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 					</div>
 				</div>

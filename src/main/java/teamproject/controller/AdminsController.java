@@ -165,7 +165,7 @@ public class AdminsController {
 		prodImage.setProductCode(productCode);
 		prodImage.setProdImagetype(prodImageattachList.getContentType());
 		prodImage.setProdImageoname("list"+"_"+prodImageattachList.getOriginalFilename());
-		prodImage.setProdImagepath(fullSavePath);
+		prodImage.setProdImagepath(upcategoryeng+"/"+lowcategoryEng+"/");
 		
 		prodimageService.insertProdImage(prodImage);
 		
@@ -181,7 +181,7 @@ public class AdminsController {
 		prodImage.setProductCode(productCode);
 		prodImage.setProdImagetype(prodImageattachMain.getContentType());
 		prodImage.setProdImageoname("main"+"_"+prodImageattachMain.getOriginalFilename());
-		prodImage.setProdImagepath(fullSavePath);
+		prodImage.setProdImagepath(upcategoryeng+"/"+lowcategoryEng+"/");
 		
 		prodimageService.insertProdImage(prodImage);
 		
@@ -196,7 +196,7 @@ public class AdminsController {
 			prodImage.setProdImagetype(detailImage.getContentType());
 			prodImage.setProdImageoname(i+"_"+detailImage.getOriginalFilename());
 			i++;
-			prodImage.setProdImagepath(fullSavePath);
+			prodImage.setProdImagepath(upcategoryeng+"/"+lowcategoryEng+"/");
 			
 			strFileType = detailImage.getOriginalFilename().substring(detailImage.getOriginalFilename().indexOf('.'));
 			detailImage.transferTo(new File(fullSavePath + detailImage.getOriginalFilename()));
