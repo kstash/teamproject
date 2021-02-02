@@ -15,7 +15,7 @@
 	</select>
 		
 	<select id="selectlistEngByEng" resultType="lowcategory">
-		select lowcategoryKr,  lowcategoryEng, upcategoryEng
+		select *
 		from lowcategory
 		where upcategoryEng = #{upcategoryEng}
 	</select>

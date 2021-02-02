@@ -16,8 +16,7 @@
 			</div>
 			<div class="modal-body">
 				<!-- review write form -->
-				<form enctype="multipart/form-data" name="reviewwriteform"
-					action="reviewwrite" method="post">
+				<form enctype="multipart/form-data" name="reviewwriteform" action="reviewwrite" method="post">
 					<input type="hidden" name="orderCode" value="${ordercode}" />
 					<input type="hidden" name="productCode" value="${productcode}" />
 					<div class="form-group">
