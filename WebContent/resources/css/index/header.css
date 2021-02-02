@@ -29,7 +29,7 @@ div{
 }
 
 #main_menu li a{
-	display:block;
+	/* display:block; */
 	color:black;
 }
 
@@ -38,17 +38,22 @@ div{
 	visibility:hidden;
 	width:70px;
 }
+
 #main_menu li:hover #dropmenu1{
 	opacity: 1;
 	visibility:visible;
+	margin:0px;
+	padding:0px;
+	background-color: #FFE8CC;
 }
 
 #dropmenu1 li{
-	background-color: #FFE8CC;
 	font-size:0.7rem;
 	width:130px;
+	padding:0px;
+	margin:0px;
 }
+
 #headerpart{
 	position: relative; z-index: 10;
 }
-
