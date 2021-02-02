@@ -51,7 +51,6 @@
 			  			<td id="deleteRow">
 			  				<a id="deleteBtn" class="btn btn-sm" href="deleteCart?cartcode=${cartlist.cartcode}">삭제</a>
 			  			</td>
-
 			  		</tr>
 		  		</c:if>
 		  	</c:forEach>
@@ -73,7 +72,7 @@
 	<!-- cart 테이블 정보 order 테이블로 넘기기 -->
 	<!-- orderFromCarts 어떻게 써야함? -->
 	<div id="btns">
-			<button id="cartBuy" class="btn" href="cartBuy">구매하기</button>
+			<button id="cartBuy" class="btn" href="">구매하기</button>
 			<a id="cartCancel"class="btn" href="index">취소</a>
 	</div>
 	</c:if>
