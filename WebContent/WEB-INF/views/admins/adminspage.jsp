@@ -56,6 +56,7 @@
 		<div id="content">
 			<!-- DB연동 필수 -->
 			<div class="container">
+				<br><br><br>
 				<h3 class="mb-3">카테고리 구성 (편집)</h3>
 				<table class="table table-hover table-responsive">
 					<thead>
@@ -87,25 +88,24 @@
 			<!-- 제품 업로드 -->
 			<!-- DB연동 필수 -->
 			<div class="container">
-				<div>
-					<h3>제품 등록</h3>
-					<hr>
-					<div class="form-group mr-3 col">
+				<h3>제품 등록</h3>
+				<hr>
+				<div class="form-group mr-3 row">
+					<script type="text/javascript">
+						function f1(value){
+							$.ajax({
+								url: "lowcategorySelect",
+								data: {upcategoryeng: value},
+								method: "get",
+								success: function(data) {
+									console.log(data);
+									$("#lowcategory_select").html(data);
+								}
+							});
+						}
+					</script>
+					<div class="col">
 						<label for="FormControlSelectUpCategory">상위 카테고리</label>
-						<script type="text/javascript">
-							function f1(value){
-								$.ajax({
-									url: "lowcategorySelect",
-									data: {upcategoryeng: value},
-									method: "get",
-									success: function(data) {
-										console.log(data);
-										$("#lowcategory_select").html(data);
-									}
-								});
-							}
-						</script>
-						
 						<select class="form-control" id="FormControlSelectUpCategory" onchange="javascript:f1(this.value)">
 							<c:forEach var="upcategorySelect" items="${upcategories}">
 								<option id="upcategorySelectOption" value="${upcategorySelect.upcategoryEng}">
@@ -113,26 +113,25 @@
 								</option>
 							</c:forEach>
 						</select>
-						
-						<script type="text/javascript">
-							function f2(value) {
-								$.ajax({
-									url: "postProductForm",
-									data: {lowcategoryeng: value},
-									method: "get",
-									success: function(data) {
-										console.log(data);
-										console.log(data.categoryinfo);
-										$("#postProduct_form").html(data);
-									}
-								})
-							}
-						</script>
-						<div id="lowcategory_select"></div>
 					</div>
-					<div id="postProduct_form"></div>
+					<script type="text/javascript">
+						function f2(value) {
+							$.ajax({
+								url: "postProductForm",
+								data: {lowcategoryeng: value},
+								method: "get",
+								success: function(data) {
+									console.log(data);
+									console.log(data.categoryinfo);
+									$("#postProduct_form").html(data);
+								}
+							})
+						}
+					</script>
+					<div id="lowcategory_select" class="col"></div>
 				</div>
-				<br> <br>
+				<div id="postProduct_form" class="row"></div>
+				<br><br>
 			</div>
 
 			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
