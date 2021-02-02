@@ -64,7 +64,6 @@
 					<!-- 사이즈 -->
 					<script>
 						function categoryChange(value) {
-							console.log("실행인가");
 							$.ajax({
 								url : "sizecategory",
 								method : "get",
@@ -73,7 +72,6 @@
 									productcode : "${product.productCode}"
 								},
 								success : function(data) {
-									console.log("실행이다");
 									$("#selectedsize").html(data);
 								}
 							})

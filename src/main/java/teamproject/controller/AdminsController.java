@@ -3,17 +3,13 @@ package teamproject.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.Date;
 import java.util.List;
-import java.util.ListIterator;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.eclipse.jdt.core.compiler.CategorizedProblem;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -23,17 +19,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import teamproject.dto.LowcategoryDB;
 import teamproject.dto.ProdimageDB;
 import teamproject.dto.ProductDB;
+import teamproject.dto.StockDB;
 import teamproject.dto.UpcategoryDB;
 import teamproject.service.LowcategoryDBService;
 import teamproject.service.ProdimageDBService;
 import teamproject.service.ProductDBService;
+import teamproject.service.StockDBService;
 import teamproject.service.UpcategoryDBService;
 
 @Controller
@@ -56,6 +53,9 @@ public class AdminsController {
 
 	@Resource
 	private ProdimageDBService prodimageService;
+	
+	@Resource
+	private StockDBService stockService;
 
 	// adminspage--관리 페이지
 	@RequestMapping("/adminspage")
@@ -243,8 +243,28 @@ public class AdminsController {
 		logger.info("실행");
 		//parameter 테스트를 위한 model
 		model.addAttribute("productCode", productcode);
+		List<StockDB> stocklist = stockService.getStocklistByPd(productcode);
+		model.addAttribute("stocklist", stocklist);
 		//이후에 제작할 재고관리 페이지
 		return "admins/stock";
 	}
-
+	@PostMapping("/stockupdate")
+	public String stockupdate(StockDB stock) {
+		stockService.updateStock(stock);
+		long code = stock.getProductCode();
+		return "redirect:/admins/stock?productcode="+code;
+	}
+	@PostMapping("/stockdelete")
+	public String stockdelete(StockDB stock) {
+		logger.info("실행");
+		long code = stock.getProductCode();
+		stockService.deleteStock(stock);
+		return "redirect:/admins/stock?productcode="+code;
+	}
+	@PostMapping("/addstock")
+	public String addstock(long productCode) {
+		stockService.addStockByPd(productCode);
+		logger.info("실행 순서에 문제가 있나요?");
+		return "redirect:/admins/stock?productcode="+productCode;
+	}
 }
