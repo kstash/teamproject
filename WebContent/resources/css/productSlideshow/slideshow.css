@@ -1,6 +1,6 @@
 @charset "UTF-8";
-
-/* Fading 애니메이션 */
+/* 
+Fading 애니메이션
 .fade {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 1.5s;
@@ -21,11 +21,34 @@
 @media only screen and (max-width: 300px) {
   .text {font-size: 11px}
 }
+ */
+/*  
+    *{margin:0;padding:0;}
+    ul,li{list-style:none;}
+    .slide{overflow:hidden;}
+    .slide ul{width:calc(100% * 4);display:flex;animation:slide 8s infinite;} slide를 8초동안 진행하며 무한반복 함
+    .slide li{width:calc(100% / 4);height:600px;}
+    .slide li:nth-child(1){background:#fff;}
 
+    @keyframes slide {
+      0% {margin-left:0;} 0 ~ 10  : 정지
+      10% {margin-left:0;} 10 ~ 25 : 변이
+      25% {margin-left:-100%;} 25 ~ 35 : 정지
+      35% {margin-left:-100%;} 35 ~ 50 : 변이
+      50% {margin-left:-200%;}
+      60% {margin-left:-200%;}
+      75% {margin-left:-300%;}
+      85% {margin-left:-300%;}
+      100% {margin-left:0;}
+    } */
+ul,li{list-style:none;}
+.slide{overflow:hidden;}
+ 
 .productSlideshow-container {
 	width: 90%;
-	height: 20%;
-	margin-top: 30px;
+	position: relative;
+	top: 50%;
+	left: 5%;
 }
 
 .productSlideshow-container > .productSlide {
@@ -33,8 +56,9 @@
 	display: inline-block;
 }
 
-.productSlideshow-container > .productSlide > a > img {
+.productSlideshow-container > .productSlide > img {
 	display: inline-block;
+	max-width: 300px;
 }
 
 .productSlide_name .productSlide_desc {
@@ -43,14 +67,14 @@
 
 .productSlide {
 	display: inline-block;
-	/* height: 50%; */
+	height: 50%;
 }
 
 .productSlide_detail {
 	float: left;
 }
 
-.productSlide_detail > a > img {
+.productSlide_detail > img {
 	 width: 100%;
 	 float: left;
 	 height: 100%;
@@ -63,45 +87,22 @@
 #productSlide_detail_info {
 	width: 30%; 
 	margin-top: 80px;
-	margin-left: 55px;
 }
-
+.productColor {
+	float: left;
+}
 .productSlide_detail > button {
 	float: right;
 }
 
+.productSlide_detail > p {
+	/* 참고 */
+	
+}
 
 .productSlide_colors > div {
-	width : 30px;
-	height: 30px;
-	margin-right: 2px;
+	width : 20px;
+	height: 20px;
+	margin: 1 1 1 1;
+	margin-right: 5px;
 }
-
-.productSlide_name {
-	line-height: 20px;
-}
-
-.productSlide_price {
-	line-height: 20px;
-}
-
-.productSlide_desc {
-	line-height: 20px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

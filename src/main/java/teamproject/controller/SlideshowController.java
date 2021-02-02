@@ -87,6 +87,8 @@ public class SlideshowController {
 			slideinfoList.add(slideinfo);
 		}
 		
+		int slidecount = slideinfoList.size();
+		model.addAttribute("slidecount", slidecount);
 		model.addAttribute("slideinfoList", slideinfoList);
 		
 		return "products/slideshow";

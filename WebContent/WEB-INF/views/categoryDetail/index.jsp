@@ -44,7 +44,7 @@
 					</script>
 					<div id="headerpart"></div>
 				
-
+					
 					<!-- 페이지 내용 -->
 					<div id="content">
 						<!-- 추천상품 top5 슬라이드 -->
@@ -53,7 +53,7 @@
 								$.ajax({
 									url: "../products/slideshow",
 									method: "get",
-									data: {upcategoryeng:"${upcategoryeng}"},
+									data: {upcategoryeng:"${upcategoryeng}", lowcategoryeng:"${lowcategoryeng}"},
 									success: function(data) {
 										console.log(data);
 										$(".productSlideshow-container").html(data);
@@ -61,7 +61,7 @@
 								})
 							})
 						</script>
-						<div class="productSlideshow-container card" style="max-width:2000px;"></div>
+						<div class="productSlideshow-container slide carousel" data-ride="carousel"></div>
 						
 						<!-- breadcrumb -->
 						<script type="text/javascript">
@@ -96,6 +96,7 @@
 
 						<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 					</div>
+					
 				</div>
 
 
