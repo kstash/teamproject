@@ -95,6 +95,8 @@ public class CartDBService {
 		}
 	}
 
-
+	public void deleteFromCart(int cartcode) {
+		cartDao.deleteFromCart(cartcode);
+	}
 
 }
