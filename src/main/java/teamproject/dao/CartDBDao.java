@@ -40,5 +40,9 @@ public class CartDBDao {
 		sst.delete("cart.delete", cartcode);
 	}
 
+	public int deleteFromCart(int cartcode) {
+		int rows = sst.delete("cart.delete", cartcode);
+		return rows;
+	}
 
 }
