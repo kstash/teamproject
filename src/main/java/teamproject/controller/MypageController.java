@@ -125,6 +125,19 @@ public class MypageController {
 	}
 	@RequestMapping("/reviewdelete")
 	public String reviewDelete(String ordercode) {
+		RevimageDB img = revimagedbService.getRevimageByO(ordercode);
+		if(img != null) {
+			File targetFile = new File("C:/git/teamproject/WebContent/resources/img/review/users"+img.getRevimagePath());
+			if(targetFile.exists()){ 
+				//파일존재여부확인 
+				if(targetFile.isDirectory()){ 
+					//파일이 디렉토리인지 확인 
+					File[] files = targetFile.listFiles(); 
+					for( int i=0; i<files.length; i++){files[i].delete();}
+				}
+				targetFile.delete();
+			}
+		}
 		revimagedbService.deleteRevimageByO(ordercode);
 		reviewdbService.deleteReviewByO(ordercode);
 		return "redirect:/mypage/reviewlist";
