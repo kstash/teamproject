@@ -17,4 +17,13 @@ public class RevimageDBDao {
 		RevimageDB reviewOne = sst.selectOne("revimage.selectByO", orderCode);
 		return reviewOne;
 	}
+
+	public void insert(RevimageDB img) {
+		sst.insert("revimage.insert", img);
+	}
+
+	public int deleteReviewByO(String orderCode) {
+		int rows = sst.delete("revimage.deleteByO", orderCode);
+		return rows;
+	}
 }
