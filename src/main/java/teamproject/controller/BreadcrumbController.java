@@ -48,6 +48,7 @@ public class BreadcrumbController {
 			model.addAttribute("lowcategoryKr",upcategoryKr);
 		}else {
 			//lowEng -> lowKR
+			logger.info(lowcategorylist.size()+"");
 			for(LowcategoryDB item : lowcategorylist) {
 				if(item.getLowcategoryEng().equals(lowcategoryeng)) {
 					model.addAttribute("lowcategoryKr",item.getLowcategoryKr());

@@ -1,31 +1,82 @@
 package teamproject.controller;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import teamproject.dto.ProdimageDB;
+import teamproject.dto.ProductDB;
+import teamproject.dto.ProductInfoList;
+import teamproject.service.ProdimageDBService;
+import teamproject.service.ProductDBService;
 @Controller
-@RequestMapping("/productll")
+@RequestMapping("/products")
 public class ProductListController {
 	private static final Logger logger = LoggerFactory.getLogger(ProductListController.class);
 	// 이미지 파일 읽어올때 1,2,3,...,9,10,11,... 에서 1,10,11,...,2,20,... 순으로 읽어옴.
 	// --> 01,02,03...으로 이미지 파일 이름 수정
 	
+	@Resource
+	private ProdimageDBService prodimageService; 
+	
+	@Resource
+	private ProductDBService productService;
+	
+	@SuppressWarnings("null")
 	@GetMapping("/productCardList")
-	public String productList(Model model) {
+	public void productList(Model model, String upcategoryeng, String lowcategoryeng) {
 		logger.info("실행");
-		String productImageDirPath = "C:/git/teamproject/WebContent/resources/img/product/img/index/products/";
+		
+		model.addAttribute("upcategoryeng", upcategoryeng);
+		model.addAttribute("lowcategoryeng", lowcategoryeng);
+
+		String productImageDirPath = "C:/git/teamproject/WebContent/resources/img/product/";
+		String productsPath = productImageDirPath+upcategoryeng+"/"+lowcategoryeng+"/";
 		File prodImgDirPath = new File(productImageDirPath);
-		String[] products = prodImgDirPath.list();
-		for(int i = 0; i < products.length; i++) {
-			//홈페이지로 (index.jsp) 잡아놨음
-			products[i] = "/teamproject/resources/img/product/img/index/products/" + products[i];
+		
+		File prodImgDirPath_up[] = new File(productImageDirPath+upcategoryeng+"/").listFiles();
+		
+		File prodImgDirPath_up_low[] = new File(productsPath).listFiles();
+		String prodimagePath = upcategoryeng+"/"+lowcategoryeng+"/";
+		logger.info("검색 경로: " + prodimagePath);
+		
+		//list.jpg만
+		List<ProductInfoList> productinfoList = new ArrayList<ProductInfoList>();
+		
+		List<ProductDB> productList = productService.getProductsByLowCategory(lowcategoryeng);
+		
+		for(ProductDB product : productList) {
+			long productCode = product.getProductCode();
+
+			//해당 제품의 이미지들 불러오기
+			List<ProdimageDB> prodimageList = new ArrayList<ProdimageDB>();
+			prodimageList = prodimageService.selectByCode(productCode);
+			
+			for(ProdimageDB prodimage : prodimageList) {
+				product.getProductName();//제품명
+				product.getProductPrice();//제품가격
+				String filename = prodimage.getProdImageoname();
+				
+				//해당 제품의 이미지들중 리스트용 이미지 사용하기 위해서 저장해두기 (리스트 페이지에서 뿌려주는거라)
+				if(filename.contains("list")) {
+					ProductInfoList productInfo = new ProductInfoList();
+					productInfo.setProdimgdb(prodimage);
+					productInfo.setProductdb(product);
+					productinfoList.add(productInfo);
+				}
+			}
+			
 		}
-		//JSP 파일별로 불러와야 하는 이미지가 다르기 때문에 해당 카테고리의 products 경로를 붙여놓은 String으로 보내기.
-		model.addAttribute("products", products);
-		return "products/productCardList";
+		model.addAttribute("productinfoList", productinfoList);
 	}
 	@GetMapping("/productRedir")
 	public String productRedir() {

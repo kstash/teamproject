@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mybatis.mapper.stock"></mapper>
+<mapper namespace="stock">
+	<select id="selectlistByPd" resultType="stock">
+		select *
+		from stock
+		where productCode = #{productCode}
+	</select>
+	<select id="selectByk" parameterType="stock" resultType="stock">
+		select *
+		from stock
+		where productCode = #{productCode} and stockColor = #{stockColor}
+	</select>
+	
+	<update id="release" parameterType="stock">
+		update stock
+		set stockSizeS = stockSizeS - #{stockSizeS}, stockSizeM = stockSizeM - #{stockSizeM},  stockSizeL = stockSizeL - #{stockSizeL}, stockSizeXL = stockSizeXL - #{stockSizeXL}
+		where stockColor = #{stockColor} and productCode = #{productCode}
+	</update>
+</mapper>

@@ -51,11 +51,8 @@
 
 					<!-- 페이지 내용 -->
 				<div id="content">
-						<!-- 추천상품 top5 슬라이드 -->
+					<!-- 추천상품 top5 슬라이드 -->
 					<jsp:include page="/WEB-INF/views/products/slideshow.jsp" />
-						
-
-
 				</div>
 				<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 			</div>

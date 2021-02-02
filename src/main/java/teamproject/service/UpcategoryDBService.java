@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import teamproject.dao.UpcategoryDBDao;
 import teamproject.dto.LowcategoryDB;
+import teamproject.dto.ProductDB;
 import teamproject.dto.UpcategoryDB;
 
 @Service
@@ -24,6 +25,11 @@ public class UpcategoryDBService {
 	public List<UpcategoryDB> getUpCategories() {
 		List<UpcategoryDB> upcategories = upcategorydbDao.getUpcategories();
 		return upcategories;
+	}
+
+	public UpcategoryDB insert(UpcategoryDB upcategory) {
+		UpcategoryDB newupcategory = upcategorydbDao.insert(upcategory);
+		return newupcategory;
 	}
 
 }

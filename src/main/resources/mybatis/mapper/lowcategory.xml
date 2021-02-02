@@ -15,9 +15,20 @@
 	</select>
 		
 	<select id="selectlistEngByEng" resultType="lowcategory">
-		select lowcategoryKr,  lowcategoryEng, upcategoryEng
+		select *
 		from lowcategory
 		where upcategoryEng = #{upcategoryEng}
 	</select>
-
+	
+	<select id="selectlistAllByEng" resultType="lowcategory">
+		select *
+		from lowcategory
+		where upcategoryEng = #{upcategoryEng}
+	</select>
+	
+	<select id="selectUpEngByLowEng" resultType="string">
+		select upcategoryEng
+		from lowcategory
+		where lowcategoryEng = #{lowcategoryEng}
+	</select>
 </mapper>

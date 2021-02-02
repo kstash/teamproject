@@ -29,11 +29,8 @@
 
 	<insert id="insert" parameterType="review">
 		insert into review
-		(reviewpoint, reviewcontents, userid, ordercode, productcode,
-		reviewisimage)
-		values
-		(#{reviewPoint}, #{reviewContents}, #{userId},
-		#{orderCode}, #{productCode}, #{reviewIsimage})
+		(reviewpoint, reviewcontents, userid, ordercode, productcode,reviewisimage)
+		values(#{reviewPoint}, #{reviewContents}, #{userId}, #{orderCode}, #{productCode}, #{reviewIsimage})
 	</insert>
 	
 	<update id="update"  parameterType="review">

@@ -8,7 +8,16 @@
 		where c.productcode = p.productcode
 	</select>
 	
-	<delete id="deleteCart" parameterType="int">
-		delete from cart where cartcode=#{cartcode}
+	<insert id="insert" parameterType="cart">
+		<selectKey keyProperty="cartcode" resultType="int" order="BEFORE">
+		select cart_seq.nextval from dual
+		</selectKey>
+		insert into cart (cartcode, cartcolor, cartsize, cartcount, userid, productcode)
+		values(#{cartcode}, #{cartcolor}, #{cartsize}, #{cartcount}, #{userid}, #{productcode})
+	</insert>
+	
+	<delete id="delete">
+		delete from cart
+		where cartcode=#{cartcode}
 	</delete>
 </mapper>

@@ -23,5 +23,11 @@
 		where upcategoryeng = #{upcategoryEng}
 	</select>
 
+	<insert id="insert" parameterType="upcategory">
+		insert into upcategory
+		(upcategoryKr, upcategoryEng)
+		values
+		(#{upcategoryEng}, #{upcategoryEng})
+	</insert>
 
 </mapper>

@@ -26,9 +26,18 @@ public class CartDBDao {
 		return cartlist;
 	}
 
-	public int deleteCart(int cartcode) {
-		int rows = sst.delete("cart.deleteCart", cartcode);
+	public int insertCart(CartDB cart) {
+		int rows = sst.insert("cart.insert", cart);
 		return rows;
+	}
+
+	public int getCartPriceByPd(long productCode) {
+		int price = sst.selectOne("product.selectPriceByPk", productCode);
+		return price;
+	}
+
+	public void deleteCartByK(int cartcode) {
+		sst.delete("cart.delete", cartcode);
 	}
 
 }
