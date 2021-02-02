@@ -48,9 +48,20 @@
 					<!-- 페이지 내용 -->
 					<div id="content">
 						<!-- 추천상품 top5 슬라이드 -->
-						<jsp:include page="/WEB-INF/views/products/slideshow.jsp" />
-						
-						
+						<%-- <jsp:include page="/WEB-INF/views/products/slideshow.jsp" /> --%>
+						<script type="text/javascript">
+							$(function() {
+								$.ajax({
+									url: "../products/slideshow",
+									method: "get",
+									data: {upcategoryeng:"${upcategoryeng}"},
+									success: function(data) {
+										$("#productSlideshow-container").html(data);
+									}
+								})
+							})
+						</script>
+						<div class="productSlideshow-container"></div>
 						<!-- breadcrumb -->
 						<script type="text/javascript">
 							$(function() {
