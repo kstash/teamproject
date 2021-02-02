@@ -1,7 +1,7 @@
 package teamproject.dto;
 
 public class CartDB {
-	private String cartcode;
+	private int cartcode;
 	private String cartcolor;
 	private String cartsize;
 	private int cartcount;
@@ -11,10 +11,10 @@ public class CartDB {
 	private String productname;
 	private int productprice;
 	
-	public String getCartcode() {
+	public int getCartcode() {
 		return cartcode;
 	}
-	public void setCartcode(String cartcode) {
+	public void setCartcode(int cartcode) {
 		this.cartcode = cartcode;
 	}
 	public String getCartcolor() {

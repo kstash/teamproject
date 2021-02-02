@@ -26,4 +26,8 @@ public class CartDBService {
 		return cartlist;
 	}
 
+	public void deleteCart(int cartcode) {
+		cartDao.deleteCart(cartcode);
+	}
+
 }

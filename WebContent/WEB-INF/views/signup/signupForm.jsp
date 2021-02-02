@@ -85,10 +85,21 @@
 		
 	});
 	
+	$('#signupForm').on('submit', function () {
+		if (!checkUserid(form.userid.value)){
+			return false;
+		} else if(!checkUserpw(form.userid.value, form.userpw.value, form.userpwchk)){
+			return false;
+		}
+		return true;
+	});
+	
+	
 	/* var userpw = $('#userpw').val();
 	var userpwchk = $('#userpwchk').val();
 	
 		if(userpw != userpwchk){
 			$('#signupSubmit').attr('disabled');
 		} */
+		
 </script>
