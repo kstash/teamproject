@@ -5,18 +5,14 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="product" type="teamproject.dto.ProductDB"/>
-		
 		<typeAlias alias="upcategory" type="teamproject.dto.UpcategoryDB"/>
 		<typeAlias alias="lowcategory" type="teamproject.dto.LowcategoryDB"/>
-		
 		<typeAlias alias="user" type="teamproject.dto.UserDB"/>
 		<typeAlias alias="review" type="teamproject.dto.ReviewDB"/>
 		<typeAlias alias="revimage" type="teamproject.dto.RevimageDB"/>
-
-		
 		<typeAlias alias="cart" type="teamproject.dto.CartDB"/>
-
 		<typeAlias alias="order" type="teamproject.dto.OrderDB"/>
+		<typeAlias alias="stock" type="teamproject.dto.StockDB"/>
 
 	</typeAliases>
 </configuration>
