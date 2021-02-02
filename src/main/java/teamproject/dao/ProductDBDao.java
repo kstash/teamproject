@@ -1,5 +1,7 @@
 package teamproject.dao;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -40,6 +42,10 @@ public class ProductDBDao {
 	public ProductDB getProductByPd(long productCode) {
 		ProductDB product = sst.selectOne("product.selectByPk", productCode);
 		return product;
+	}
+
+	public List<ProductDB> getProductsByLowCategory(String lowcategoryeng) {
+		return sst.selectList("product.selectListByLowCategory", lowcategoryeng);
 	}
 
 	/*

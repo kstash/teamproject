@@ -30,4 +30,8 @@ public class ProdimageDBDao {
 		logger.info("prodimagePath: " + prodImagePath);
 		return sst.selectList("selectByPath", prodImagePath);
 	}
+
+	public List<ProdimageDB> selectByCode(long productCode) {
+		return sst.selectList("prodimage.selectByCode", productCode);
+	}
 }

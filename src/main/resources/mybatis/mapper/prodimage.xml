@@ -34,4 +34,10 @@
 		from prodimage
 		where prodImagePath=#{prodImagePath}
 	</select>
+	
+	<select id="selectByCode" parameterType="_long" resultType="prodimage">
+		select *
+		from prodimage
+		where productCode=#{productCode}
+	</select>
 </mapper>

@@ -43,6 +43,10 @@ public class ProductDBService {
 		ProductDB product = productDao.getProductByPd(productcode);
 		return product;
 	}
+
+	public List<ProductDB> getProductsByLowCategory(String lowcategoryeng) {
+		return productDao.getProductsByLowCategory(lowcategoryeng);
+	}
 	
 	/*public void search(ProductDB product) {
 		ProductDB productSearched = 

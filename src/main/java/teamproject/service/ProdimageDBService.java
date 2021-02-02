@@ -29,4 +29,8 @@ public class ProdimageDBService {
 		logger.info("prodimagePath: " + prodimagePath);
 		return prodimageDao.selectByPath(prodimagePath);
 	}
+
+	public List<ProdimageDB> selectByCode(long productCode) {
+		return prodimageDao.selectByCode(productCode);
+	}
 }

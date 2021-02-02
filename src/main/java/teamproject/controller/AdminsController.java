@@ -159,12 +159,12 @@ public class AdminsController {
 		logger.info("prodImageattachList: " + prodImageattachList.getContentType());
 		logger.info("prodImageattachList: " + prodImageattachList.getOriginalFilename());
 		
-		String strFileType = prodImageattachList.getOriginalFilename().substring(prodImageattachList.getOriginalFilename().indexOf('.'));
+		String strFileType = prodImageattachList.getOriginalFilename().substring(prodImageattachList.getOriginalFilename().indexOf('.'));//.jpg
 		prodImageattachList.transferTo(new File(fullSavePath+"list"+strFileType));
 		
 		prodImage.setProductCode(productCode);
 		prodImage.setProdImagetype(prodImageattachList.getContentType());
-		prodImage.setProdImageoname("list"+"_"+prodImageattachList.getOriginalFilename());
+		prodImage.setProdImageoname("list" + strFileType);
 		prodImage.setProdImagepath(upcategoryeng+"/"+lowcategoryEng+"/");
 		
 		prodimageService.insertProdImage(prodImage);
@@ -175,12 +175,12 @@ public class AdminsController {
 		logger.info("prodImageattachMain: " + prodImageattachMain.getContentType());
 		logger.info("prodImageattachMain: " + "main"+prodImageattachMain.getOriginalFilename());
 		
-		strFileType = prodImageattachMain.getOriginalFilename().substring(prodImageattachMain.getOriginalFilename().indexOf('.'));
+		strFileType = prodImageattachMain.getOriginalFilename().substring(prodImageattachMain.getOriginalFilename().indexOf('.'));//.jpg
 		prodImageattachMain.transferTo(new File(fullSavePath+"main"+strFileType));
 		
 		prodImage.setProductCode(productCode);
 		prodImage.setProdImagetype(prodImageattachMain.getContentType());
-		prodImage.setProdImageoname("main"+"_"+prodImageattachMain.getOriginalFilename());
+		prodImage.setProdImageoname("main" + strFileType);
 		prodImage.setProdImagepath(upcategoryeng+"/"+lowcategoryEng+"/");
 		
 		prodimageService.insertProdImage(prodImage);
@@ -195,12 +195,13 @@ public class AdminsController {
 			prodImage.setProductCode(productCode);
 			prodImage.setProdImagetype(detailImage.getContentType());
 			prodImage.setProdImageoname(i+"_"+detailImage.getOriginalFilename());
-			i++;
+			
 			prodImage.setProdImagepath(upcategoryeng+"/"+lowcategoryEng+"/");
 			
 			strFileType = detailImage.getOriginalFilename().substring(detailImage.getOriginalFilename().indexOf('.'));
-			detailImage.transferTo(new File(fullSavePath + detailImage.getOriginalFilename()));
+			detailImage.transferTo(new File(fullSavePath + i + "_" + detailImage.getOriginalFilename()));
 			prodimageService.insertProdImage(prodImage);
+			i++;
 		}
 		
 		return "redirect:/admins/adminspage";

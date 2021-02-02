@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import teamproject.dto.ProdimageDB;
+import teamproject.dto.ProductDB;
+import teamproject.dto.ProductInfoList;
 import teamproject.service.ProdimageDBService;
+import teamproject.service.ProductDBService;
 @Controller
 @RequestMapping("/products")
 public class ProductListController {
@@ -24,6 +27,9 @@ public class ProductListController {
 	
 	@Resource
 	private ProdimageDBService prodimageService; 
+	
+	@Resource
+	private ProductDBService productService;
 	
 	@SuppressWarnings("null")
 	@GetMapping("/productCardList")
@@ -42,26 +48,35 @@ public class ProductListController {
 		File prodImgDirPath_up_low[] = new File(productsPath).listFiles();
 		String prodimagePath = upcategoryeng+"/"+lowcategoryeng+"/";
 		logger.info("검색 경로: " + prodimagePath);
-		List<ProdimageDB> prodimageList = prodimageService.selectByPath(prodimagePath);
 		
 		//list.jpg만
-		List<ProdimageDB> prodimage_list = new ArrayList<ProdimageDB>();
+		List<ProductInfoList> productinfoList = new ArrayList<ProductInfoList>();
 		
-		for(ProdimageDB prodimage : prodimageList) {
-			/*
-			 * logger.info(prodimage.getProdImageoname());
-			 * logger.info(prodimage.getProdImagepath());
-			 */
-			logger.info(prodimage.getProdImageoname());
-			String filename = prodimage.getProdImageoname();
+		List<ProductDB> productList = productService.getProductsByLowCategory(lowcategoryeng);
+		
+		for(ProductDB product : productList) {
+			long productCode = product.getProductCode();
+
+			//해당 제품의 이미지들 불러오기
+			List<ProdimageDB> prodimageList = new ArrayList<ProdimageDB>();
+			prodimageList = prodimageService.selectByCode(productCode);
 			
-			//String filewithnoextend = filename.substring(0, 5);
-			
-			if(filename.contains("list")) {
-				prodimage_list.add(prodimage);
+			for(ProdimageDB prodimage : prodimageList) {
+				product.getProductName();//제품명
+				product.getProductPrice();//제품가격
+				String filename = prodimage.getProdImageoname();
+				
+				//해당 제품의 이미지들중 리스트용 이미지 사용하기 위해서 저장해두기 (리스트 페이지에서 뿌려주는거라)
+				if(filename.contains("list")) {
+					ProductInfoList productInfo = new ProductInfoList();
+					productInfo.setProdimgdb(prodimage);
+					productInfo.setProductdb(product);
+					productinfoList.add(productInfo);
+				}
 			}
+			
 		}
-		model.addAttribute("prodimage_list", prodimage_list);
+		model.addAttribute("productinfoList", productinfoList);
 	}
 	@GetMapping("/productRedir")
 	public String productRedir() {

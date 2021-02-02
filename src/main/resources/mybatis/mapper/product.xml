@@ -5,6 +5,12 @@
 		select productCode, productName, productDesc, productPrice, productImagePath, lowcategoryEng
 		from product
 	</select>
+	
+	<select id="selectListByLowCategory" parameterType="string" resultType="product">
+		select *
+		from product
+		where lowcategoryeng=#{lowcategoryeng}
+	</select>
 
 	<select id="selectByPk" parameterType="_long" resultType="product">
 		select *
