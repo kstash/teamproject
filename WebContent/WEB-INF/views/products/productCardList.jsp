@@ -21,7 +21,7 @@
 					<br><br>
 					<div id="imageCard_name">${productinfo.productdb.productName}</div>
 					
-					<div id="imageCard_price">${productinfo.productdb.productPrice}</div>
+					<div id="imageCard_price">${productinfo.productdb.productPrice}원</div>
 				</div>
 				</a>
 			</li>

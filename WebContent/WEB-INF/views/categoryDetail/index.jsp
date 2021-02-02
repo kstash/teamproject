@@ -29,7 +29,7 @@
 			<jsp:include page="/WEB-INF/views/include/left_area.jsp" />
 
 			<!-- 내용 -->
-				<div id="header">
+				<div id="header" class="col">
 					<%-- 중앙 --%>
 					<script type="text/javascript">
 						$(function() {
@@ -48,7 +48,6 @@
 					<!-- 페이지 내용 -->
 					<div id="content">
 						<!-- 추천상품 top5 슬라이드 -->
-						<%-- <jsp:include page="/WEB-INF/views/products/slideshow.jsp" /> --%>
 						<script type="text/javascript">
 							$(function() {
 								$.ajax({
@@ -56,12 +55,14 @@
 									method: "get",
 									data: {upcategoryeng:"${upcategoryeng}"},
 									success: function(data) {
-										$("#productSlideshow-container").html(data);
+										console.log(data);
+										$(".productSlideshow-container").html(data);
 									}
 								})
 							})
 						</script>
-						<div class="productSlideshow-container"></div>
+						<div class="productSlideshow-container card" style="max-width:2000px;"></div>
+						
 						<!-- breadcrumb -->
 						<script type="text/javascript">
 							$(function() {
@@ -85,7 +86,7 @@
 									method : "get",
 									data: {upcategoryeng:"${upcategoryeng}", lowcategoryeng: "${lowcategoryeng}"},
 									success : function(data) {
-										console.log(data);
+										//console.log(data);
 										$("#productCardList").html(data);
 									}
 								});
