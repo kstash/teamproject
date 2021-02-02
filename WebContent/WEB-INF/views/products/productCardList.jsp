@@ -11,9 +11,9 @@
 					
 					<div id="imageCard_color">
 						<!-- stock 테이블 정보로 foreach 사용해서 inline style 개별 적용 -->
-						<div id="div1"></div>
-						<div id="div2"></div>
-						<div id="div3"></div>
+						<c:forEach var="stock" items="${productinfo.stockdb}">
+							<div style="background-color: ${stock.stockColor}"></div>
+						</c:forEach>
 					</div>
 					<br><br>
 					<div id="imageCard_name">${productinfo.productdb.productName}</div>
