@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-​
+​<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <div id="imageCardList" style="padding-top: 0px; width: 100%">
 	<ul>
 		<!-- 제품에 대한 모든 내용을 담고 있어야함 -->
@@ -21,7 +22,7 @@
 					<br><br>
 					<div id="imageCard_name">${productinfo.productdb.productName}</div>
 					
-					<div id="imageCard_price">${productinfo.productdb.productPrice}원</div>
+					<div id="imageCard_price"><fmt:formatNumber value="${productinfo.productdb.productPrice}" pattern="#,###"/>원</div>
 				</div>
 				</a>
 			</li>
