@@ -70,7 +70,7 @@
 				<c:forEach var="review" items="${reviewList}">
 					<div class="p-3" style="width:25%; display: inline-block;">
 						<div class="card" style="height: 20rem;">
-							<div class="card-body">
+							<div class="card-body" style="overflow: hidden;">
 								<h5 class="card-title">${review.productCode}</h5>
 								<h6 class="card-subtitle mb-2 text-muted">${review.userId}</h6>
 								<div class="review_point_stars mb-1">
@@ -80,6 +80,9 @@
 								</div>
 								<c:if test="${review.reviewIsimage == 0}">
 									<p class="card-text">${review.reviewContents}</p>
+								</c:if>
+								<c:if test="${review.reviewIsimage != 0}">
+									<img class="rounded" src="battach?ordercode=${review.orderCode}" style="position: relative; left: 35px;" width="80%" height="60%"/>
 								</c:if>
 							</div>
 						</div>

@@ -38,6 +38,12 @@
 						<textarea class="form-control" id="reviewContents"
 							name="reviewContents" rows="5" cols="50"></textarea>
 					</div>
+					
+					<div class="form-group">
+						<label for="rphoto">첨부파일</label>
+						<input type="file" id="rphoto" name="rphoto"/>
+					</div>
+					
 					<button class="btn btn-primary">저장</button>
 				</form>
 			</div>
