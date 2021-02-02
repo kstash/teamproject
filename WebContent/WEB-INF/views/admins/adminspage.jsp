@@ -69,7 +69,8 @@
 										test="${lowcategory.upcategoryEng == upcategory.upcategoryEng}">
 										<td><a type="button" href="choselowcategory"
 											class="btn btn-primary btn-sm link" data-toggle="modal"
-											data-target="#categoryInfoModal">${lowcategory.lowcategoryKr}</a></td>
+											data-target="#categoryInfoModal">
+												${lowcategory.lowcategoryKr} </a></td>
 									</c:if>
 								</c:forEach>
 							</tr>
@@ -86,107 +87,53 @@
 			<!-- 제품 업로드 -->
 			<!-- DB연동 필수 -->
 			<div class="container">
-				<h3>제품 등록</h3>
-				<hr>
-				<form action="" class="col" style="width: 50%;">
-					<div class="flex col">
-						<div class="row">
-							<div class="form-group mr-3 col">
-								<label for="FormControlSelectUpCategory">상위 카테고리</label> <select
-									class="form-control" id="FormControlSelectUpCategory">
-									<c:forEach var="upcategorySelect" items="${upcategories}">
-										<option id="upcategorySelectOption" onclick="getlowcategories" value="${upcategorySelect.upcategoryEng}">${upcategorySelect.upcategoryKr}
-									</c:forEach>
-								</select>
-							</div>
-							<script type="text/javascript">
-								const getlowcategories = function(){
-									$("#upcategorySelectOption").on("click", function(){
-										$.ajax({
-											url: "choseUpCategory?chosenUpCategory="+$("#upcategorySelectOption").value(),
-											method: "get",
-											success: function(data){
-												console.log(data);
-												for(var i=0; i<data.length; i++) {
-													var board = data[i];
-													$("#result3 tbody").append("<tr>");
-													$("#result3 tbody").append("<td>" + board.bno + "</td>");
-													$("#result3 tbody").append("<td>" + board.btitle + "</td>");
-													$("#result3 tbody").append("<td>" + board.bwriter + "</td>");
-													$("#result3 tbody").append("</tr>");
-												}
-											}
-										})
-									})
-								}
-							</script>
-							<div class="form-group mr-3 col">
-								<label for="FormControlSelectLowCategory">하위 카테고리</label> 
-								<select class="form-control" id="FormControlSelectLowCategory">
-								</select>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="form-group mr-3 col" style="width: 300px;">
-								<label for="productName">제품명</label>
-								<div class="input-group" id="productName">
-									<input type="text" id="productNameInput" name="productNameInput" class="form-control">
-								</div>
-							</div>
-							<div class="form-group mr-3 col" style="width: 300px;">
-								<label for="productPrice">제품가</label>
-								<div class="input-group" id="productPrice">
-									<input type="number" id="productPriceInput" name="productPriceInput" class="form-control text-right">
-									<div class="input-group-append" style="padding: 0;">
-										<span class="input-group-text">원</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div>
-							<div class="form-group">
-								<label for="productDescInput">제품 상세 설명</label>
-								<textarea class="form-control" id="productDescInput" name="productDescInput" rows="3"></textarea>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="row">
-							<div class="input-group mb-3">
-								<div class="input-group-prepend" style="padding-top:0;">
-									<span class="input-group-text" id="inputGroupFileAddon01">리스트 이미지</span>
-								</div>
-								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="productListImageFile" aria-describedby="inputGroupFileAddon01">
-									<label class="custom-file-label" for="productListImageFile">Choose file</label>
-								</div>
-							</div>
-						</div>
+				<div>
+					<h3>제품 등록</h3>
+					<hr>
+					<div class="form-group mr-3 col">
+						<label for="FormControlSelectUpCategory">상위 카테고리</label>
+						<script type="text/javascript">
+							function f1(value){
+								$.ajax({
+									url: "lowcategorySelect",
+									data: {upcategoryeng: value},
+									method: "get",
+									success: function(data) {
+										console.log(data);
+										$("#lowcategory_select").html(data);
+									}
+								});
+							}
+						</script>
 						
-						<div class="row">
-							<div class="input-group mb-3">
-								<div class="input-group-prepend" style="padding-top:0;">
-									<span class="input-group-text" id="inputGroupFileAddon02">메인 이미지</span>
-								</div>
-								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="productMainImageFile" aria-describedby="inputGroupFileAddon02">
-									<label class="custom-file-label" for="productMainImageFile">Choose file</label>
-								</div>
-							</div>
-						</div>
+						<select class="form-control" id="FormControlSelectUpCategory" onchange="javascript:f1(this.value)">
+							<c:forEach var="upcategorySelect" items="${upcategories}">
+								<option id="upcategorySelectOption" value="${upcategorySelect.upcategoryEng}">
+									${upcategorySelect.upcategoryKr}
+								</option>
+							</c:forEach>
+						</select>
+						
+						<script type="text/javascript">
+							function f2(value) {
+								$.ajax({
+									url: "postProductForm",
+									data: {lowcategoryeng: value},
+									method: "get",
+									success: function(data) {
+										console.log(data);
+										console.log(data.categoryinfo);
+										$("#postProduct_form").html(data);
+									}
+								})
+							}
+						</script>
+						<div id="lowcategory_select"></div>
 					</div>
-				</form>
-				
-				<form class="col" name="fileForm" action="requestImageFiles" method="post" enctype="multipart/form-data">
-					<input multiple="multiple" type="file" name="file" />
-					<input class="btn btn-primary btn-sm" type="submit" value="등록" />
-				</form>
+					<div id="postProduct_form"></div>
+				</div>
+				<br> <br>
 			</div>
-
-
-
-
 
 			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 		</div>

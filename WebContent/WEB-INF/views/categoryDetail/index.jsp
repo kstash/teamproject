@@ -72,7 +72,9 @@
 								$.ajax({
 									url : "../products/productCardList",
 									method : "get",
+									data: {upcategoryeng:"${upcategoryeng}", lowcategoryeng: "${lowcategoryeng}"},
 									success : function(data) {
+										console.log(data);
 										$("#productCardList").html(data);
 									}
 								});

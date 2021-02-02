@@ -29,62 +29,15 @@ public class CategoryDetailController {
 		logger.info("아우터-" + end + "실행");
 		return "category/outer/"+end;
 	}
-	
-	
-	/* 팬츠 */
-	@RequestMapping("/pants")
-	public String pants() {
-		logger.info("팬츠 실행");
-		return "category/pants/index";
-	}
-	@RequestMapping("/pants/*")
-	public String pantsunder(HttpServletRequest request) {
-		
-		String target= request.getRequestURI();
-		String end= target.substring(target.lastIndexOf("/")+1);
-		logger.info("팬츠-" + end + "실행");
-		return "category/pants/"+end;
-	}
-	
-	
-	/* 스커트 */
-	@RequestMapping("/skirt")
-	public String skirt() {
-		logger.info("스커트 실행");
-		return "category/skirt/index";
-	}
-	
-	@RequestMapping("/skirt/*")
-	public String skirtunder(HttpServletRequest request) {
-		String target= request.getRequestURI();
-		String end= target.substring(target.lastIndexOf("/")+1);
-		logger.info("스커트-"+ end + "실행");
-		return "category/skirt/"+ end;
-	}
 
-	
-	
-	/* 탑 */
-	@RequestMapping("/top")
-	public String top() {
-		logger.info("탑 실행");
-		return "category/top/index";
-	}
-	
-	@RequestMapping("/top/*")
-	public String topunder(HttpServletRequest request) {
-		String target= request.getRequestURI();
-		String end= target.substring(target.lastIndexOf("/")+1);
-		logger.info("탑-"+ end + "실행");
-		return "category/top/"+ end;
-	}
-	
 	//call parameter category page
 	@GetMapping("/")
 	public String callcategorypage(Model model, String upcategoryeng, String lowcategoryeng) {
-		logger.info("모델");
+		logger.info("실행");
+		
 		model.addAttribute("upcategoryeng", upcategoryeng);
 		model.addAttribute("lowcategoryeng", lowcategoryeng);
+		
 		return "categoryDetail/index";
 	}
 }

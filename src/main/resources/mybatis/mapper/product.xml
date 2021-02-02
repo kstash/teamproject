@@ -5,11 +5,21 @@
 		select productCode, productName, productDesc, productPrice, productImagePath, lowcategoryEng
 		from product
 	</select>
+	
+	<select id="selectListByLowCategory" parameterType="string" resultType="product">
+		select *
+		from product
+		where lowcategoryeng=#{lowcategoryeng}
+	</select>
 
 	<select id="selectByPk" parameterType="_long" resultType="product">
 		select *
 		from product
 		where productCode=#{productCode}
+	</select>
+	
+	<select id="getSelfByPk" parameterType="long" resultType="product">
+		
 	</select>
 	
 	<select id="selectPriceByPk" parameterType="_long" resultType="int">
@@ -26,8 +36,8 @@
 	</select> -->
 
 	<insert id="insertProduct" parameterType="product">
-		insert into product (productCode, productName, productDesc, productPrice, productImagePath, lowcategoryEng)
-		values (#{productCode}, #{productName}, #{productDesc}, #{productPrice}, #{productImagePath}, #{lowcategoryEng})
+		insert into product (productCode, productName, productDesc, productFabric, productPrice, lowcategoryEng)
+		values (#{productCode}, #{productName}, #{productDesc}, #{productFabric}, #{productPrice}, #{lowcategoryEng})
 	</insert>
 	
 	<update id="updateProduct" parameterType="product">

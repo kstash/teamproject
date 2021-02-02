@@ -5,6 +5,8 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="product" type="teamproject.dto.ProductDB"/>
+		<typeAlias alias="prodimage" type="teamproject.dto.ProdimageDB"/>
+		
 		<typeAlias alias="upcategory" type="teamproject.dto.UpcategoryDB"/>
 		<typeAlias alias="lowcategory" type="teamproject.dto.LowcategoryDB"/>
 		<typeAlias alias="user" type="teamproject.dto.UserDB"/>

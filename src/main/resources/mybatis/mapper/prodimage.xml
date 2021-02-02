@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="prodimage">
+
+	<select id="selectAll">
+		select prodImagetype, prodImageoname, prodImagepath, productCode
+		from prodimage
+	</select>
+	
+	<select id="selectOne" parameterType="product">
+		select prodImagetype, prodImageoname, prodImagepath, productCode
+		from prodimage
+		where productCode=#{productCode}
+	</select>
+	
+	<insert id="insert" parameterType="prodimage">
+		insert into prodimage
+		(prodImagetype, prodImageoname, prodImagepath, productCode)
+		values
+		(#{prodImagetype}, #{prodImageoname}, #{prodImagepath}, #{productCode})
+	</insert>
+
+	<insert id="insertList" parameterType="java.util.List">
+		INSERT INTO prodimage
+		(prodImagetype, prodImageoname, prodImagepath, productCode)
+		VALUES
+			<foreach item="item" index="index" collection="list">
+				(#{prodimage.prodImagetype}, #{prodimage.prodImageoname}, #{prodimage.prodImagepath}, #{prodimage.productCode})
+			</foreach>
+	</insert>
+	
+	<select id="selectByPath" parameterType="string" resultType="prodimage">
+		select *
+		from prodimage
+		where prodImagePath=#{prodImagePath}
+	</select>
+	
+	<select id="selectByCode" parameterType="_long" resultType="prodimage">
+		select *
+		from prodimage
+		where productCode=#{productCode}
+	</select>
+</mapper>
