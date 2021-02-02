@@ -48,7 +48,9 @@ public class ReviewController {
 	
 	//item_detail/index 실행
 	@RequestMapping("/")
-	public String detailItem() {
+	public String detailItem(long productcode, Model model) {
+		logger.info("상세페이지 실행");
+		model.addAttribute("productCode", productcode);
 		return "/item_detail/index";
 	}
 	

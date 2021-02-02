@@ -63,7 +63,7 @@
 						url : "detail",
 						method : "get",
 						data : {
-							productcode : "1612144422556"
+							productcode : "${productCode}"
 						},
 						success : function(data) {
 							$("#itemDetail").html(data);
@@ -80,7 +80,7 @@
 						url : "review",
 						method : "get",
 						data : {
-							productcode : "1612144422556"
+							productcode : "${productCode}"
 						},
 						success : function(data) {
 							$("#reviewpage").html(data);
