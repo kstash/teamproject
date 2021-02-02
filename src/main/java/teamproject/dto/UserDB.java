@@ -8,6 +8,8 @@ public class UserDB {
 	private String useraddr;
 	private String useremail;
 	private String userphone;
+	private String userauth;
+	
 	public String getUserid() {
 		return userid;
 	}
@@ -43,6 +45,12 @@ public class UserDB {
 	}
 	public void setUserphone(String userphone) {
 		this.userphone = userphone;
+	}
+	public String getUserauth() {
+		return userauth;
+	}
+	public void setUserauth(String userauth) {
+		this.userauth = userauth;
 	}
 	
 	
