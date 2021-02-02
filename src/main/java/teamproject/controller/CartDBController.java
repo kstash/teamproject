@@ -29,4 +29,19 @@ public class CartDBController {
 		
 		return "cart/cart";
 	}
+	
+	@GetMapping("/deleteCart")
+	public String deleteCart(int cartcode){
+		cartService.deleteFromCart(cartcode);
+		logger.info("Contoroller.deleteCart()");
+		return "redirect:/cart";
+	}
+	
+	@GetMapping("/cartBuy")
+	public String cartBuy(List<CartDB> carts) {
+		logger.info("Contoroller.cartBuy()");
+		cartService.orderFromCarts(carts);
+		
+		return "redirect:/cart";
+	}
 }

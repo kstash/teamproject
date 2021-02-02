@@ -12,17 +12,16 @@ import teamproject.service.ProductDBService;
 
 @Controller
 public class rightsearchController {
-	/*private static final Logger logger = 
+	private static final Logger logger = 
 			LoggerFactory.getLogger(rightsearchController.class);
 	
-	@Resource
-	private ProductDBService productService;
-	
-	//경로 설정 !! , 어디서든 가능하게
-	@GetMapping("/rightmenu")
-	public void rightsearch(String searchKeyword, ProductDB product) {
-		logger.info("rightsearch() 실행");
-		logger.info(searchKeyword);
-		productService.search(product);
-	}*/
+	/*
+	 * @Resource private ProductDBService productService;
+	 * 
+	 * //경로 설정 !! , 어디서든 가능하게
+	 * 
+	 * @GetMapping("/rightmenu") public void rightsearch(String searchKeyword,
+	 * ProductDB product) { logger.info("rightsearch() 실행");
+	 * logger.info(searchKeyword); productService.search(product); }
+	 */
 }
