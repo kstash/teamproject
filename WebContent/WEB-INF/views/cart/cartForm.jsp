@@ -42,7 +42,7 @@
 			  			<td id="tdcartChk">
 			  				<input class="form-check-input" type="checkbox" id="cartChk" name="cartChk"></input>
 			  				</td>
-			  			<td>${cartlist.cartcode}</td>
+			  			<td id="cartcode">${cartlist.cartcode}</td>
 			  			<td id="product">${cartlist.productname}</td>
 			  			<td>${cartlist.cartsize}</td>
 			  			<td>${cartlist.cartcolor}</td>
@@ -107,10 +107,11 @@ $("#selectAllBtn").on('click', function() {
 		cartRow.push(tr.text());
 		
 		// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
-		var cartcode = td.eq(1).text();
+		var cartcode = td.eq(1).text(); //카트 코드 가져오기
 		var pcount = td.eq(5).text();
 		var pprice = td.eq(6).text();
-
+		
+		console.log(cartcode);
 		console.log(pprice);
 		console.log(pcount);
 		
