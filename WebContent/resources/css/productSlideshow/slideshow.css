@@ -41,8 +41,13 @@ Fading 애니메이션
       85% {margin-left:-300%;}
       100% {margin-left:0;}
     } */
-ul,li{list-style:none;}
-.slide{overflow:hidden;}
+ul, li {
+	list-style:none;
+}
+.slide {
+	overflow:hidden;
+	max-height:380px; 
+}
  
 .productSlideshow-container {
 	width: 90%;
@@ -88,19 +93,13 @@ ul,li{list-style:none;}
 	width: 30%; 
 	margin-top: 80px;
 }
-.productColor {
-	float: left;
-}
+
 .productSlide_detail > button {
 	float: right;
 }
 
-.productSlide_detail > p {
-	/* 참고 */
-	
-}
-
-.productSlide_colors > div {
+.productColor {
+	float: left;
 	width : 20px;
 	height: 20px;
 	margin: 1 1 1 1;

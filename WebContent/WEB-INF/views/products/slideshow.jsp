@@ -18,13 +18,15 @@
 	<c:forEach var="slideinfo" items="${slideinfoList}">
 		<div class="productSlide row carousel-item active" data-interval="4000">
 			<div class="productSlide_detail col-md-8 col " id="productSlide_detail_img">
-				<img style="display:inline-block;" src="<%=application.getContextPath()%>/resources/img/product/${slideinfo.prodimgdb.prodImagepath}${slideinfo.prodimgdb.productCode}/${slideinfo.prodimgdb.prodImageoname}">
+				<a href="#">
+					<img style="display:inline-block;" src="<%=application.getContextPath()%>/resources/img/product/${slideinfo.prodimgdb.prodImagepath}${slideinfo.prodimgdb.productCode}/${slideinfo.prodimgdb.prodImageoname}">
+				</a>
 			</div>
 			
 			<div class="productSlide_detail col-md-4 col" id="productSlide_detail_info">
 				<div class="productSlide_colors">
 					<c:forEach var="stock" items="${slideinfo.stockdb}">
-						<div style="background-color:${stock.stockColor}" class="productColor"></div>
+						<div style="width:20px; height:20px; margin-right:5px; background-color:${stock.stockColor}" class="productColor"></div>
 					</c:forEach>
 				</div><br><hr>
 
