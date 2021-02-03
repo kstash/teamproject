@@ -6,6 +6,16 @@
 		from product
 	</select>
 	
+	<select id="selectAllByUp" resultType="product">
+		select *
+		from product
+		where lowcategoryeng IN (
+			select lowcategoryeng
+			from lowcategory
+			where upcategoryeng = #{upcategoryeng}
+		)
+	</select>
+	
 	<select id="selectListByLowCategory" parameterType="string" resultType="product">
 		select *
 		from product

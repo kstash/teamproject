@@ -48,4 +48,8 @@ public class ProductDBDao {
 		return sst.selectList("product.selectListByLowCategory", lowcategoryeng);
 	}
 
+	public List<ProductDB> getEveryProductByUp(String upcategoryeng) {
+		return sst.selectList("product.selectAllByUp", upcategoryeng);
+	}
+
 }

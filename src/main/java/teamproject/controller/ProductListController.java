@@ -72,6 +72,41 @@ public class ProductListController {
 		}
 		model.addAttribute("productinfoList", productinfoList);
 	}
+	
+	@GetMapping("/upcategoryCardList")
+	public void upcategoryCardList(Model model, String upcategoryeng) {
+		logger.info("실행");
+		
+		model.addAttribute("upcategoryeng", upcategoryeng);
+		
+		//list.jpg만
+		List<ProductInfoList> productinfoList = new ArrayList<ProductInfoList>();
+		
+		List<ProductDB> productList = productService.getEveryProductByUp(upcategoryeng);
+		
+		for(ProductDB product : productList) {
+			long productCode = product.getProductCode();
+			
+			//해당 제품의 이미지들 불러오기
+			List<ProdimageDB> prodimageList = prodimageService.selectByCode(productCode);
+			List<StockDB> stockList = stockService.getStocklistByPd(productCode);
+			
+			for(ProdimageDB prodimage : prodimageList) {
+				String filename = prodimage.getProdImageoname();
+				
+				//해당 제품의 이미지들중 리스트용 이미지 사용하기 위해서 저장해두기 (리스트 페이지에서 뿌려주는거라)
+				if(filename.contains("list")) {
+					ProductInfoList productInfo = new ProductInfoList();
+					productInfo.setProdimgdb(prodimage);
+					productInfo.setProductdb(product);
+					productInfo.setStockdb(stockList);
+					productinfoList.add(productInfo);
+				}
+			}
+			
+		}
+		model.addAttribute("productinfoList", productinfoList);
+	}
 	@GetMapping("/productRedir")
 	public String productRedir() {
 		//해당제품 상세 페이지로 이동

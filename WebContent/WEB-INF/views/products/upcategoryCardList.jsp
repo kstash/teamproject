@@ -12,6 +12,7 @@
 						<img id="imageCard_img"
 							src="<%=application.getContextPath()%>/resources/img/product/${productinfo.prodimgdb.prodImagepath}/${productinfo.prodimgdb.productCode}/${productinfo.prodimgdb.prodImageoname}"
 							style="width: 100%">
+						
 						<div id="imageCard_color">
 							<!-- stock 테이블 정보로 foreach 사용해서 inline style 개별 적용 -->
 							<c:forEach var="stock" items="${productinfo.stockdb}">

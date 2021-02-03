@@ -36,9 +36,17 @@ public class CategoryDetailController {
 		
 		logger.info("lowcategoryeng값: "+lowcategoryeng);
 		
-		model.addAttribute("upcategoryeng", upcategoryeng);
-		model.addAttribute("lowcategoryeng", lowcategoryeng);
+		if(upcategoryeng != null && lowcategoryeng == null) {
+			model.addAttribute("upcategoryeng", upcategoryeng);
+			return "categoryDetail/up";
+		} else {
+			model.addAttribute("upcategoryeng", upcategoryeng);
+			model.addAttribute("lowcategoryeng", lowcategoryeng);
+			
+			return "categoryDetail/index";
+		}
 		
-		return "categoryDetail/index";
+		
+		
 	}
 }

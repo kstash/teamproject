@@ -47,6 +47,22 @@
 					
 					<!-- 페이지 내용 -->
 					<div id="content">
+						<!-- 추천상품 top5 슬라이드 -->
+						<script type="text/javascript">
+							$(function() {
+								$.ajax({
+									url: "../products/slideshow",
+									method: "get",
+									data: {upcategoryeng:"${upcategoryeng}", lowcategoryeng:"${lowcategoryeng}"},
+									success: function(data) {
+										console.log(data);
+										$(".productSlideshow-container").html(data);
+									}
+								})
+							})
+						</script>
+						<div class="productSlideshow-container slide carousel" data-ride="carousel"></div>
+						
 						<!-- breadcrumb -->
 						<script type="text/javascript">
 							$(function() {
@@ -66,7 +82,7 @@
 						<script type="text/javascript">
 							$(function() {
 								$.ajax({
-									url : "../products/productCardList",
+									url : "../products/upcategoryCardList",
 									method : "get",
 									data: {upcategoryeng:"${upcategoryeng}", lowcategoryeng: "${lowcategoryeng}"},
 									success : function(data) {

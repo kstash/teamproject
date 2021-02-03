@@ -48,4 +48,8 @@ public class ProductDBService {
 		return productDao.getProductsByLowCategory(lowcategoryeng);
 	}
 
+	public List<ProductDB> getEveryProductByUp(String upcategoryeng) {
+		return productDao.getEveryProductByUp(upcategoryeng);
+	}
+
 }

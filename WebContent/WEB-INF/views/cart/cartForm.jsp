@@ -45,7 +45,10 @@
 			  			<td id="cartcode">${cartlist.cartcode}</td>
 			  			<td id="product">${cartlist.productname}</td>
 			  			<td>${cartlist.cartsize}</td>
-			  			<td>${cartlist.cartcolor}</td>
+			  			<td>
+			  				<span style="display:inline-block; height:15px; width:15px; border:1px solid black; background-color: ${cartlist.cartcolor};">
+			  				</span>
+			  			</td>
 			  			<td id="count">${cartlist.cartcount}</td>
 			  			<td id="price">${cartlist.productprice}</td>
 			  			<td id="deleteRow">
@@ -116,7 +119,7 @@ $("#selectAllBtn").on('click', function() {
 		
 		prices.push(pprice * pcount);
 		var sum = 0;
-		for(var i=0; i<price.length; i++){
+		for(var i=0; i<prices.length; i++){
 			sum = sum + parseInt(prices[i]);
 			console.log(prices[i]);
 		}
