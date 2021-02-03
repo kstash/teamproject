@@ -38,6 +38,27 @@
 		where productCode = #{productCode}
 	</select>
 	
+	<select id="sortbylowprice" parameterType="string" resultType="product">
+		select *
+		from product
+		where lowcategoryeng=#{lowcategoryeng}
+		order by productPrice
+	</select>
+	
+	<select id="sortbyhighprice" parameterType="string" resultType="product">
+		select *
+		from product
+		where lowcategoryeng=#{lowcategoryeng}
+		order by productPrice DESC
+	</select>
+	
+	<select id="sortbyname" parameterType="string" resultType="product">
+		select *
+		from product
+		where lowcategoryeng=#{lowcategoryeng}
+		order by productName
+	</select>
+	
 
 	<insert id="insertProduct" parameterType="product">
 		insert into product (productCode, productName, productDesc, productFabric, productPrice, lowcategoryEng)

@@ -104,9 +104,8 @@
 			<!-- 상품 상세 설명 -->
 			<div id="detail_content">
 				<p>${product.productDesc}</p>
-				<img src="<%=application.getContextPath()%>/resources/img/product/${listimage.prodImagepath}${listimage.productCode}/${listimage.prodImageoname}"/>
 				<c:forEach var="nomalimage" items="${nomalImageList}">
-					<img src="<%=application.getContextPath()%>/resources/img/product/${nomalimage.prodImagepath}${nomalimage.productCode}/${nomalimage.prodImageoname}"/>
+					<img style="width:50%;" src="<%=application.getContextPath()%>/resources/img/product/${nomalimage.prodImagepath}${nomalimage.productCode}/${nomalimage.prodImageoname}"/>
 				</c:forEach>
 				<button id="policy">이용약관</button>
 			</div>

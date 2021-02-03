@@ -112,4 +112,112 @@ public class ProductListController {
 		//해당제품 상세 페이지로 이동
 		return "redirect:/category/outer";
 	}
+	@GetMapping("/sortbylowprice")
+	public String sortbylowprice(Model model, String upcategoryeng, String lowcategoryeng) {
+		logger.info("실행");
+		
+		model.addAttribute("upcategoryeng", upcategoryeng);
+		model.addAttribute("lowcategoryeng", lowcategoryeng);
+		
+		//list.jpg만
+		List<ProductInfoList> productinfoList = new ArrayList<ProductInfoList>();
+		
+		List<ProductDB> productList = productService.getProductsByLowCategory_sortbylowprice(lowcategoryeng);
+		
+		for(ProductDB product : productList) {
+			long productCode = product.getProductCode();
+			
+			//해당 제품의 이미지들 불러오기
+			List<ProdimageDB> prodimageList = prodimageService.selectByCode(productCode);
+			List<StockDB> stockList = stockService.getStocklistByPd(productCode);
+			
+			for(ProdimageDB prodimage : prodimageList) {
+				String filename = prodimage.getProdImageoname();
+				
+				//해당 제품의 이미지들중 리스트용 이미지 사용하기 위해서 저장해두기 (리스트 페이지에서 뿌려주는거라)
+				if(filename.contains("list")) {
+					ProductInfoList productInfo = new ProductInfoList();
+					productInfo.setProdimgdb(prodimage);
+					productInfo.setProductdb(product);
+					productInfo.setStockdb(stockList);
+					productinfoList.add(productInfo);
+				}
+			}
+			
+		}
+		model.addAttribute("productinfoList", productinfoList);
+		return "products/productCardList";
+	}
+	@GetMapping("/sortbyhighprice")
+	public String sortbyhighprice(Model model, String upcategoryeng, String lowcategoryeng) {
+		logger.info("실행");
+		
+		model.addAttribute("upcategoryeng", upcategoryeng);
+		model.addAttribute("lowcategoryeng", lowcategoryeng);
+		
+		//list.jpg만
+		List<ProductInfoList> productinfoList = new ArrayList<ProductInfoList>();
+		
+		List<ProductDB> productList = productService.getProductsByLowCategory_sortbyhighprice(lowcategoryeng);
+		
+		for(ProductDB product : productList) {
+			long productCode = product.getProductCode();
+			
+			//해당 제품의 이미지들 불러오기
+			List<ProdimageDB> prodimageList = prodimageService.selectByCode(productCode);
+			List<StockDB> stockList = stockService.getStocklistByPd(productCode);
+			
+			for(ProdimageDB prodimage : prodimageList) {
+				String filename = prodimage.getProdImageoname();
+				
+				//해당 제품의 이미지들중 리스트용 이미지 사용하기 위해서 저장해두기 (리스트 페이지에서 뿌려주는거라)
+				if(filename.contains("list")) {
+					ProductInfoList productInfo = new ProductInfoList();
+					productInfo.setProdimgdb(prodimage);
+					productInfo.setProductdb(product);
+					productInfo.setStockdb(stockList);
+					productinfoList.add(productInfo);
+				}
+			}
+			
+		}
+		model.addAttribute("productinfoList", productinfoList);
+		return "products/productCardList";
+	}
+	@GetMapping("/sortbyname")
+	public String sortbyname(Model model, String upcategoryeng, String lowcategoryeng) {
+		logger.info("실행");
+		
+		model.addAttribute("upcategoryeng", upcategoryeng);
+		model.addAttribute("lowcategoryeng", lowcategoryeng);
+		
+		//list.jpg만
+		List<ProductInfoList> productinfoList = new ArrayList<ProductInfoList>();
+		
+		List<ProductDB> productList = productService.getProductsByLowCategory_sortbyname(lowcategoryeng);
+		
+		for(ProductDB product : productList) {
+			long productCode = product.getProductCode();
+			
+			//해당 제품의 이미지들 불러오기
+			List<ProdimageDB> prodimageList = prodimageService.selectByCode(productCode);
+			List<StockDB> stockList = stockService.getStocklistByPd(productCode);
+			
+			for(ProdimageDB prodimage : prodimageList) {
+				String filename = prodimage.getProdImageoname();
+				
+				//해당 제품의 이미지들중 리스트용 이미지 사용하기 위해서 저장해두기 (리스트 페이지에서 뿌려주는거라)
+				if(filename.contains("list")) {
+					ProductInfoList productInfo = new ProductInfoList();
+					productInfo.setProdimgdb(prodimage);
+					productInfo.setProductdb(product);
+					productInfo.setStockdb(stockList);
+					productinfoList.add(productInfo);
+				}
+			}
+			
+		}
+		model.addAttribute("productinfoList", productinfoList);
+		return "products/productCardList";
+	}
 }

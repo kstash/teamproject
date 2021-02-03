@@ -52,4 +52,18 @@ public class ProductDBDao {
 		return sst.selectList("product.selectAllByUp", upcategoryeng);
 	}
 
+	public List<ProductDB> getProductsByLowCategory_sortbylowprice(String lowcategoryeng) {
+		List<ProductDB> productList = sst.selectList("product.sortbylowprice", lowcategoryeng);
+		return productList;
+	}
+
+	public List<ProductDB> getProductsByLowCategory_sortbyhighprice(String lowcategoryeng) {
+		List<ProductDB> productList = sst.selectList("product.sortbyhighprice", lowcategoryeng);
+		return productList;
+	}
+
+	public List<ProductDB> getProductsByLowCategory_sortbyname(String lowcategoryeng) {
+		List<ProductDB> productList = sst.selectList("product.sortbyname", lowcategoryeng);
+		return productList;
+	}
 }

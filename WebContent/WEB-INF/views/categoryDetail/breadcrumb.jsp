@@ -32,17 +32,61 @@
 
 	<!-- 목록정렬 -->
 	<ul id="menu2">
-		<li href="">
+		<li onclick="sortbydate()">
 			<div class="chkbox"></div> 신상품
 		</li>
-		<li href="">
+		<li onclick="sortbylowprice()">
 			<div class="chkbox"></div> 낮은가격
 		</li>
-		<li href="">
+		<li onclick="sortbyhighprice()">
 			<div class="chkbox"></div> 높은가격
 		</li>
-		<li href="">
+		<li onclick="sortbyname()">
 			<div class="chkbox"></div> 이름
 		</li>
 	</ul>
+	<script type="text/javascript">
+		function sortbydate() {
+			$.ajax({
+				url : "../products/productCardList",
+				method : "get",
+				data: {upcategoryeng:"${upcategoryeng}", lowcategoryeng: "${lowcategoryeng}"},
+				success : function(data) {
+					console.log(data);
+					$("#productCardList").html(data);
+				}
+			});
+		}
+		function sortbylowprice() {
+			$.ajax({
+				url : "../products/sortbylowprice",
+				method : "get",
+				data: {upcategoryeng:"${upcategoryeng}", lowcategoryeng: "${lowcategoryeng}"},
+				success : function(data) {
+					console.log(data);
+					$("#productCardList").html(data);
+				}
+			});
+		}
+		function sortbyhighprice() {
+			$.ajax({
+				url : "../products/sortbyhighprice",
+				method : "get",
+				data: {upcategoryeng:"${upcategoryeng}", lowcategoryeng: "${lowcategoryeng}"},
+				success : function(data) {
+					$("#productCardList").html(data);
+				}
+			});
+		}
+		function sortbyname() {
+			$.ajax({
+				url : "../products/sortbyname",
+				method : "get",
+				data: {upcategoryeng:"${upcategoryeng}", lowcategoryeng: "${lowcategoryeng}"},
+				success : function(data) {
+					$("#productCardList").html(data);
+				}
+			});
+		}
+	</script>
 </div>
