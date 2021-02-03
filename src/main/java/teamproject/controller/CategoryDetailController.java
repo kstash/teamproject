@@ -34,6 +34,8 @@ public class CategoryDetailController {
 	public String callcategorypage(Model model, String upcategoryeng, String lowcategoryeng) {
 		logger.info("실행");
 		
+		logger.info("lowcategoryeng값: "+lowcategoryeng);
+		
 		model.addAttribute("upcategoryeng", upcategoryeng);
 		model.addAttribute("lowcategoryeng", lowcategoryeng);
 		

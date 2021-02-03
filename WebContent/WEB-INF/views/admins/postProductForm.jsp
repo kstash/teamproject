@@ -24,7 +24,7 @@
 			<div>
 				<label for="productFabric">제품원료</label>
 				<hr>
-				<input type="text" style="width:300px; height:50px;" name="productFabric" id="productFabric">
+				<textarea rows="3" cols="50" name="productFabric" id="productFabric"></textarea>
 			</div>
 			<div>
 				<label for="productPrice">제품가격</label>
