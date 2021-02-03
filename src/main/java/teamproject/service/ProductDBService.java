@@ -48,4 +48,19 @@ public class ProductDBService {
 		return productDao.getProductsByLowCategory(lowcategoryeng);
 	}
 
+	public List<ProductDB> getProductsByLowCategory_sortbylowprice(String lowcategoryeng) {
+		List<ProductDB> productList = productDao.getProductsByLowCategory_sortbylowprice(lowcategoryeng);
+		return productList;
+	}
+
+	public List<ProductDB> getProductsByLowCategory_sortbyhighprice(String lowcategoryeng) {
+		List<ProductDB> productList = productDao.getProductsByLowCategory_sortbyhighprice(lowcategoryeng);
+		return productList;
+	}
+
+	public List<ProductDB> getProductsByLowCategory_sortbyname(String lowcategoryeng) {
+		List<ProductDB> productList = productDao.getProductsByLowCategory_sortbyname(lowcategoryeng);
+		return productList;
+	}
+
 }
