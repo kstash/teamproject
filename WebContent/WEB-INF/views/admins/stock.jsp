@@ -72,7 +72,7 @@
 
 			<!-- 페이지 내용 -->
 			<div id="content">
-				<h1>재고관리 페이지 제작 준비</h1>
+				<h1>재고관리</h1>
 				<hr />
 				<h3 class="d-inline-block">${productCode}</h3>
 				<button class="btn btn-success m-1" style="float: right;" onclick="addstock(${productCode})">추가</button>
@@ -83,7 +83,7 @@
 						method : "post",
 						data:{productCode:pdc},
 						success : function(data) {
-							location.href=data;
+							location.reload(true);
 						}
 					});
 				}

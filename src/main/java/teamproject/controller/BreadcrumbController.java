@@ -52,12 +52,10 @@ public class BreadcrumbController {
 			for(LowcategoryDB item : lowcategorylist) {
 				if(item.getLowcategoryEng().equals(lowcategoryeng)) {
 					model.addAttribute("lowcategoryKr",item.getLowcategoryKr());
+					model.addAttribute("lowcategoryeng",item.getLowcategoryEng());
 				}
 			}
 		}
-		
-		
-		
 		return "categoryDetail/breadcrumb";
 	}
 
