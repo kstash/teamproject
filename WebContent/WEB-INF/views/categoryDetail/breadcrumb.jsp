@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
 <div id="InnerCategory">
 	<!-- 내부 카테고리 -->
 	<ul class="inner_menu">
